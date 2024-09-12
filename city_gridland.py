@@ -22,6 +22,7 @@ def gridlandMetro(n, m, k, track):
     print(n, m, k, track)
     pass
 
+
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
