@@ -6,7 +6,6 @@ import random
 import re
 import sys
 
-
 #
 # Complete the 'countApplesAndOranges' function below.
 #
@@ -21,7 +20,6 @@ import sys
 
 def countApplesAndOranges(s, t, a, b, apples, oranges):
     print(s, t, a, b, apples, oranges)
-
 
 if __name__ == '__main__':
     first_multiple_input = input().rstrip().split()
