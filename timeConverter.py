@@ -23,6 +23,7 @@ def timeConversion(s):
 
     meridiem = second[2:]
 
+
     hour_str = hour
     if meridiem == 'PM' and hour != '12':
         hour_str = int(hour) + 12
