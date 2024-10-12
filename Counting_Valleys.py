@@ -22,7 +22,6 @@ def countingValleys(steps, path):
     count = 0
     number_of_down_steps = 0
     for i in path:
-        # print(i)
         if i == 'U':
             count += 1
         if i == 'D':
@@ -31,15 +30,15 @@ def countingValleys(steps, path):
         if count == 0:
             return number_of_down_steps
 
-if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
+if __name__ == '__main__':
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
     steps = int(input().strip())
 
     path = input()
 
     result = countingValleys(steps, path)
+    print(result)
+    # fptr.write(str(result) + '\n')
 
-    fptr.write(str(result) + '\n')
-
-    fptr.close()
+    # fptr.close()
