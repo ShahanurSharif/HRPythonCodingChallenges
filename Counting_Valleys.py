@@ -20,16 +20,22 @@ def countingValleys(steps, path):
     # print(steps, path)
     # 0
     count = 0
-    number_of_down_steps = 0
+    valleys = 0
+    in_valley = False
     for i in path:
         if i == 'U':
             count += 1
-        if i == 'D':
+        else:
             count -=1
-            number_of_down_steps +=1
-        if count == 0:
-            return number_of_down_steps
 
+    if count < 0 and not in_valley:
+        in_valley = True
+
+    if count == 0 and in_valley:
+        valleys += 1
+        in_valley = False
+
+    return valleys
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
