@@ -27,7 +27,6 @@ def formingMagicSquare(s):
 
     print(sum_of_row, diagonal_left_to_right)
 
-
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
