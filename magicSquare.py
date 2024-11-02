@@ -16,6 +16,7 @@ import sys
 
 def formingMagicSquare(s):
     # Write your code here
+    print(s)
     sum_of_row = []
     sum_of_column = []
     diagonal_left_to_right = 0
@@ -54,15 +55,10 @@ def formingMagicSquare(s):
 
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    s = []
-
-    for _ in range(3):
-        s.append(list(map(int, input().rstrip().split())))
+    s= [[4, 9, 2], [3, 5, 7], [8, 1, 5]]
 
     result = formingMagicSquare(s)
 
-    fptr.write(str(result) + '\n')
-
-    fptr.close()
+    print(result)
