@@ -13,6 +13,8 @@ import sys
 # The function is expected to return an INTEGER.
 # The function accepts 2D_INTEGER_ARRAY s as parameter.
 #
+def match_desire_number(s):
+    pass
 
 def formingMagicSquare(s):
     # Write your code here
@@ -49,6 +51,14 @@ def formingMagicSquare(s):
         desire_number = max(grouping, key=grouping.get)
     else:
         desire_number = min(grouping)
+
+    print(desire_number, s[0])
+    for index in range(len(s)):
+
+
+
+
+
 
     # if it's high, then operation should be addition
     # if it's low, then operation should be subtraction
