@@ -54,12 +54,7 @@ def formingMagicSquare(s):
 
     print(desire_number, s[0])
     for index in range(len(s)):
-
-
-
-
-
-
+        pass
     # if it's high, then operation should be addition
     # if it's low, then operation should be subtraction
 
