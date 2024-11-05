@@ -13,16 +13,21 @@ import sys
 # The function is expected to return an INTEGER.
 # The function accepts 2D_INTEGER_ARRAY s as parameter.
 #
-def magicNumber(length):
-    total = length(length*length + 1)/2
-    return total
+def magicNumber(length=0):
+    total = length*(length*length + 1)/2
+    return int(total)
 
+def is_magic_square(s):
+    pass
 
 def formingMagicSquare(s):
-    length = 0
     length = len(s[0])
     magic_number = magicNumber(length)
-    print(s[0])
+    if is_magic_square(s):
+        return 0
+
+    pass
+
 
 
 
