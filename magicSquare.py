@@ -19,21 +19,14 @@ def magicNumber(length=0):
 
 
 def is_equal(arr):
-    val = arr[0]
-    a = True
-    for v in arr:
-        print(val, v)
-        if v != val:
-            a=False
-            break
-    return a
+    return all(x == arr[0] for x in arr)
 
 def is_magic_square(s):
     lrd = 0
     rld = 0
     sr = []
     sc = []
-
+    value = False
     row_total = len(s[0])
     for i in range(len(s)):
         lrd += s[i][i]
@@ -41,7 +34,13 @@ def is_magic_square(s):
         sr.append(sum(s[i]))
         sc.append(sum(s[i][j] for j in range(len(s[i]))))
 
-    return is_equal(sr) and is_equal(sc) and lrd == rld
+    if is_equal(sr) and is_equal(sc):
+        if lrd == sr[0] and rld == sr[0]:
+            # print(sr, sc, lrd, rld)
+            return True
+
+    return False
+
 
 def get_permutations(arr):
     if len(arr) == 1:
@@ -50,17 +49,18 @@ def get_permutations(arr):
     prem = []
     for i in range(len(arr)):
         current = arr[i]
-        remaining = arr[:i] + arr[i+1:]
+        remaining = arr[:i] + arr[i + 1:]
         for p in get_permutations(remaining):
             prem.append([current] + p)
 
     # print(prem)
     return prem
 
+
 def generate_possible_magic_squares(s):
     length = len(s[0])
     # number_of_box = 4
-    number_of_box = length*length + 1
+    number_of_box = length * length + 1
     numbers = []
     for i in range(1, number_of_box):
         numbers.append(i)
@@ -74,7 +74,7 @@ def generate_possible_magic_squares(s):
             b.append(c[j])
             if len(b) == length:
                 total[i].append(b)
-                b=[]
+                b = []
 
     possible_magic_squares = []
     for i in range(len(total)):
@@ -83,12 +83,15 @@ def generate_possible_magic_squares(s):
 
     return possible_magic_squares
 
+
 def formingMagicSquare(s):
     length = len(s[0])
     magic_number = magicNumber(length)
 
     values = generate_possible_magic_squares(s)
-    print(values)
+    # print(values)
+
+    print(is_magic_square(values[0]), values[0])
 
 
 if __name__ == '__main__':
