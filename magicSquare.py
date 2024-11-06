@@ -32,7 +32,7 @@ def is_magic_square(s):
         lrd += s[i][i]
         rld += s[i][row_total - i - 1]
         sr.append(sum(s[i]))
-        sc.append(sum(s[i][j] for j in range(len(s[i]))))
+        sc.append(sum(s[j][i] for j in range(len(s[i]))))
 
     if is_equal(sr) and is_equal(sc):
         if lrd == sr[0] and rld == sr[0]:
@@ -91,7 +91,7 @@ def formingMagicSquare(s):
     values = generate_possible_magic_squares(s)
     # print(values)
 
-    print(is_magic_square(values[0]), values[0])
+    print(values, len(values))
 
 
 if __name__ == '__main__':
