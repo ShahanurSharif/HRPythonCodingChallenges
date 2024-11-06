@@ -41,15 +41,31 @@ def is_magic_square(s):
 
     return is_equal(sr) and is_equal(sc) and lrd == rld
 
-def get_permutations(s):
-    pass
+def get_permutations(arr):
+    if len(arr) == 1:
+        return [arr]
+
+    prem = []
+    for i in range(len(arr)):
+        current = arr[i]
+        remaining = arr[:i] + arr[i+1:]
+        for p in get_permutations(remaining):
+            prem.append([current] + p)
+
+    # print(prem)
+    return prem
 
 def generate_possible_magic_squares(s):
     length = len(s[0])
+    # number_of_box = 4
     number_of_box = length*length + 1
     numbers = []
     for i in range(1, number_of_box):
         numbers.append(i)
+
+    combinations = get_permutations(numbers)
+    for i in range(len(combinations)):
+        print(i, combinations[i])
 
 
 def formingMagicSquare(s):
