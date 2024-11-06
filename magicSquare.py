@@ -20,11 +20,13 @@ def magicNumber(length=0):
 
 def is_equal(arr):
     val = arr[0]
+    a = True
     for v in arr:
+        print(val, v)
         if v != val:
-            return False
-
-    return True
+            a=False
+            break
+    return a
 
 def is_magic_square(s):
     lrd = 0
@@ -79,13 +81,14 @@ def generate_possible_magic_squares(s):
         if is_magic_square(total[i]):
             possible_magic_squares.append(total[i])
 
-    # return possible_magic_squares
+    return possible_magic_squares
 
 def formingMagicSquare(s):
     length = len(s[0])
     magic_number = magicNumber(length)
 
     values = generate_possible_magic_squares(s)
+    print(values)
 
 
 if __name__ == '__main__':
