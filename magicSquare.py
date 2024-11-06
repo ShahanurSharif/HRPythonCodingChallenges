@@ -18,6 +18,14 @@ def magicNumber(length=0):
     return int(total)
 
 
+def is_equal(arr):
+    val = arr[0]
+    for v in arr:
+        if v != val:
+            return False
+
+    return True
+
 def is_magic_square(s):
     lrd = 0
     rld = 0
@@ -31,6 +39,17 @@ def is_magic_square(s):
         sr.append(sum(s[i]))
         sc.append(sum(s[i][j] for j in range(len(s[i]))))
 
+    return is_equal(sr) and is_equal(sc) and lrd == rld
+
+def get_permutations(s):
+    pass
+
+def generate_possible_magic_squares(s):
+    length = len(s[0])
+    number_of_box = length*length + 1
+    numbers = []
+    for i in range(1, number_of_box):
+        numbers.append(i)
 
 
 def formingMagicSquare(s):
@@ -38,8 +57,8 @@ def formingMagicSquare(s):
     magic_number = magicNumber(length)
     if is_magic_square(s):
         return 0
-
-    pass
+    else:
+        values = generate_possible_magic_squares(s)
 
 
 if __name__ == '__main__':
