@@ -65,7 +65,7 @@ def generate_possible_magic_squares(s):
 
     combinations = get_permutations(numbers)
     b = []
-    total = []
+    total = [[] for _ in range(len(combinations))]
     for i in range(len(combinations)):
         c = combinations[i]
         for j in range(len(c)):
@@ -73,25 +73,19 @@ def generate_possible_magic_squares(s):
             if len(b) == length:
                 total[i].append(b)
                 b=[]
-        # for j in range(len(c)):
-        #     b.append(c[j])
-        #     if len(b) == length:
-        #         total.append(b)
-        #         b=[]
 
+    possible_magic_squares = []
+    for i in range(len(total)):
+        if is_magic_square(total[i]):
+            possible_magic_squares.append(total[i])
 
-    # print(total)
-
-
-
+    # return possible_magic_squares
 
 def formingMagicSquare(s):
     length = len(s[0])
     magic_number = magicNumber(length)
-    if is_magic_square(s):
-        return 0
-    else:
-        values = generate_possible_magic_squares(s)
+
+    values = generate_possible_magic_squares(s)
 
 
 if __name__ == '__main__':
