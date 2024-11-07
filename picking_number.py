@@ -25,14 +25,14 @@ def pickingNumbers(a):
             for j in range(len(rest_portion)):
                 diff = abs(first_portion[-1] - rest_portion[j])
             # print(first_portion, rest_portion, first_portion[-1], rest_portion[0])
-                print(first_portion[-1], rest_portion[0], diff)
+            #     print(first_portion[-1], rest_portion[0], diff, i+1+j, rest_portion[j], a[i+1+j])
                 if diff==0 or diff==1:
                     if len(values)==0:
-                        values.append(first_portion[-1])
-                        values.append(rest_portion[0])
+                        values[i] = a[i]
+                        values[i+1+j] = a[i+1+j]
                     else:
-                        values.append(rest_portion[0])
-
+                        values[i+1+j] = a[i+1+j]
+        print(values)
     return len(values)
 
 
@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
     number_array = list(map(int, a.split()))
 
-    print(len(number_array))
+    # print(len(number_array))
 
     result = pickingNumbers(number_array)
 
