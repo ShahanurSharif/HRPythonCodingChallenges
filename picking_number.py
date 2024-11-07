@@ -32,7 +32,7 @@ def pickingNumbers(a):
                         values[i+1+j] = a[i+1+j]
                     else:
                         values[i+1+j] = a[i+1+j]
-        print(values)
+        print(values.values())
     return len(values)
 
 
