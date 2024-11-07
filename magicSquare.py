@@ -21,6 +21,7 @@ def magicNumber(length=0):
 def is_equal(arr):
     return all(x == arr[0] for x in arr)
 
+
 def is_magic_square(s):
     lrd = 0
     rld = 0
@@ -64,7 +65,6 @@ def generate_possible_magic_squares(s):
     numbers = []
     for i in range(1, number_of_box):
         numbers.append(i)
-
     combinations = get_permutations(numbers)
     b = []
     total = [[] for _ in range(len(combinations))]
@@ -75,7 +75,6 @@ def generate_possible_magic_squares(s):
             if len(b) == length:
                 total[i].append(b)
                 b = []
-
     possible_magic_squares = []
     for i in range(len(total)):
         if is_magic_square(total[i]):
@@ -84,15 +83,28 @@ def generate_possible_magic_squares(s):
     return possible_magic_squares
 
 
+def nearest_match(values, s):
+    diff_arr = []
+    total_sum = 0
+    sum_arr = []
+    for i in range(len(values)):
+        value = values[i]
+        total_sum = 0
+        for j in range(len(s[0])):
+            for k in range(len(s[0])):
+                diff = abs(value[j][k] - s[j][k])
+                total_sum += diff
+        diff_arr.append(total_sum)
+    return diff_arr
+
+
 def formingMagicSquare(s):
-    length = len(s[0])
-    magic_number = magicNumber(length)
-
     values = generate_possible_magic_squares(s)
-    # print(values)
-
-    print(values, len(values))
-
+    sum_arr = nearest_match(values, s)
+    if len(sum_arr) == 0:
+        return 0
+    else:
+        return sum_arr[0]
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
