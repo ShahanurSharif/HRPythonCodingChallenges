@@ -15,25 +15,12 @@ import sys
 #
 
 def pickingNumbers(a):
-    total = 0
-    values = {}
-    for i in range(len(a)):
-        # print(a, a[:1+i], a[i+1:])
-        first_portion = a[:1+i]
-        rest_portion = a[i+1:]
-        if len(first_portion) and len(rest_portion):
-            for j in range(len(rest_portion)):
-                diff = abs(first_portion[-1] - rest_portion[j])
-            # print(first_portion, rest_portion, first_portion[-1], rest_portion[0])
-            #     print(first_portion[-1], rest_portion[0], diff, i+1+j, rest_portion[j], a[i+1+j])
-                if diff==0 or diff==1:
-                    if len(values)==0:
-                        values[i] = a[i]
-                        values[i+1+j] = a[i+1+j]
-                    else:
-                        values[i+1+j] = a[i+1+j]
-        print(values.values())
-    return len(values)
+    sorted_a = sorted(a)
+    group_arr = []
+    for i in range(len(sorted_a)):
+        initial_value = sorted_a[i]
+        next_value = sorted_a[i+1]
+        diff = initial_value - next_value
 
 
 
