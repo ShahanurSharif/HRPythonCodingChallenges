@@ -13,16 +13,21 @@ import sys
 # The function is expected to return an INTEGER.
 # The function accepts INTEGER_ARRAY a as parameter.
 #
+group_arr = []
+def generate_arr(value):
+    pass
 
 def pickingNumbers(a):
     sorted_a = sorted(a)
-    group_arr = []
     for i in range(len(sorted_a)-1):
         initial_value = sorted_a[i]
         next_value = sorted_a[i+1]
         diff = initial_value - next_value
         if diff == 0 or diff == 1:
-            group_arr.append(initial_value)
+            if len(group_arr)==0:
+                group_arr.append(initial_value)
+            else:
+                generate_arr()
 
 # Write your code here
 
