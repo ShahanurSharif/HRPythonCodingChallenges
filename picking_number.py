@@ -17,12 +17,12 @@ import sys
 def pickingNumbers(a):
     sorted_a = sorted(a)
     group_arr = []
-    for i in range(len(sorted_a)):
+    for i in range(len(sorted_a)-1):
         initial_value = sorted_a[i]
         next_value = sorted_a[i+1]
         diff = initial_value - next_value
-
-
+        if diff == 0 or diff == 1:
+            group_arr.append(initial_value)
 
 # Write your code here
 
