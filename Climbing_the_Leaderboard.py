@@ -27,6 +27,12 @@ def climbingLeaderboard(ranked, player):
         new_rank.append(score)
         new_rank = list(set(new_rank))
         new_rank = sorted(new_rank, reverse=True)
+        for i in range(len(new_rank)):
+            if new_rank[i] == score:
+                sort_score.append(i+1)
+
+    print(sorted(sort_score, reverse=True))
+
 
 # 6
 # 4
