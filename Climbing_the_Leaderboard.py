@@ -18,16 +18,15 @@ import sys
 
 def climbingLeaderboard(ranked, player):
     # Write your code here
-    merge_arr = ranked + player
-    merge_arr = list(set(merge_arr))
-    sorted_merge_arr = sorted(merge_arr, reverse=True)
-    ranked_detail = []
-    for board_score in player:
-        for i in range(len(sorted_merge_arr)):
-            if board_score == sorted_merge_arr[i]:
-                ranked_detail.append(i + 1)
-
-    print(sorted_merge_arr, player, ranked_detail)
+    new_rank = []
+    sort_score = []
+    for score in sorted(player, reverse=True):
+        new_rank = []
+        for i in range(len(ranked)):
+            new_rank.append(ranked[i])
+        new_rank.append(score)
+        new_rank = list(set(new_rank))
+        new_rank = sorted(new_rank, reverse=True)
 
 # 6
 # 4
