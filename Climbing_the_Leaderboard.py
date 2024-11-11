@@ -18,7 +18,16 @@ import sys
 
 def climbingLeaderboard(ranked, player):
     # Write your code here
-    print(ranked, player)
+    merge_arr = ranked + player
+    merge_arr = sorted(merge_arr, reverse=True)
+
+    ranked_detail = []
+    for board_score in player:
+        for i in range(len(merge_arr)):
+            if board_score == merge_arr[i]:
+                ranked_detail.append(i + 1)
+
+    print(ranked_detail)
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
