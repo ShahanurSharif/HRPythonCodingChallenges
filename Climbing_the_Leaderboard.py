@@ -20,7 +20,7 @@ def doSearch(rank, score):
     high = len(rank) - 1
     while low<=high:
         guess = (low+high)//2
-        # print(guess, low, high, guess, rank, score)
+        print(low, high, guess, rank[guess], score, rank)
         if rank[guess] == score:
             return guess + 1
         elif rank[guess]<score:
