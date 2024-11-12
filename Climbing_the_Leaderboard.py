@@ -15,23 +15,36 @@ import sys
 #  1. INTEGER_ARRAY ranked
 #  2. INTEGER_ARRAY player
 #
+def doSearch(rank, score):
+    low = 0
+    high = len(rank) - 1
+    # print(rank, score, low, high)
+    while low<=high:
+        guess = (low+high)//2
+        print(low, high, rank, rank[guess], score)
+        if rank[guess] == score:
+            return guess + 1
+        elif rank[guess]<score:
+            low = guess+1
+        else:
+            high = guess-1
+
+    return -1
+
 
 def climbingLeaderboard(ranked, player):
     # Write your code here
-    new_rank = []
     sort_score = []
     for score in sorted(player, reverse=True):
-        new_rank = []
-        for i in range(len(ranked)):
-            new_rank.append(ranked[i])
+        new_rank = ranked[:]
         new_rank.append(score)
         new_rank = list(set(new_rank))
         new_rank = sorted(new_rank, reverse=True)
-        for i in range(len(new_rank)):
-            if new_rank[i] == score:
-                sort_score.append(i+1)
+        value = doSearch(new_rank, score)
+        if value:
+            sort_score.append(value)
 
-    print(sorted(sort_score, reverse=True))
+    return sorted(sort_score, reverse=True)
 
 
 # 6
@@ -52,7 +65,7 @@ if __name__ == '__main__':
     ranked = [100, 100, 50, 40, 40, 20, 10]
     player = [5, 25, 50, 120]
     result = climbingLeaderboard(ranked, player)
-
+    print(result)
     # fptr.write('\n'.join(map(str, result)))
     # fptr.write('\n')
     #
