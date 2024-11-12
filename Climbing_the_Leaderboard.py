@@ -18,33 +18,29 @@ import sys
 def doSearch(rank, score):
     low = 0
     high = len(rank) - 1
-    # print(rank, score, low, high)
     while low<=high:
         guess = (low+high)//2
-        print(low, high, rank, rank[guess], score)
+        # print(guess, low, high, guess, rank, score)
         if rank[guess] == score:
             return guess + 1
         elif rank[guess]<score:
-            low = guess+1
-        else:
             high = guess-1
+        else:
+            low = guess+1
 
-    return -1
+    return low + 1
 
 
 def climbingLeaderboard(ranked, player):
     # Write your code here
-    sort_score = []
-    for score in sorted(player, reverse=True):
-        new_rank = ranked[:]
-        new_rank.append(score)
-        new_rank = list(set(new_rank))
-        new_rank = sorted(new_rank, reverse=True)
-        value = doSearch(new_rank, score)
-        if value:
-            sort_score.append(value)
+    ranked = sorted(set(ranked), reverse=True)
+    result = []
+    for score in player:
+        # print(score)
+        rank = doSearch(ranked, score)
+        result.append(rank)
 
-    return sorted(sort_score, reverse=True)
+    return result
 
 
 # 6
