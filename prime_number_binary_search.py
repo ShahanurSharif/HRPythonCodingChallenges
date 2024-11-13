@@ -11,6 +11,21 @@ def check_division(i):
     return is_prime
 
 
+def check_guess(arr, target):
+    low = 0
+    high = len(arr)-1
+    number_of_guess = 0
+    while low <= high:
+        number_of_guess += 1
+        mid = (low + high)//2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return number_of_guess
+
 if __name__ == "__main__":
     low = 1
     high = 311
@@ -18,5 +33,7 @@ if __name__ == "__main__":
     for i in range(low, high+1):
         if check_division(i):
             prime_numbers.append(i)
-    print(prime_numbers)
+
+    number_of_guess = check_guess(prime_numbers, 52)
+    print(number_of_guess+1)
 
