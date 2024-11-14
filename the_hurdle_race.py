@@ -14,7 +14,6 @@ import sys
 #  1. INTEGER k
 #  2. INTEGER_ARRAY height
 #
-
 def hurdleRace(k, height):
     print(k, height)
     max_value = max(height)
