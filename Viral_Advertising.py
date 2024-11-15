@@ -23,10 +23,23 @@ import sys
 # ....
 
 def viralAdvertising(n):
-    pass
+    total = 0
+    for i in range(1, n + 1):
+        if i == 1:
+            people = 5
+            reached = math.floor(people / 2)
+            # print(i, people, reached)
+        if i > 1:
+            print(i, people, reached)
+            people = reached * 3
+            reached = math.floor(people / 2)
 
-# for i in range(1, n+1):
-#     doExpand
+        total += reached
+
+    return total
+
+    #     doExpand
+
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
