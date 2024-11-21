@@ -5,6 +5,8 @@ import os
 import random
 import re
 import sys
+from contextlib import nullcontext
+
 
 #
 # Complete the 'findDigits' function below.
