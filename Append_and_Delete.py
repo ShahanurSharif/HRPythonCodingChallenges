@@ -23,35 +23,63 @@ def appendAndDelete(s, t, k):
     unmatched = 0
     required_steps = 0
     if len_s < len_t:
-        total_steps = process_steps(len_s, len_t, s, t)
-        if total_steps<=k:
-            return "Yes"
+        first_index = None
+        for i in range(len_s):
+            if s[i] != t[i]:
+                first_index = i
+                break
+
+        if first_index is None:
+            unmatched = len_t - len_s
+            print(unmatched*2)
+            if unmatched*2 >= k:
+                return "Yes"
+            else:
+                return "No"
+
+        unmatched = s[first_index:len_s]
+        required_steps = t[first_index:len_t]
+        total_steps = unmatched + required_steps
+        return len(total_steps)
+
+    if len_s > len_t:
+        first_index = None
+        for i in range(len_t):
+            if s[i] != t[i]:
+                first_index = i
+        if first_index is None:
+            unmatched = len_s - len_t
+            if unmatched <= k:
+                return "Yes"
+            else:
+                return "No"
         else:
-            return "No"
+            unmatched = s[first_index:len_s]
+            required_steps = t[first_index:len_t]
+            total_steps = unmatched + required_steps
 
-    if len_s >= len_t:
-        total_steps = process_steps(len_t, len_s, s, t)
-        # print(total_steps)
-        if total_steps<=k:
-            return "Yes"
+            if len(total_steps) <= k:
+                return "Yes"
+            else:
+                return "No"
+
+    if len_s == len_t:
+        first_index = None
+        for i in range(len_s):
+            if s[i] != t[i]:
+                first_index = i
+        if first_index is None:
+            unmatched = len_s - len_t
+            if unmatched <= k:
+                return "Yes"
         else:
-            return "No"
-
-def process_steps(len_s, len_t, s, t):
-    first_index = None
-    for i in range(len_s):
-        if s[i] != t[i]:
-            first_index = i
-            break
-
-    if first_index is None and len_s<len_t:
-        unmatched = len_t - len_s
-        return unmatched * 2
-
-    unmatched = s[first_index:len_s]
-    required_steps = t[first_index:len_t]
-    total_steps = unmatched + required_steps
-    return len(total_steps)
+            unmatched = s[first_index:len_s]
+            required_steps = t[first_index:len_t]
+            total_steps = unmatched + required_steps
+            if len(total_steps) <= k:
+                return "Yes"
+            else:
+                return "No"
 
 
 if __name__ == '__main__':
@@ -62,9 +90,11 @@ if __name__ == '__main__':
     # t = input()
     #
     # k = int(input().strip())
-    s="zzzzz"
-    t="zzzzzzz"
-    k = 4
+
+
+    s="y"
+    t="yu"
+    k = 2
     result = appendAndDelete(s, t, k)
 
     print(result)
