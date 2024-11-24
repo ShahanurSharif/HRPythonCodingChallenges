@@ -18,34 +18,37 @@ import sys
 #
 
 def appendAndDelete(s, t, k):
-    # Write your code here
-    len1 = len(s)
-    len2 = len(t)
-    if len1 > len2:
-        calculated_len = len1
-    elif len2 > len1:
-        calculated_len = len2
-    else:
-        calculated_len = len1
+    len_s = len(s)
+    len_t = len(t)
+    unmatched = 0
+    required_steps = 0
+    if len_s < len_t:
+        total_steps = process_steps(len_s, len_t, s, t)
+        if total_steps<=k:
+            return "Yes"
+        else:
+            return "No"
 
+    if len_s >= len_t:
+        total_steps = process_steps(len_s, len_t, s, t)
+        # print(total_steps)
+        # if total_steps<=k:
+        #     return "Yes"
+        # else:
+        #     return "No"
+
+def process_steps(len_s, len_t, s, t):
     first_index = None
-    for i in range(calculated_len):
-        if (i < len(s) and i < len(t)) and s[i] != t[i]:
+    for i in range(len_s):
+        if s[i] != t[i]:
             first_index = i
             break
 
-    unmatched_string_length = len(s[first_index:len(s)])
-    required_step_to_fill = len(t[first_index:len(t)])
-    if first_index is None or first_index==0:
-        total_step = unmatched_string_length + required_step_to_fill + 1
-        if total_step <= k:
-            return "Yes"
-    else:
-        total_step = unmatched_string_length + required_step_to_fill
-    if total_step == k:
-        return "Yes"
-    else:
-        return "No"
+
+    unmatched = s[first_index:len_s]
+    required_steps = t[first_index:len_t]
+    total_steps = unmatched + required_steps
+    return len(total_steps)
 
 
 if __name__ == '__main__':
