@@ -30,7 +30,7 @@ def appendAndDelete(s, t, k):
             return "No"
 
     if len_s >= len_t:
-        total_steps = process_steps(len_s, len_t, s, t)
+        total_steps = process_steps(len_t, len_s, s, t)
         # print(total_steps)
         if total_steps<=k:
             return "Yes"
