@@ -32,10 +32,10 @@ def appendAndDelete(s, t, k):
     if len_s >= len_t:
         total_steps = process_steps(len_s, len_t, s, t)
         # print(total_steps)
-        # if total_steps<=k:
-        #     return "Yes"
-        # else:
-        #     return "No"
+        if total_steps<=k:
+            return "Yes"
+        else:
+            return "No"
 
 def process_steps(len_s, len_t, s, t):
     first_index = None
@@ -44,6 +44,9 @@ def process_steps(len_s, len_t, s, t):
             first_index = i
             break
 
+    if first_index is None and len_s<len_t:
+        unmatched = len_t - len_s
+        return unmatched * 2
 
     unmatched = s[first_index:len_s]
     required_steps = t[first_index:len_t]
