@@ -20,66 +20,15 @@ import sys
 def appendAndDelete(s, t, k):
     len_s = len(s)
     len_t = len(t)
-    unmatched = 0
-    required_steps = 0
-    if len_s < len_t:
-        first_index = None
-        for i in range(len_s):
-            if s[i] != t[i]:
-                first_index = i
-                break
-
-        if first_index is None:
-            unmatched = len_t - len_s
-            print(unmatched*2)
-            if unmatched*2 >= k:
-                return "Yes"
-            else:
-                return "No"
-
-        unmatched = s[first_index:len_s]
-        required_steps = t[first_index:len_t]
-        total_steps = unmatched + required_steps
-        return len(total_steps)
-
-    if len_s > len_t:
-        first_index = None
-        for i in range(len_t):
-            if s[i] != t[i]:
-                first_index = i
-        if first_index is None:
-            unmatched = len_s - len_t
-            if unmatched <= k:
-                return "Yes"
-            else:
-                return "No"
-        else:
-            unmatched = s[first_index:len_s]
-            required_steps = t[first_index:len_t]
-            total_steps = unmatched + required_steps
-
-            if len(total_steps) <= k:
-                return "Yes"
-            else:
-                return "No"
-
-    if len_s == len_t:
-        first_index = None
-        for i in range(len_s):
-            if s[i] != t[i]:
-                first_index = i
-        if first_index is None:
-            unmatched = len_s - len_t
-            if unmatched <= k:
-                return "Yes"
-        else:
-            unmatched = s[first_index:len_s]
-            required_steps = t[first_index:len_t]
-            total_steps = unmatched + required_steps
-            if len(total_steps) <= k:
-                return "Yes"
-            else:
-                return "No"
+    index = None
+    min_count = min(len_s, len_t)
+    if len_s + len_t < k: return "Yes"
+    for i, j in zip(s, t):
+        if s[i]!=t[j]:
+            index = i
+            break
+    if index>=0:
+        min_count = len_s - index + len_t - index
 
 
 if __name__ == '__main__':
