@@ -22,28 +22,31 @@ def appendAndDelete(s, t, k):
     len_t = len(t)
     index = None
     min_count = min(len_s, len_t)
-    if len_s + len_t < k: return "Yes"
+    if len_s + len_t < k:
+        return "Yes"
+    count = 0
     for i, j in zip(s, t):
-        if s[i]!=t[j]:
-            index = i
+        if i == j:
+            count += 1
+        else:
             break
-    if index>=0:
-        min_count = len_s - index + len_t - index
+
+    t_len = len_s + len_t
+    if t_len<=count*2+k:
+        return "Yes"
+    if t_len%2==k%2:
+        return "Yes"
+
+
+    # ashley
+    # abdd
+    # k =4
 
 
 if __name__ == '__main__':
-    # fptr = open(os.environ['OUTPUT_PATH'], 'w')
-    #
-    # s = input()
-    #
-    # t = input()
-    #
-    # k = int(input().strip())
-
-
-    s="y"
-    t="yu"
-    k = 2
+    s = "hackerhappy"
+    t = "hackerrank"
+    k = 9
     result = appendAndDelete(s, t, k)
 
     print(result)
