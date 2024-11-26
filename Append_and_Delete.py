@@ -32,10 +32,10 @@ def appendAndDelete(s, t, k):
             break
 
     t_len = len_s + len_t
-    if t_len<=count*2+k:
+    if t_len<=count*2+k and t_len%2==k%2 or t_len<k:
         return "Yes"
-    if t_len%2==k%2:
-        return "Yes"
+
+    return "No"
 
 
     # ashley
