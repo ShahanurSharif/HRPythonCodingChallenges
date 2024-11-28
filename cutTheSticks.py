@@ -18,7 +18,6 @@ def cutTheSticks(arr):
     new_arr = arr.copy()
     total_cut = []
     while len(new_arr)!=0:
-        total = 0
         low = min(new_arr)
         total_cut.append(len(new_arr))
         for i in range(len(new_arr)):
