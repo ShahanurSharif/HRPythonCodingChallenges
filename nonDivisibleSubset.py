@@ -5,6 +5,7 @@ import os
 import random
 import re
 import sys
+from enum import unique
 from itertools import permutations
 
 
@@ -18,19 +19,21 @@ from itertools import permutations
 #
 
 def nonDivisibleSubset(k, s):
-    print(k, s)
+    # print(k, s)
     permutations_value = []
     for i in range(len(s)):
-        new_value = [s[i] + s[x] for x in range(i + 1, len(s))]
+        new_value = [s[i] for x in range(i + 1, len(s)) if (s[i] + s[x])%k != 0]
+        permutations_value.extend(new_value)
 
 
-    print(permutations_value)
+    return len(set(permutations_value))
+
 
 if __name__ == '__main__':
 
-    k = 3
+    k = 15
 
-    s = [1, 7, 2, 4]
+    s = [278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436]
 
     result = nonDivisibleSubset(k, s)
 
