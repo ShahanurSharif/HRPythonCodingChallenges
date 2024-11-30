@@ -19,19 +19,17 @@ from itertools import permutations
 #
 
 def nonDivisibleSubset(k, s):
-    for_process = s.copy()
-    # print(for_process)
-    permutations_value = []
-    for i in range(len(s)):
-        for x in range(i + 1, len(s)):
-            # print(s[i], s[x], s[i] + s[x])
+    print(s)
+    i = 0
+    while i < len(s):
+        x = i + 1
+        while x < len(s):  # Inner loop
+            # print('i=', s[i], 'x=', s[x])
             if (s[i] + s[x]) % k == 0:
-                print(s[i], s[x], s[i] + s[x])
-                value = s[x]
-                # print(value)
-                s = [x for x in s if x != value]
-
-    # print(for_process)
+                del s[x]  # Safe because we are iterating in reverse
+            else:
+                x += 1  # Only increment `x` if no deletion
+        i += 1
     return len(s)
 
 
@@ -39,7 +37,8 @@ if __name__ == '__main__':
 
     k = 3
 
-    s = [1, 7, 2, 4]
+    value = "278 576 496 727 410 124 338 149 209 702 282 718 771 575 436"
+    s= list(map(int, value.split()))
 
     result = nonDivisibleSubset(k, s)
 
