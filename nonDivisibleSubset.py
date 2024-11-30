@@ -19,27 +19,27 @@ from itertools import permutations
 #
 
 def nonDivisibleSubset(k, s):
-    # print(k, s)
-    s.sort()
-    print(s)
-    sorted_value = s.copy()
+    for_process = s.copy()
+    # print(for_process)
     permutations_value = []
     for i in range(len(s)):
-        new_value = []
         for x in range(i + 1, len(s)):
-            if (s[i] + s[x]) % k != 0:
-                new_value.append(s[i])
-        permutations_value.extend(new_value)
+            # print(s[i], s[x], s[i] + s[x])
+            if (s[i] + s[x]) % k == 0:
+                print(s[i], s[x], s[i] + s[x])
+                value = s[x]
+                # print(value)
+                s = [x for x in s if x != value]
 
-
-    return len(set(permutations_value))
+    # print(for_process)
+    return len(s)
 
 
 if __name__ == '__main__':
 
-    k = 15
+    k = 3
 
-    s = [278, 576, 496, 727, 410, 124, 338, 149, 209, 702, 282, 718, 771, 575, 436]
+    s = [1, 7, 2, 4]
 
     result = nonDivisibleSubset(k, s)
 
