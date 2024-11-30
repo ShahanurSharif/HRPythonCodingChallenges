@@ -20,9 +20,15 @@ from itertools import permutations
 
 def nonDivisibleSubset(k, s):
     # print(k, s)
+    s.sort()
+    print(s)
+    sorted_value = s.copy()
     permutations_value = []
     for i in range(len(s)):
-        new_value = [s[i] for x in range(i + 1, len(s)) if (s[i] + s[x])%k != 0]
+        new_value = []
+        for x in range(i + 1, len(s)):
+            if (s[i] + s[x]) % k != 0:
+                new_value.append(s[i])
         permutations_value.extend(new_value)
 
 
