@@ -19,22 +19,17 @@ from itertools import permutations
 #
 
 def nonDivisibleSubset(k, s):
-    # print(s)
-    diviable_k = []
-    not_diviable_k = []
-    for i in range(len(s)):
-        for x in range(i+1, len(s)):
-            if (s[i]+s[x])%k == 0:
-                diviable_k.append(s[x])
-            else:
-                not_diviable_k.append(s[x])
+    # Step 1: Compute remainders
+    remainder_count = [0] * k
+    for num in s:
+        remainder_count[num % k] += 1
+        print(num, k, num%k, remainder_count)
 
-    print(set(diviable_k), set(not_diviable_k))
 
 
 if __name__ == '__main__':
 
-    k = 3
+    k = 7
 
     value = "278 576 496 727 410 124 338 149 209 702 282 718 771 575 436"
     s= list(map(int, value.split()))
