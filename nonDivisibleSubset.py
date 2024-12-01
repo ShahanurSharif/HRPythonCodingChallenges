@@ -19,18 +19,17 @@ from itertools import permutations
 #
 
 def nonDivisibleSubset(k, s):
-    print(s)
-    i = 0
-    while i < len(s):
-        x = i + 1
-        while x < len(s):  # Inner loop
-            # print('i=', s[i], 'x=', s[x])
-            if (s[i] + s[x]) % k == 0:
-                del s[x]  # Safe because we are iterating in reverse
+    # print(s)
+    diviable_k = []
+    not_diviable_k = []
+    for i in range(len(s)):
+        for x in range(i+1, len(s)):
+            if (s[i]+s[x])%k == 0:
+                diviable_k.append(s[x])
             else:
-                x += 1  # Only increment `x` if no deletion
-        i += 1
-    return len(s)
+                not_diviable_k.append(s[x])
+
+    print(set(diviable_k), set(not_diviable_k))
 
 
 if __name__ == '__main__':
