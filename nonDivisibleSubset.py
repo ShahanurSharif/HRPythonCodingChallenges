@@ -6,7 +6,7 @@ import random
 import re
 import sys
 from enum import unique
-from itertools import permutations
+from itertools import permutations, product
 
 
 #
@@ -23,7 +23,9 @@ def nonDivisibleSubset(k, s):
     remainder_count = [0] * k
     for num in s:
         remainder_count[num % k] += 1
-        print(num, k, num%k, remainder_count)
+
+    count = min(remainder_count[0], 1)
+    print(k//2)
 
 
 
