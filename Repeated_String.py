@@ -20,13 +20,21 @@ def repeatedString(s, n):
     len_s = len(s)
     count_a = s.count('a')
 
+    total_number = math.floor(n/len_s * count_a)
+    reminder = n//len_s
+
+    remaining = 0
+    if reminder > 0:
+        remaining = s[0:reminder]
+
+    return total_number+remaining
 
 
 if __name__ == '__main__':
 
-    s = "bab"
+    s = "ababa"
 
-    n = 725261545450
+    n = 3
 
     result = repeatedString(s, n)
 
