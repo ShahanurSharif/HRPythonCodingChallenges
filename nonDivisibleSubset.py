@@ -25,7 +25,14 @@ def nonDivisibleSubset(k, s):
         remainder_count[num % k] += 1
 
     count = min(remainder_count[0], 1)
-    print(k//2)
+
+    for r in range(1, (k//2) + 1):
+        if r == k - r:  # Special case: remainder k/2
+            count += min(remainder_count[r], 1)
+        else:
+            count += max(remainder_count[r], remainder_count[k - r])
+
+    return count
 
 
 
