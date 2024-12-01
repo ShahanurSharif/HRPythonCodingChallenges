@@ -19,8 +19,8 @@ def repeatedString(s, n):
     # Write your code here
     len_s = len(s)
     count_a = s.count('a')
-    total_number = n/len_s * count_a
-    return math.ceil(total_number)
+
+
 
 if __name__ == '__main__':
 
