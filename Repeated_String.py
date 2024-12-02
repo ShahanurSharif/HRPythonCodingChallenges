@@ -25,7 +25,9 @@ def repeatedString(s, n):
         return count_a
 
     total_number = math.floor(n/len_s * count_a)
-    reminder = n//len_s
+    print(total_number)
+    reminder = n%len_s
+    print(s[0:7])
 
     remaining = 0
     if reminder > 0:
@@ -36,9 +38,9 @@ def repeatedString(s, n):
 
 if __name__ == '__main__':
 
-    s = "ababa"
+    s = "cfimaakj"
 
-    n = 3
+    n = 554045874191
 
     result = repeatedString(s, n)
 
