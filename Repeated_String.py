@@ -17,28 +17,23 @@ import sys
 
 def repeatedString(s, n):
     # Write your code here
-    len_s = len(s)
     count_a = s.count('a')
+    len_s = len(s)
 
-    if n<len_s:
-        count_a = s[0:n].count('a')
-        return count_a
+    # Calculate how many full repetitions of `s` fit in `n`
+    full_repeats = n // len_s
+    remainder = n % len_s
 
-    total_number = math.floor(n/len_s * count_a)
-    print(total_number)
-    reminder = n%len_s
-    print(s[0:7])
+    # Count 'a' in the remainder
+    remainder_a = s[:remainder].count('a')
 
-    remaining = 0
-    if reminder > 0:
-        remaining = s[0:reminder].count('a')
-
-    return total_number+remaining
+    # Total count of 'a'
+    return full_repeats * count_a + remainder_a
 
 
 if __name__ == '__main__':
 
-    s = "cfimaakj"
+    s = "abba"
 
     n = 554045874191
 
