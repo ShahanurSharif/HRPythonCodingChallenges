@@ -20,12 +20,16 @@ def repeatedString(s, n):
     len_s = len(s)
     count_a = s.count('a')
 
+    if n<len_s:
+        count_a = s[0:n].count('a')
+        return count_a
+
     total_number = math.floor(n/len_s * count_a)
     reminder = n//len_s
 
     remaining = 0
     if reminder > 0:
-        remaining = s[0:reminder]
+        remaining = s[0:reminder].count('a')
 
     return total_number+remaining
 
