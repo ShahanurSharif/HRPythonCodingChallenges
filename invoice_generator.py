@@ -41,34 +41,6 @@ def generate_payslip_pdf(employee_details, pdf):
 
     pdf.ln(10)  # Add space after employee details
 
-    # Salary Details Section (Formatted Table)
-    pdf.set_font("Arial", 'B', 12)
-    pdf.cell(50, 10, "Gross Salary:", ln=False)
-    pdf.set_font("Arial", size=12)
-    pdf.cell(50, 10, f"{employee_details['gross_salary']} BDT", ln=True)
-
-    pdf.set_font("Arial", 'B', 12)
-    pdf.cell(50, 10, "Total Working Days:", ln=False)
-    pdf.set_font("Arial", size=12)
-    pdf.cell(50, 10, str(employee_details['total_working_days']), ln=True)
-
-    pdf.set_font("Arial", 'B', 12)
-    pdf.cell(50, 10, "Leaves Taken:", ln=False)
-    pdf.set_font("Arial", size=12)
-    pdf.cell(50, 10, str(employee_details['leaves']), ln=True)
-
-    pdf.set_font("Arial", 'B', 12)
-    pdf.cell(50, 10, "LOP Days:", ln=False)
-    pdf.set_font("Arial", size=12)
-    pdf.cell(50, 10, str(employee_details['lop_days']), ln=True)
-
-    pdf.set_font("Arial", 'B', 12)
-    pdf.cell(50, 10, "Paid Days:", ln=False)
-    pdf.set_font("Arial", size=12)
-    pdf.cell(50, 10, str(employee_details['paid_days']), ln=True)
-
-    pdf.ln(10)  # Add space after salary details
-
     # Salary Breakdown (Horizontal)
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(40, 10, "Gross Salary", border=1, align="C")
@@ -87,7 +59,7 @@ def generate_payslip_pdf(employee_details, pdf):
     pdf.cell(40, 10, str(employee_details['paid_days']), border=1, align="C")
     pdf.ln()
 
-    # Final Payment details
+    # Final Payment details (Net Salary, Bonus, Total Payment)
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(40, 10, "Net Salary", border=1, align="C")
     pdf.cell(40, 10, "Bonus", border=1, align="C")
@@ -144,19 +116,24 @@ def calculate_monthly_payslip(month, year, gross_salary, weekends, holidays, pay
 
 
 def generate_payslips_for_period(pdf):
-    gross_salary = 35000  # Updated Gross Salary to 35,000 BDT
+    gross_salary = 52000  # Updated Gross Salary to 52,000 BDT
     payment_method = "Cash"
     weekends = ["Friday"]  # Typical weekends in Bangladesh
 
-    # Define holidays and Eid vacation for relevant months
+    # Define holidays accurately for the relevant months
     holiday_data = {
-        1: ["01/01/2018"],  # New Year's Day (January 1)
+        7: ["15/07/2019", "16/07/2019"],  # Eid-ul-Fitr (July)
+        8: ["12/08/2019", "13/08/2019", "14/08/2019", "15/08/2019"],  # Eid-ul-Adha (August)
+        9: ["24/05/2020", "25/05/2020", "26/05/2020"],  # Eid-ul-Fitr (May)
+        10: ["01/08/2020", "02/08/2020", "03/08/2020", "04/08/2020"],  # Eid-ul-Adha (August)
+        11: [],  # No holidays
+        12: [],  # No holidays
+        1: [],  # No holidays
         2: [],  # No holidays
-        3: ["26/03/2018"],  # Independence Day (March 26)
+        3: [],  # No holidays
         4: [],  # No holidays
-        5: ["01/05/2018"],  # Labor Day (May 1)
+        5: [],  # No holidays
         6: [],  # No holidays
-        7: ["15/07/2018", "16/07/2018"],  # Eid-ul-Fitr (July)
     }
 
     total_salary = 0  # Variable to store total salary
@@ -164,27 +141,35 @@ def generate_payslips_for_period(pdf):
     # List to store generated payslips
     payslips = []
 
-    for month in range(1, 8):  # Generating payslips for Jan 2018 to July 2018
+    for month in range(7, 13):  # Generating payslips for Jul 2019 to Dec 2019
         holidays = holiday_data.get(month, [])
-        employee_details = calculate_monthly_payslip(month, 2018, gross_salary, weekends, holidays, payment_method)
+        employee_details = calculate_monthly_payslip(month, 2019, gross_salary, weekends, holidays, payment_method)
         payslips.append(employee_details)
 
         # Generate PDF for this month
         generate_payslip_pdf(employee_details, pdf)
         total_salary += employee_details['total_payment']
 
-    # Save the final PDF with all payslips
-    pdf.output("salary_slip/employee_payslips_jan_to_jul_2018.pdf")
+    # Generate payslips for the first half of 2020
+    for month in range(1, 7):  # Generating payslips for Jan 2020 to Jun 2020
+        holidays = holiday_data.get(month, [])
+        employee_details = calculate_monthly_payslip(month, 2020, gross_salary, weekends, holidays, payment_method)
+        payslips.append(employee_details)
 
-    return total_salary
+        # Generate PDF for this month
+        generate_payslip_pdf(employee_details, pdf)
+        total_salary += employee_details['total_payment']
+
+    # After generating all payslips, save the PDF
+    pdf_output_file = "salary_slip/salary_slip_jan_to_dec_2019_2020.pdf"
+    pdf.output(pdf_output_file)
+
+    print(f"Total salary for all employees: {total_salary}")
 
 
-# Create PDF object
-pdf = FPDF()
-pdf.set_auto_page_break(auto=True, margin=15)
+if __name__ == "__main__":
+    pdf = FPDF()
+    pdf.set_left_margin(10)
+    pdf.set_right_margin(10)
 
-# Call the function to generate payslips for the period
-total_salary = generate_payslips_for_period(pdf)
-
-# Print the total salary
-print(f"Total salary for the period (Jan - Jul 2018): {total_salary} BDT")
+    generate_payslips_for_period(pdf)
