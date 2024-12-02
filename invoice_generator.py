@@ -41,7 +41,35 @@ def generate_payslip_pdf(employee_details, pdf):
 
     pdf.ln(10)  # Add space after employee details
 
-    # Salary Details Section (Horizontal table format)
+    # Salary Details Section (Formatted Table)
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(50, 10, "Gross Salary:", ln=False)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(50, 10, f"{employee_details['gross_salary']} BDT", ln=True)
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(50, 10, "Total Working Days:", ln=False)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(50, 10, str(employee_details['total_working_days']), ln=True)
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(50, 10, "Leaves Taken:", ln=False)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(50, 10, str(employee_details['leaves']), ln=True)
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(50, 10, "LOP Days:", ln=False)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(50, 10, str(employee_details['lop_days']), ln=True)
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(50, 10, "Paid Days:", ln=False)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(50, 10, str(employee_details['paid_days']), ln=True)
+
+    pdf.ln(10)  # Add space after salary details
+
+    # Salary Breakdown (Horizontal)
     pdf.set_font("Arial", 'B', 12)
     pdf.cell(40, 10, "Gross Salary", border=1, align="C")
     pdf.cell(40, 10, "Total Working Days", border=1, align="C")
@@ -116,41 +144,47 @@ def calculate_monthly_payslip(month, year, gross_salary, weekends, holidays, pay
 
 
 def generate_payslips_for_period(pdf):
-    gross_salary = 30000  # Updated Gross Salary to 30,000 BDT
+    gross_salary = 35000  # Updated Gross Salary to 35,000 BDT
     payment_method = "Cash"
     weekends = ["Friday"]  # Typical weekends in Bangladesh
 
     # Define holidays and Eid vacation for relevant months
     holiday_data = {
-        1: ["01/01/2017"],  # New Year's Day (January 1)
-        3: ["26/03/2017"],  # Independence Day (March 26)
-        5: ["01/05/2017"],  # Labor Day (May 1)
-        7: ["06/07/2017", "07/07/2017", "08/07/2017"],  # Eid-ul-Fitr (July)
-        8: [],  # No holidays
-        9: ["01/09/2017", "02/09/2017", "03/09/2017"],  # Eid-ul-Adha (September)
-        10: [],  # No holidays
-        11: [],  # No holidays
-        12: ["16/12/2017"],  # Victory Day (December 16)
+        1: ["01/01/2018"],  # New Year's Day (January 1)
+        2: [],  # No holidays
+        3: ["26/03/2018"],  # Independence Day (March 26)
+        4: [],  # No holidays
+        5: ["01/05/2018"],  # Labor Day (May 1)
+        6: [],  # No holidays
+        7: ["15/07/2018", "16/07/2018"],  # Eid-ul-Fitr (July)
     }
 
-    for month in range(11, 13):  # Generating payslips for Nov 2016 - Dec 2017
+    total_salary = 0  # Variable to store total salary
+
+    # List to store generated payslips
+    payslips = []
+
+    for month in range(1, 8):  # Generating payslips for Jan 2018 to July 2018
         holidays = holiday_data.get(month, [])
-        employee_details = calculate_monthly_payslip(month, 2016, gross_salary, weekends, holidays, payment_method)
+        employee_details = calculate_monthly_payslip(month, 2018, gross_salary, weekends, holidays, payment_method)
+        payslips.append(employee_details)
+
+        # Generate PDF for this month
         generate_payslip_pdf(employee_details, pdf)
+        total_salary += employee_details['total_payment']
 
-    for month in range(1, 13):  # For 2017 from Jan to Dec
-        holidays = holiday_data.get(month, [])
-        employee_details = calculate_monthly_payslip(month, 2017, gross_salary, weekends, holidays, payment_method)
-        generate_payslip_pdf(employee_details, pdf)
+    # Save the final PDF with all payslips
+    pdf.output("salary_slip/employee_payslips_jan_to_jul_2018.pdf")
+
+    return total_salary
 
 
-if __name__ == '__main__':
-    # Create a PDF document
-    pdf = FPDF()
-    pdf.set_auto_page_break(auto=True, margin=15)
+# Create PDF object
+pdf = FPDF()
+pdf.set_auto_page_break(auto=True, margin=15)
 
-    # Generate payslips for Nov 2016 to Dec 2017
-    generate_payslips_for_period(pdf)
+# Call the function to generate payslips for the period
+total_salary = generate_payslips_for_period(pdf)
 
-    # Save the PDF to a file in the "salary_slip" directory
-    pdf.output("salary_slip/payslips_nov_2016_to_dec_2017.pdf")
+# Print the total salary
+print(f"Total salary for the period (Jan - Jul 2018): {total_salary} BDT")
