@@ -1,6 +1,11 @@
 import random
+import os
 from datetime import datetime
 from fpdf import FPDF
+
+# Ensure directory exists
+if not os.path.exists('salary_slip'):
+    os.makedirs('salary_slip')
 
 
 def generate_payslip_pdf(employee_details, pdf):
@@ -9,45 +14,63 @@ def generate_payslip_pdf(employee_details, pdf):
 
     # Title
     pdf.set_font("Arial", 'B', 14)
-    pdf.cell(200, 10, txt=f"PAYSLIP FOR THE MONTH OF {employee_details['month'].upper()}, {employee_details['year']}",
+    pdf.cell(200, 10, txt=f"PAYSLIP FOR THE MONTH OF {employee_details['month'].upper()} {employee_details['year']}",
              ln=True, align="C")
     pdf.ln(10)
 
-    # Employee Details
+    # Employee Details Section
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(40, 10, "Employee ID", ln=True)
     pdf.set_font("Arial", size=12)
-    pdf.cell(100, 10, txt=f"Employee ID       : {employee_details['employee_id']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Employee Name     : {employee_details['employee_name']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Designation       : {employee_details['designation']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Department        : {employee_details['department']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Payment Method    : {employee_details['payment_method']}")
-    pdf.ln(10)
+    pdf.cell(40, 10, employee_details['employee_id'], ln=True)
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(40, 10, "Employee Name", ln=True)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(40, 10, employee_details['employee_name'], ln=True)
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(40, 10, "Designation", ln=True)
+    pdf.set_font("Arial", size=12)
+    pdf.multi_cell(0, 10, employee_details['designation'])
+
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(40, 10, "Department", ln=True)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(40, 10, employee_details['department'], ln=True)
+
+    pdf.ln(10)  # Add space after employee details
+
+    # Table headers for salary breakdown
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(40, 10, "Gross Salary", border=1, align="C")
+    pdf.cell(40, 10, "Total Working Days", border=1, align="C")
+    pdf.cell(40, 10, "Leaves Taken", border=1, align="C")
+    pdf.cell(40, 10, "LOP Days", border=1, align="C")
+    pdf.cell(40, 10, "Paid Days", border=1, align="C")
+    pdf.ln()
 
     # Salary Breakdown
-    pdf.cell(100, 10, txt=f"Gross Salary      : {employee_details['gross_salary']} BDT")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Total Working Days: {employee_details['total_working_days']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Weekends          : {', '.join(employee_details['weekends'])}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Holidays          : {', '.join(employee_details['holidays'])}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Leaves Taken      : {employee_details['leaves']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"LOP Days          : {employee_details['lop_days']}")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Paid Days         : {employee_details['paid_days']}")
-    pdf.ln(10)
+    pdf.set_font("Arial", size=12)
+    pdf.cell(40, 10, f"{employee_details['gross_salary']} BDT", border=1, align="C")
+    pdf.cell(40, 10, str(employee_details['total_working_days']), border=1, align="C")
+    pdf.cell(40, 10, str(employee_details['leaves']), border=1, align="C")
+    pdf.cell(40, 10, str(employee_details['lop_days']), border=1, align="C")
+    pdf.cell(40, 10, str(employee_details['paid_days']), border=1, align="C")
+    pdf.ln()
 
-    # Final Payment
-    pdf.cell(100, 10, txt=f"Net Salary        : {employee_details['net_salary']} BDT")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Bonus             : {employee_details['bonus']} BDT")
-    pdf.ln(5)
-    pdf.cell(100, 10, txt=f"Total Payment     : {employee_details['total_payment']} BDT")
+    # Final Payment details
+    pdf.set_font("Arial", 'B', 12)
+    pdf.cell(40, 10, "Net Salary", border=1, align="C")
+    pdf.cell(40, 10, "Bonus", border=1, align="C")
+    pdf.cell(40, 10, "Total Payment", border=1, align="C")
+    pdf.ln()
+
+    # Final Payment values
+    pdf.set_font("Arial", size=12)
+    pdf.cell(40, 10, f"{employee_details['net_salary']} BDT", border=1, align="C")
+    pdf.cell(40, 10, f"{employee_details['bonus']} BDT", border=1, align="C")
+    pdf.cell(40, 10, f"{employee_details['total_payment']} BDT", border=1, align="C")
     pdf.ln(10)
 
     # Separator line
@@ -93,24 +116,29 @@ def calculate_monthly_payslip(month, year, gross_salary, weekends, holidays, pay
 
 
 def generate_payslips_for_period(pdf):
-    gross_salary = 10000  # Updated gross salary to 10,000 BDT
+    gross_salary = 12000  # In BDT (Updated Gross Salary)
     payment_method = "Cash"
     weekends = ["Friday"]  # Typical weekends in Bangladesh
 
     # Define holidays and Eid vacation for relevant months
     holiday_data = {
-        9: ["1st September", "21st September"],  # Eid-ul-Adha in September
+        9: ["15th September"],  # National Mourning Day
         10: [],  # No major holidays
-        11: ["16th November"],  # Language Movement Day
+        11: [],  # No major holidays
         12: ["25th December"],  # Christmas
         1: [],  # No major holidays
-        2: ["21st February"],  # International Mother Language Day
-        3: ["26th March"],  # Independence Day
+        2: [],  # No major holidays
+        3: ["17th March"],  # National Poet's Day
     }
 
-    for month in range(9, 4, -1):
+    for month in range(4, 13):  # Generating payslips for April 2015 to April 2016
         holidays = holiday_data.get(month, [])
-        employee_details = calculate_monthly_payslip(month, 2014, gross_salary, weekends, holidays, payment_method)
+        employee_details = calculate_monthly_payslip(month, 2015, gross_salary, weekends, holidays, payment_method)
+        generate_payslip_pdf(employee_details, pdf)
+
+    for month in range(1, 5):  # Generating payslips for January to April 2016
+        holidays = holiday_data.get(month, [])
+        employee_details = calculate_monthly_payslip(month, 2016, gross_salary, weekends, holidays, payment_method)
         generate_payslip_pdf(employee_details, pdf)
 
 
@@ -119,8 +147,8 @@ if __name__ == '__main__':
     pdf = FPDF()
     pdf.set_auto_page_break(auto=True, margin=15)
 
-    # Generate payslips for September 2014 to March 2015
+    # Generate payslips for April 2015 to April 2016
     generate_payslips_for_period(pdf)
 
-    # Save the PDF to a file
-    pdf.output("salary_slip/payslips_sep_2014_to_mar_2015.pdf")
+    # Save the PDF to a file in the "salary_slip" directory
+    pdf.output("salary_slip/payslips_apr_2015_to_apr_2016.pdf")
