@@ -19,7 +19,7 @@ import sys
 #
 
 def createRows(n, queen, obstacle):
-    x = [q_space for q_space in range(n)]
+    print(obstacles)
         # 4, 3
 
 
