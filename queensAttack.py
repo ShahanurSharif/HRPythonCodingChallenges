@@ -18,24 +18,25 @@ import sys
 #  5. 2D_INTEGER_ARRAY obstacles
 #
 
-def createRows(param, obstacle):
+def createRows(n, queen, obstacle):
+    x = [q_space for q_space in range(n)]
+        # 4, 3
+
+
+def createColumns(n, queen, obstacle):
     pass
 
 
-def createColumns(param, obstacle):
-    pass
-
-
-def createDialonal(param, obstacle):
+def createDialonal(n, queen, obstacle):
     pass
 
 
 def queensAttack(n, k, r_q, c_q, obstacles):
     print(n, k, r_q, c_q, obstacles)
     for obstacle in obstacles:
-        createRows([r_q, c_q], obstacle)
-        createColumns([r_q, c_q], obstacle)
-        createDialonal([r_q, c_q], obstacle)
+        createRows(n,[r_q, c_q], obstacle)
+        createColumns(n,[r_q, c_q], obstacle)
+        createDialonal(n,[r_q, c_q], obstacle)
 
 
 if __name__ == '__main__':
