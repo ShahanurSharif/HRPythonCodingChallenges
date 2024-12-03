@@ -1,4 +1,5 @@
 def equalizeArray(arr):
+    print(sorted(arr))
     duplicates = []
     seen = set()
     for x in arr:
@@ -8,6 +9,8 @@ def equalizeArray(arr):
 
     len_arr = len(arr)
     count = 0
+    print(sorted(duplicates))
+    print(len(arr))
     for x in duplicates:
         count = len_arr - arr.count(x)
 
