@@ -24,18 +24,23 @@ def createRows(n, queen, obstacle):
     for i in obstacle:
         if queen[0] == i[0]:
             if queen[1] > i[1]:
-                number_of_row = [[queen[0], j] for j in range(queen[1], n + 1) if j != queen[1]]
+                number_of_rows = [[queen[0], j] for j in range(queen[1], n + 1) if j != queen[1]]
             elif queen[1] < i[1]:
-                number_of_row = [[queen[0], j] for j in range(1, i[1]) if j != queen[1]]
+                number_of_rows = [[queen[0], j] for j in range(1, i[1]) if j != queen[1]]
             else:
-                number_of_row = [[queen[0], j] for j in range(1, n + 1) if j != queen[1]]
+                number_of_rows = [[queen[0], j] for j in range(1, n + 1) if j != queen[1]]
     return number_of_row
 
 
 def createColumns(n, queen, obstacle):
     number_of_column = []
-    ## q: 4, 3 obs: 2, 3
-    pass
+    for i in obstacle:
+        if queen[1] == i[1]:
+            if queen[0] > i[0]:
+                number_of_columns = [[j, queen[1]] for j in range(i[1], n+1) if j!=queen[1]]
+            elif queen[0] < i[0]:
+                number_of_columns = [[j, queen[1]] for j in range(queen[1], n+1) if j!=queen[1]]
+    ## q: 2, 3 obs: 4, 3
 
 
 def createDialonal(n, queen, obstacle):
