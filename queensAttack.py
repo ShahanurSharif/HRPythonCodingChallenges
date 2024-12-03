@@ -1,0 +1,61 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'queensAttack' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER k
+#  3. INTEGER r_q
+#  4. INTEGER c_q
+#  5. 2D_INTEGER_ARRAY obstacles
+#
+
+def createRows(param, obstacle):
+    pass
+
+
+def createColumns(param, obstacle):
+    pass
+
+
+def createDialonal(param, obstacle):
+    pass
+
+
+def queensAttack(n, k, r_q, c_q, obstacles):
+    print(n, k, r_q, c_q, obstacles)
+    for obstacle in obstacles:
+        createRows([r_q, c_q], obstacle)
+        createColumns([r_q, c_q], obstacle)
+        createDialonal([r_q, c_q], obstacle)
+
+
+if __name__ == '__main__':
+    # 5
+    # 3
+    # 4
+    # 3[[5, 5], [4, 2], [2, 3]]
+
+
+    n = 5
+
+    k = 4
+
+
+    r_q = 4
+
+    c_q = 3
+
+    obstacles = [[5, 5], [4, 2], [2, 3]]
+
+    result = queensAttack(n, k, r_q, c_q, obstacles)
+
+    print(result)
