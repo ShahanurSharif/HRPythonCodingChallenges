@@ -32,11 +32,9 @@ def createDialonal(n, queen, obstacle):
 
 
 def queensAttack(n, k, r_q, c_q, obstacles):
-    print(n, k, r_q, c_q, obstacles)
-    for obstacle in obstacles:
-        createRows(n,[r_q, c_q], obstacle)
-        createColumns(n,[r_q, c_q], obstacle)
-        createDialonal(n,[r_q, c_q], obstacle)
+    createRows(n,[r_q, c_q], obstacles)
+    createColumns(n,[r_q, c_q], obstacles)
+    createDialonal(n,[r_q, c_q], obstacles)
 
 
 if __name__ == '__main__':
