@@ -47,7 +47,8 @@ def createColumns(n, queen, obstacle):
 #4, 3
 # diagonal = [4, 3][[3, 2], [2, 1], [5, 4]]
 def createDialonal(n, queen, obstacle):
-    number_of_dialonals = []
+    pass
+    # bottom_left_diagonals = [[i, j] for i, j in zip()]
     # for i in obstacle:
 
 
