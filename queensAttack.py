@@ -44,15 +44,20 @@ def createColumns(n, queen, obstacle):
                 number_of_columns = [[j, queen[1]] for j in range(1, n + 1) if j != queen[1]]
     return number_of_columns
 
-# def createDialonal(n, queen, obstacle):
+#4, 3
+# diagonal = [4, 3][[3, 2], [2, 1], [5, 4]]
+def createDialonal(n, queen, obstacle):
+    number_of_dialonals = []
     # for i in obstacle:
-        # if queen[0] == i[0]:
+
+
+
 
 
 def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_rows = createRows(n, [r_q, c_q], obstacles)
     number_of_columns = createColumns(n, [r_q, c_q], obstacles)
-    # number_of_diagonals = createDialonal(n, [r_q, c_q], obstacles)
+    number_of_diagonals = createDialonal(n, [r_q, c_q], obstacles)
 
     return len(number_of_rows) + len(number_of_columns)
 
