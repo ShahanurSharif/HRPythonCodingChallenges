@@ -47,7 +47,14 @@ def createColumns(n, queen, obstacle):
 #4, 3
 # diagonal = [4, 3][[3, 2], [2, 1], [5, 4]]
 def createDialonal(n, queen, obstacle):
-    pass
+    diagonal = []
+    for i in range(1, n + 1):
+        for j in range(1, n + 1):
+            if i-j == queen[0] - queen[1]:
+                diagonal.append([i, j])
+            if i+j == queen[1] + queen[0]:
+                diagonal.append([i, j])
+    print(diagonal)
     # bottom_left_diagonals = [[i, j] for i, j in zip()]
     # for i in obstacle:
 
