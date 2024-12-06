@@ -51,20 +51,14 @@ def createDialonal(n, queen, obstacle):
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             if i-j == queen[0] - queen[1]:
-                if [i,j] in diagonal:
-                    value_in_obstacle = [i, j]
-                    if i-j != value_in_obstacle[0] - value_in_obstacle[1]:
-                        diagonal.append([i, j])
+                diagonal.append([i, j])
             if i+j == queen[1] + queen[0]:
-                if [i, j] in diagonal:
-                    value_in_obstacle = [i, j]
-                    if i + j != value_in_obstacle[0] + value_in_obstacle[1]:
-                        diagonal.append([i, j])
+                diagonal.append([i, j])
+
+            if [i, j] in obstacle:
+                print(i, j)
+
     print(diagonal)
-
-
-
-
 
 def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_rows = createRows(n, [r_q, c_q], obstacles)
