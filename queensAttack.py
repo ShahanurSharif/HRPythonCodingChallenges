@@ -46,7 +46,7 @@ def createColumns(n, queen, obstacle):
 
 #4, 3
 # diagonal = [4, 3][[3, 2], [2, 1], [5, 4]]
-def createDialonal(n, queen, obstacle):
+def createDiagonal(n, queen, obstacle):
     diagonal = []
     for i in range(1, n + 1):
         for j in range(1, n + 1):
@@ -55,15 +55,13 @@ def createDialonal(n, queen, obstacle):
             if i+j == queen[1] + queen[0]:
                 diagonal.append([i, j])
 
-            if [i, j] in obstacle:
-                print(i, j)
+    return diagonal
 
-    print(diagonal)
-
+# [3, 2]
 def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_rows = createRows(n, [r_q, c_q], obstacles)
     number_of_columns = createColumns(n, [r_q, c_q], obstacles)
-    number_of_diagonals = createDialonal(n, [r_q, c_q], obstacles)
+    number_of_diagonals = createDiagonal(n, [r_q, c_q], obstacles)
 
     return len(number_of_rows) + len(number_of_columns)
 
