@@ -55,6 +55,7 @@ def createDiagonal(n, queen, obstacle):
             if i+j == queen[1] + queen[0]:
                 diagonal.append([i, j])
 
+
     return diagonal
 
 # [3, 2]
