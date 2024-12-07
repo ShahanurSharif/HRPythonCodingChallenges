@@ -68,6 +68,7 @@ def queensAttack(n, k, r_q, c_q, obstacles):
     return len(number_of_rows) + len(number_of_columns)
 
 
+
 if __name__ == '__main__':
     # 5
     # 3
