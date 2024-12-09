@@ -47,10 +47,24 @@ def createColumns(n, queen, obstacle):
 #4, 3
 # diagonal = [4, 3][[3, 2], [2, 1], [5, 4]]
 def expand_obstacles(obstacle_matches, arr):
+    # 5, 5-> 43 32 21
+    # 
     expanded_obstacles = []
     for om in obstacle_matches:
+        # bottom left
         if om[0]>arr[0] and om[1]>arr[1]:
             expanded_obstacles.append([arr[0], arr[1]])
+        # # 45-> 36->27 bottom right
+        if om[0]>arr[0] and om[1]<arr[1]:
+            expanded_obstacles.append([arr[0], arr[1]])
+        # 45->54->63->72 top left
+        if om[0]>arr[0] and om[1]<arr[1]:
+             expanded_obstacles.append([arr[0], arr[1]])
+        
+        # 45->56->67 top right
+        if om[0]<arr[0] and om[1]<arr[1]:
+            expanded_obstacles.append([arr[0], arr[1]])
+        
 
     return expanded_obstacles
 
@@ -66,7 +80,8 @@ def createDiagonal(n, queen, obstacle):
                 diagonal.append([i, j])
                 if [i, j] in obstacle and [i, j] not in obstacle_matches: obstacle_matches.append([i, j])
             expand_obstacles = expand_obstacles(obstacle_matches, [i, j])
-    # 5, 5-> 43 32 21
+    
+
     return diagonal
 
 # [3, 2]
