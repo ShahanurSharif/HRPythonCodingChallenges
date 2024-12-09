@@ -57,8 +57,7 @@ def createDiagonal(n, queen, obstacle):
             if i+j == queen[1] + queen[0]:
                 diagonal.append([i, j])
                 if [i, j] in obstacle and [i, j] not in obstacle_matches: obstacle_matches.append([i, j])
-
-    
+            
             
 
     return diagonal
