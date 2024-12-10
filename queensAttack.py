@@ -21,6 +21,9 @@ import sys
 
 def createRows(n, queen, obstacle):
     number_of_rows = []
+    if len(obstacle)==0:
+        return [[queen[0], j] for j in range(1, n+1) if j!=queen[0]]
+
     for i in obstacle:
         if queen[0] == i[0]:
             if queen[1] > i[1]:
@@ -37,6 +40,9 @@ def createRows(n, queen, obstacle):
 
 def createColumns(n, queen, obstacle):
     number_of_columns = []
+    if len(obstacle)==0:
+        return [[j, queen[1]] for j in range(1, n+1) if j!=queen[1]]
+    
     for i in obstacle:
         if queen[1] == i[1]:
             if queen[0] > i[0]:
@@ -79,7 +85,7 @@ def createDiagonal(n, queen, obstacle):
         for j in range(1, n + 1):
             if i-j == queen[0] - queen[1]:
                 diagonal.append([i, j])
-                if [i, j] in obstacle and [i, j] not in obstacle_matches: obstacle_matches.append([i, j])
+                if [i, j] in obstacle and  [i, j] not in obstacle_matches: obstacle_matches.append([i, j])
             if i+j == queen[1] + queen[0]:
                 diagonal.append([i, j])
                 if [i, j] in obstacle and [i, j] not in obstacle_matches: obstacle_matches.append([i, j])
@@ -96,7 +102,7 @@ def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_diagonals = createDiagonal(n, [r_q, c_q], obstacles)
     
     items_to_remove = expanded_obstacles+obstacles+[[r_q, c_q]]
-    print(number_of_diagonals, items_to_remove, number_of_rows, number_of_columns)
+    # print(number_of_diagonals, items_to_remove, number_of_rows, number_of_columns)
     total_diagonals = [item for item in number_of_diagonals if item not in items_to_remove]
     
     return len(number_of_rows)+len(number_of_columns)+len(total_diagonals)
