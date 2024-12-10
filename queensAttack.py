@@ -94,9 +94,11 @@ def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_columns=createColumns(n, [r_q, c_q], obstacles)
     # print('number of columns', number_of_columns)
     number_of_diagonals = createDiagonal(n, [r_q, c_q], obstacles)
-
-    print(number_of_diagonals)
-
+    
+    items_to_remove = expanded_obstacles+obstacles+[[r_q, c_q]]
+    total_diagonals = [item for item in number_of_diagonals if item not in items_to_remove]
+    
+    return len(number_of_rows)+len(number_of_columns)+len(total_diagonals)
 
 
 if __name__ == '__main__':
