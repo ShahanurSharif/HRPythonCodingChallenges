@@ -100,10 +100,8 @@ def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_columns=createColumns(n, [r_q, c_q], obstacles)
     createDiagonal(n, [r_q, c_q], obstacles)
     remove_arrays = obstacles+[[r_q, c_q]]
-    print(remove_arrays)
     new_expanded_diagonal = [item for item in expanded_obstacles if item not in remove_arrays]
-    print(new_expanded_diagonal)
-    return len(number_of_rows) + len(number_of_columns)
+    return len(number_of_rows) + len(number_of_columns)+len(new_expanded_diagonal)
 
 
 
