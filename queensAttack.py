@@ -57,9 +57,6 @@ expanded_obstacles = []
 
 
 def expand_obstacles(obstacle_matches, arr):
-    # print(arr)
-    # 5, 5-> 43 32 21
-    #
     for om in obstacle_matches:
         # bottom left
         if om[0] > arr[0] and om[1] > arr[1]:
@@ -73,7 +70,6 @@ def expand_obstacles(obstacle_matches, arr):
         # 45->56->67 top right
         if om[0] < arr[0] and om[1] < arr[1]:
             expanded_obstacles.append([arr[0], arr[1]])
-
     return expanded_obstacles
 
 def createDiagonal(n, queen, obstacle):
@@ -89,15 +85,16 @@ def createDiagonal(n, queen, obstacle):
                 diagonal.append([i, j])
                 if [i, j] in obstacle and [
                     i, j] not in obstacle_matches: obstacle_matches.append([i, j])
+            
             if len(obstacle_matches):
                 expand_obstacles(obstacle_matches, [i, j])
-
-    return diagonal
 
 # [3, 2]
 def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_rows=createRows(n, [r_q, c_q], obstacles)
+    # print('number of rows', number_of_rows)
     number_of_columns=createColumns(n, [r_q, c_q], obstacles)
+    # print('number of columns', number_of_columns)
     createDiagonal(n, [r_q, c_q], obstacles)
     remove_arrays = obstacles+[[r_q, c_q]]
     new_expanded_diagonal = [item for item in expanded_obstacles if item not in remove_arrays]
@@ -106,20 +103,21 @@ def queensAttack(n, k, r_q, c_q, obstacles):
 
 
 if __name__ == '__main__':
-    # 5
-    # 3
-    # 4
-    # 3[[5, 5], [4, 2], [2, 3]]
+# 5 3
+# 4 3
+# 5 5
+# 4 2
+# 2 3
 
     n=5
 
-    k=4
+    k=3
 
     r_q=4
 
     c_q=3
 
-    obstacles=[[5, 5], [4, 2], [2, 3], [3, 2]]
+    obstacles=[[5, 5], [4, 2], [2, 3]]
 
     result=queensAttack(n, k, r_q, c_q, obstacles)
     print(result)
