@@ -50,7 +50,9 @@ def createColumns(n, queen, obstacle):
 
 
 def createDiagonal(n, queen, obstacle):
-
+    diff = abs(queen[0] - queen[1])
+    bl_tr = n - (queen[1] - queen[0])
+    tl-br = queen[0] + queen[1] - 1
 def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_rows = createRows(n, [r_q, c_q], obstacles)
     number_of_columns=createColumns(n, [r_q, c_q], obstacles)
