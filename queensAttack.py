@@ -39,14 +39,39 @@ def createColumns(n, queen, obstacle):
 
 
 def createDiagonal(n, queen, obstacle):
-    diff = abs(queen[0] - queen[1])
-    bl_tr = n - (queen[1] - queen[0])
-    tl-br = queen[0] + queen[1] - 1
-    
+    obstacles = set(obstacle)
+
+    def count_steps(di, dj):
+        steps = 0
+        x, y = queen[0] + di, queen[1] + dj
+        closest_obstacle = None
+        
+        while 1 <= x <= n and 1 <= y <= n:  # Stay within bounds
+            if (x, y) in obstacles:  # Stop if an obstacle is encountered
+                closest_obstacle = (x, y)
+                break
+            steps += 1
+            x += di
+            y += dj
+        
+        # If no obstacle was found, return all the possible steps
+        return steps
+
+
+    down_right = count_steps(1, 1)  # ↘
+    up_left = count_steps(-1, -1)   # ↖
+    up_right = count_steps(-1, 1)   # ↗
+    down_left = count_steps(1, -1)  # ↙
+
+    return down_right+up_left+up_right+down_left
+
+
 def queensAttack(n, k, r_q, c_q, obstacles):
     number_of_rows = createRows(n, [r_q, c_q], obstacles)
     number_of_columns=createColumns(n, [r_q, c_q], obstacles)
-    # number_of_diagonals = createDiagonal(n, [r_q, c_q], obstacles)
+    number_of_diagonals = createDiagonal(n, [r_q, c_q], obstacles)
+
+    return number_of_columns+number_of_rows+number_of_diagonals
 
     # items_to_remove = expanded_obstacles+obstacles+[[r_q, c_q]]
     # # print(number_of_diagonals, items_to_remove, number_of_rows, number_of_columns)
