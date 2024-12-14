@@ -9,8 +9,9 @@ import sys
 
 def acmTeam(topic):
     none_topic = []
-    for i in range(len(topic)):
-        none_topic.append(topic[i].count('1'))
+    for i in topic:
+        position = [t+1 for t in range(len(i)) if i[t]!='0']
+        none_topic.append(position)
 
     print(none_topic)
     return topic
