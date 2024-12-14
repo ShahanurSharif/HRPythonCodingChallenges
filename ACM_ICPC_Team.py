@@ -8,13 +8,21 @@ import sys
 
 
 def acmTeam(topic):
-    none_topic = []
-    for i in topic:
-        position = [t+1 for t in range(len(i)) if i[t]!='0']
-        none_topic.append(position)
+    topics = [int(t, 2) for t in topic]
+    max_topics = 0
+    team_count = 0
+    for i in range(len(topics)):
+        for j in range(i+1, len(topics)):
+            combined = int(topics[i])|int(topics[j])
+            known_topics = bin(combined).count('1')
+            print(known_topics)
+            if known_topics>max_topics:
+                max_topics = known_topics
+                team_count = 1
+            elif known_topics == max_topics:
+                team_count += 1
 
-    print(none_topic)
-    return topic
+    return [max_topics, team_count]
 
 if __name__ == '__main__':
     n = 4
