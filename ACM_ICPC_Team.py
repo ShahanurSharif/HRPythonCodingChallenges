@@ -6,34 +6,22 @@ import random
 import re
 import sys
 
-#
-# Complete the 'acmTeam' function below.
-#
-# The function is expected to return an INTEGER_ARRAY.
-# The function accepts STRING_ARRAY topic as parameter.
-#
 
 def acmTeam(topic):
-    # Write your code here
+    none_topic = []
+    for i in range(len(topic)):
+        none_topic.append(topic[i].count('1'))
+
+    print(none_topic)
+    return topic
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    n = 4
 
-    first_multiple_input = input().rstrip().split()
+    m = 5
 
-    n = int(first_multiple_input[0])
-
-    m = int(first_multiple_input[1])
-
-    topic = []
-
-    for _ in range(n):
-        topic_item = input()
-        topic.append(topic_item)
+    topic =['10101', '11100', '11010', '00101']
 
     result = acmTeam(topic)
 
-    fptr.write('\n'.join(map(str, result)))
-    fptr.write('\n')
-
-    fptr.close()
+    print(result)
