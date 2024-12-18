@@ -10,11 +10,17 @@ def mergeSort(arr):
         mergeSort(right_arr)
 
         #merge
-        i=0
-        j=0
-        r=0
+        i=0 #left idx
+        j=0 #right idx
+        k=0 #merged idx
         while i < len(left_arr) and j<len(right_arr):
-            print(i, left_arr)
+            if left_arr[i] < right_arr[j]:
+                arr[k] = left_arr[i]
+                i+=1
+            else:
+                arr[k] = right_arr[j]
+                j+=1
+            k+=1
 
 
 
