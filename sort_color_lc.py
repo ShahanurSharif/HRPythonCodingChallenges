@@ -14,11 +14,11 @@ class Solution:
         #     if left_arr[i] < right_arr[j]:
         #         sorted_arr.append(left_arr[i])
 
-        return [0]
+        # return [0]
 
     def sort_color_recursive(self, nums: List[int]):
         length = len(nums)
-        if length > 1:
+        if nums and length > 1:
             mid = length // 2
             print('recursion', nums)
             left_arr = self.sort_color_recursive(nums[:mid])
@@ -33,8 +33,7 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         # print(nums)
-        sorted_nums = self.sort_color_recursive(nums)
-        nums[:] = sorted_nums
+        self.sort_color_recursive(nums)
 
 
 solution = Solution()
