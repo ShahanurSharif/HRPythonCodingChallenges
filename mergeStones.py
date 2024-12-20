@@ -11,6 +11,7 @@ class Solution:
         for i in range(k, len(stones)):
             start = i - 1
             end = i - 1 + k
+            # print(start, end, stones[start:end], stones)
             # print(i-1, k+i, stones[start:end])
             sum_chunk = sum(stones[start:end])
             if sum_chunk < lowest:
@@ -19,6 +20,7 @@ class Solution:
 
 
         if len(stones)==1:
+            print('hello 1', stones, stones[0])
             return stones[0]
         else:
             stones[lowest_index] = lowest
@@ -31,4 +33,4 @@ mergeStone = Solution()
 stones = [3, 2, 4, 1]
 k = 2
 value = mergeStone.mergeStones(stones, k)
-print(stones[0])
+print(value)
