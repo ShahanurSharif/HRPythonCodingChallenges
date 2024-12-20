@@ -17,8 +17,8 @@ class Solution:
                 lowest = sum_chunk
                 lowest_index = start
 
-        # print(stones)
-        if len(stones)<=1:
+
+        if len(stones)==1:
             return stones[0]
         else:
             stones[lowest_index] = lowest
@@ -31,4 +31,4 @@ mergeStone = Solution()
 stones = [3, 2, 4, 1]
 k = 2
 value = mergeStone.mergeStones(stones, k)
-print(value)
+print(stones[0])
