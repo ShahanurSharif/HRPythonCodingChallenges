@@ -12,9 +12,11 @@ class Solution:
             else:
                 sorted_arr.append(right_arr[j])
                 j+=1
-
-        # sorted_arr.extend(left_arr[i:])
-        # sorted_arr.extend(right_arr[j:])
+        # print(f"sorted_arr={sorted_arr}")
+        # print(f"merge_left_arr={left_arr}")
+        # print(f"merge_right_arr={right_arr}")
+        sorted_arr.extend(left_arr[i:])
+        sorted_arr.extend(right_arr[j:])
         return sorted_arr
 
     def sort_color_recursive(self, nums: List[int]):
