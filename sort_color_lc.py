@@ -1,22 +1,11 @@
 from typing import List
 
+
 class Solution:
     def merge_sort(self, left_arr, right_arr):
-        pass
-
-    def sort_color_recursive(self, nums: List[int]):
-        length = len(nums)
-        if length <= 1:
-            return nums
-        
-        mid = length // 2
-
-        left_arr = self.sort_color_recursive(nums[:mid])
-        right_arr = self.sort_color_recursive(nums[mid:])
-
         sorted_arr = []
-        i=j=0
-        while i<len(left_arr) and j<(right_arr):
+        i = j = 0
+        while i < len(left_arr) and j < len(right_arr):
             if left_arr[i] < right_arr[j]:
                 sorted_arr.append(left_arr[i])
                 i+=1
@@ -24,8 +13,21 @@ class Solution:
                 sorted_arr.append(right_arr[j])
                 j+=1
 
-        print(left_arr[i:], right_arr[j:])
+        # sorted_arr.extend(left_arr[i:])
+        # sorted_arr.extend(right_arr[j:])
+        return sorted_arr
 
+    def sort_color_recursive(self, nums: List[int]):
+        length = len(nums)
+        if length <= 1:
+            return nums
+
+        mid = length // 2
+
+        left_arr = self.sort_color_recursive(nums[:mid])
+        right_arr = self.sort_color_recursive(nums[mid:])
+
+        return self.merge_sort(left_arr, right_arr)
 
     def sortColors(self, nums: List[int]) -> None:
         """
@@ -33,6 +35,7 @@ class Solution:
         """
         sorted_nums = self.sort_color_recursive(nums)
         nums[:] = sorted_nums
+
 
 solution = Solution()
 
