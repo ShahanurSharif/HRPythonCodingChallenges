@@ -6,6 +6,7 @@ class Solution:
         sorted_arr = []
         i = j = 0
         while i < len(left_arr) and j < len(right_arr):
+            print(left_arr, right_arr)
             if left_arr[i] < right_arr[j]:
                 sorted_arr.append(left_arr[i])
                 i+=1
@@ -42,7 +43,7 @@ class Solution:
 solution = Solution()
 
 # Define the nums list
-nums = [0, 2, 4, 1, 0, 8, 8, 9, 1000, 4, 5, 0]
+nums = [2,0,2,1,1,0]
 
 # Call the sortColors method with nums
 solution.sortColors(nums)
