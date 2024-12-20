@@ -18,13 +18,15 @@ class Solution:
 
     def sort_color_recursive(self, nums: List[int]):
         length = len(nums)
-        if nums and length > 1:
-            mid = length // 2
-            print('recursion', nums)
-            left_arr = self.sort_color_recursive(nums[:mid])
-            right_arr = self.sort_color_recursive(nums[mid:])
+        if length <=1:
+            return nums
 
-            return self.merge_sort(left_arr, right_arr)
+        mid = length // 2
+        print('recursion', nums)
+        left_arr = self.sort_color_recursive(nums[:mid])
+        right_arr = self.sort_color_recursive(nums[mid:])
+        print('after recursion',left_arr, right_arr)
+        return self.merge_sort(left_arr, right_arr)
             # return [0]
 
 
