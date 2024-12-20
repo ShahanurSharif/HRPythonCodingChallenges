@@ -24,13 +24,9 @@ class Solution:
             return stones[0]
         else:
             stones[lowest_index] = lowest
-            stones.pop(lowest_index-1+k)
-            self.mergeStones(stones, k)
+            stones.pop(lowest_index+k-1)
+            return self.mergeStones(stones, k)
 
 
-
-mergeStone = Solution()
-stones = [3, 2, 4, 1]
-k = 2
-value = mergeStone.mergeStones(stones, k)
+value = Solution().mergeStones([3, 2, 4, 1], 2)
 print(value)
