@@ -9,6 +9,7 @@ class Solution:
         reverse_order.append(stones[0])
         reverse_order_sum = sum(reverse_order)
 
+
         lowest_index = 0
         for i in range(1, len(stones) - 1 ):
             start = i
