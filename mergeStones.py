@@ -8,9 +8,9 @@ class Solution:
         lowest = sum(stones[:k])
         lowest_index = 0
         # list the consecutive smallest sum
-        for i in range(k, len(stones)):
-            start = i - 1
-            end = i - 1 + k
+        for i in range(1, len(stones)-1):
+            start = i
+            end = i+k
             # print(start, end, stones[start:end], stones)
             # print(i-1, k+i, stones[start:end])
             sum_chunk = sum(stones[start:end])
@@ -24,7 +24,7 @@ class Solution:
             return stones[0]
         else:
             stones[lowest_index] = lowest
-            stones.pop(lowest_index+k-1)
+            stones.pop(lowest_index+1)
             return self.mergeStones(stones, k)
 
 
