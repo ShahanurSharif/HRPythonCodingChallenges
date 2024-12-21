@@ -34,8 +34,8 @@ class Solution:
             return self.mergeStones(stones, k, total)
 
 
-stones = [6,4,4,6,1]
-print(stones[len(stones)-3+1:len(stones)])
+stones = [6,4,4,6]
+print(stones[len(stones)-2+1:len(stones)])
 # k=2
 # value = Solution().mergeStones(stones, k)
 # print('final', value)
