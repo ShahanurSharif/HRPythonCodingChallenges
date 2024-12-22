@@ -1,10 +1,3 @@
-edges = {
-    0: [1, 2, 3],
-    1: [2, 5, 6],
-    2: [3, 5, 6],
-    3: [6, 7, 8]
-}
-
 def bfs(edges, root):
     visited = []
     queue = []
@@ -14,7 +7,7 @@ def bfs(edges, root):
     while queue:
         m = queue.pop(0)
 
-        print(m, end = " ")
+        print('print ', m, end = " ")
         for neighbor in edges[m]:
             if neighbor not in visited:
                 visited.append(neighbor)
@@ -25,4 +18,11 @@ def bfs(edges, root):
 
 
 if __name__ == "__main__":
+    edges = {
+        0: [1, 2, 3],
+        1: [2, 5, 6],
+        2: [3, 5, 6],
+        3: [6, 7, 8]
+    }
+
     bfs(edges, 1)
