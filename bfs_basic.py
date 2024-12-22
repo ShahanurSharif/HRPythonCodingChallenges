@@ -6,7 +6,7 @@ def bfs(edges, root):
 
     while queue:
         m = queue.pop(0)
-        print(m)
+        print(edges[m])
         for neighbor in edges[m]:
             if neighbor not in visited:
                 visited.append(neighbor)
