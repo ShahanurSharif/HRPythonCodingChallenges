@@ -1,42 +1,41 @@
 from typing import List
 
-from django.template.defaultfilters import length
 
 class Solution:
-    def mergeStones(self, stones: List[int], k: int, total=0) -> int:
-        str_order_sum = sum(stones[:k])
-        reverse_order = stones[len(stones)-k+1:len(stones)]
-        reverse_order.append(stones[0])
-        reverse_order_sum = sum(reverse_order)
+    def mergeStones(self, stones: List[int], k: int) -> int:
+        n = len(stones)
+
+        # Check if merging to one pile is possible
+        if (n - 1) % (k - 1) != 0:
+            return -1
+
+        # Prefix sum for quick range sum calculation
+        prefix_sum = [0] * (n + 1)
+        for i in range(n):
+            prefix_sum[i + 1] = prefix_sum[i] + stones[i]
+
+        # dp[i][j] represents the minimum cost to merge piles from i to j into 1 pile
+        dp = [[0] * n for _ in range(n)]
+
+        # Length of the interval
+        for length in range(k, n + 1):  # Start from k-length subarrays
+            for i in range(n - length + 1):
+                j = i + length - 1
+                dp[i][j] = float('inf')
+
+                # Try splitting into k piles
+                for mid in range(i, j, k - 1):
+                    dp[i][j] = min(dp[i][j], dp[i][mid] + dp[mid + 1][j])
+
+                # Add the merge cost if reducing to 1 pile is possible
+                if (j - i) % (k - 1) == 0:
+                    dp[i][j] += prefix_sum[j + 1] - prefix_sum[i]
+
+        return dp[0][n - 1]
 
 
-        lowest_index = 0
-        for i in range(1, len(stones) - 1 ):
-            start = i
-            end = i + k
-            if len(stones) - end < 0:
-                break
-
-            straigth_sum = sum(stones[start:end])
-            print('hello', stones[start::-(i+k)])
-            # start_to_end =
-            sum_chunk = sum(stones[start:end])
-            if sum_chunk < lowest:
-                lowest = sum_chunk
-                lowest_index = start
-
-        if len(stones)==1:
-            # print('hello 1', total, stones, stones[0])
-            return total
-        else:
-            stones[lowest_index] = lowest
-            del stones[lowest_index+1:lowest_index+k]
-            total += lowest
-            return self.mergeStones(stones, k, total)
-
-
-stones = [6,4,4,6]
-print(stones[len(stones)-2+1:len(stones)])
-# k=2
-# value = Solution().mergeStones(stones, k)
-# print('final', value)
+# Example usage
+solution = Solution()
+stones = [3, 2, 4, 1]
+k = 2
+print(solution.mergeStones(stones, k))  # Output: 20
