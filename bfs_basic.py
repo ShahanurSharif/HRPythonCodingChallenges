@@ -5,22 +5,24 @@ edges = {
     3: [6, 7, 8]
 }
 
-visited = []
-queue = []
-
 def bfs(edges, root):
+    visited = []
+    queue = []
     visited.append(root)
     queue.append(root)
 
     while queue:
         m = queue.pop(0)
-        # print(m, end = " ")
+
+        print(m, end = " ")
         for neighbor in edges[m]:
-            print('edges', neighbor, [m])
-            # if neighbor not in visited:
+            if neighbor not in visited:
+                visited.append(neighbor)
+                queue.append(neighbor)
+                print(visited, queue)
 
 
 
 
 if __name__ == "__main__":
-    bfs(edges, 0)
+    bfs(edges, 1)
