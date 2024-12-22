@@ -44,5 +44,8 @@ class Solution:
 # Example usage
 solution = Solution()
 stones = [3, 2, 4, 1]
+for mid in range(1, len(stones)):
+    print('hello',mid)
+    # print(solution.mergeStones(stones, mid))
 k = 2
 print(solution.mergeStones(stones, k))  # Output: 20
