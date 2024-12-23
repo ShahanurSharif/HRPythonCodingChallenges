@@ -9,6 +9,7 @@ class BinarySearchTreeNode:
         if self.data == data:
             return
 
+
         if data < self.data:
             print('less', data, self.data)
         else:
