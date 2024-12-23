@@ -11,13 +11,18 @@ class BinarySearchTreeNode:
 
 
         if data < self.data:
-            print('less', data, self.data)
+            if self.left:
+                self.left.add_child(data)
+                print('self left', self.left, self.right)
+            else:
+                self.left = BinarySearchTreeNode(data)
+                print('when data is greater than self left', self.left, self.right)
         else:
             print('greater', data)
 
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
-    print('from root',root)
+    # print('from root',root)
     for i in range(1, len(elements)):
         root.add_child(elements[i])
 
