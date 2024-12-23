@@ -4,6 +4,9 @@ class BinarySearchTreeNode:
         self.left = None
         self.right = None
 
+    def add_child(self, node):
+        pass
+
 
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
