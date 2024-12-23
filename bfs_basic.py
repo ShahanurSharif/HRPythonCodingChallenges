@@ -6,11 +6,13 @@ def bfs(edges, root):
 
     while queue:
         m = queue.pop(0)
-        for node in edges:
-            for neighbor in node:
-                if neighbor not in visited:
-                    visited.append(neighbor)
-                    queue.append(neighbor)
+        print('edges', m, edges.get(m, []))
+        for node in edges.get(m,[]):
+            if node not in visited:
+                visited.append(node)
+                queue.append(node)
+
+
 
     print(visited)
 
@@ -22,4 +24,4 @@ if __name__ == "__main__":
         3: [6, 7, 8]
     }
 
-    bfs(edges, 0)
+    bfs(edges, 1)
