@@ -13,12 +13,28 @@ class BinarySearchTreeNode:
         if data < self.data:
             if self.left:
                 self.left.add_child(data)
-                print('self left', self.left, self.right)
             else:
                 self.left = BinarySearchTreeNode(data)
-                print('when data is greater than self left', self.left, self.right)
         else:
-            print('greater', data)
+            if self.right:
+                self.right.add_child(data)
+            else:
+                self.right = BinarySearchTreeNode(data)
+
+    def in_order_traversal(self):
+        elements = []
+
+        if self.left:
+            elements += self.left.in_order_traversal()
+
+        elements.append(self.data)
+
+        if self.right:
+            elements += self.right.in_order_traversal()
+
+        return elements
+
+
 
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
@@ -33,4 +49,5 @@ def build_tree(elements):
 if __name__ == '__main__':
     numbers = [17, 4, 1, 20, 9, 23, 18, 34]
     numbers_tree = build_tree(numbers)
+    numbers_tree.in_order_traversal()
     # print(numbers_tree.in_order_traversal())
