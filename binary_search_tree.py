@@ -66,4 +66,4 @@ if __name__ == "__main__":
     number_tree = build_tree(arr)
     # print(number_tree)
     value = number_tree.in_order_traversal()
-    print(value)
+    print(number_tree.search(4))
