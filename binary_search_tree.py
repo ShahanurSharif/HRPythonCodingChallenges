@@ -36,6 +36,12 @@ class BinarySearchTree:
         # print(elements)
         return elements
 
+    def search(self, val):
+        if self.data == val:
+            return self.data
+        if self.data > val:
+            if self.left:
+                self.left.search(val)
 
 def build_tree(elements):
     root = BinarySearchTree(elements[0])
