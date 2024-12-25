@@ -5,6 +5,7 @@ class BinarySearchTree:
         self.right = None
 
     def add_child(self, data):
+        # print(data, self.data, self.left, self.right)
         if self.data == data:
             return
 
