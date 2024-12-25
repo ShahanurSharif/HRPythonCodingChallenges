@@ -39,9 +39,19 @@ class BinarySearchTree:
     def search(self, val):
         if self.data == val:
             return self.data
+
         if self.data > val:
             if self.left:
-                self.left.search(val)
+                return self.left.search(val)
+            else:
+                return False
+
+        if self.data < val:
+            if self.right:
+                return self.right.search(val)
+            else:
+                return False
+
 
 def build_tree(elements):
     root = BinarySearchTree(elements[0])
