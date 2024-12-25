@@ -27,11 +27,13 @@ class BinarySearchTree:
             # print('before', elements)
             elements += self.left.in_order_traversal()
             # print('after', elements)
+        # print(self.data, elements)
         elements.append(self.data)
 
         if self.right:
             elements += self.right.in_order_traversal()
 
+        print(elements)
         return elements
 
 
