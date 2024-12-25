@@ -1,27 +1,14 @@
-class Dog:
-    def sound(self):
-        print("dog sound")
+class Man:
+    def __init__(self, data):
+        self.data = data
+        self.left = 2
+        self.right = 3
 
-class Labrador:
-    def sound(self):
-        print("labrador sound")
+    def adding(self, data):
+        return 10
 
-class Beagle(Dog):
-    def sound(self):
-        print("Beagle Barks")
+    def testing_value(self):
+        return self.left.testing_value(1)
 
-
-class Calculator:
-    def add(self, a, b, c=0):
-        return a + b + c
-
-
-
-
-dogs = [Dog(), Labrador(), Beagle()]
-for dog in dogs:
-    print(dog.sound())
-
-calc = Calculator()
-# print(calc.add(5, 10))
-# print(calc.add(5, 10, 15))
+man = Man(3)
+print(man.testing_value())
