@@ -5,13 +5,26 @@ class BinarySearchTree:
         self.right = None
 
     def add_child(self, data):
-        pass
+        if self.data == data:
+            return
+
+        if data < self.data:
+            if self.left:
+                self.left.add_child(data)
+            else:
+                self.left = BinarySearchTree(data)
+        else:
+            if self.right:
+                self.right.add_child(data)
+            else:
+                self.right = BinarySearchTree(data)
 
 
 def build_tree(elements):
     root = BinarySearchTree(elements[0])
     for i in range(1, len(elements)):
         root.add_child(elements[i])
+
 
 if __name__ == "__main__":
     arr = [17, 4, 1, 9, 2, 7]
