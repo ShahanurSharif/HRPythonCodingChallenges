@@ -33,7 +33,7 @@ class BinarySearchTree:
         if self.right:
             elements += self.right.in_order_traversal()
 
-        print(elements)
+        # print(elements)
         return elements
 
 
@@ -48,4 +48,6 @@ def build_tree(elements):
 if __name__ == "__main__":
     arr = [17, 4, 1, 9, 2, 7]
     number_tree = build_tree(arr)
-    number_tree.in_order_traversal()
+    # print(number_tree)
+    value = number_tree.in_order_traversal()
+    print(value)
