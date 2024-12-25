@@ -17,7 +17,7 @@ class Calculator:
 
 dogs = [Dog(), Labrador(), Beagle()]
 for dog in dogs:
-    dog.sound()
+    print(dog.sound())
 
 calc = Calculator()
 # print(calc.add(5, 10))
