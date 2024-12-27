@@ -1,3 +1,4 @@
+import json
 from typing import Optional
 
 
@@ -10,12 +11,17 @@ class TreeNode:
 
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+        print(p, q)
         # if len(p) != len(q):
         #     return False
-        print(p, q)
+
 
         return True
 
+
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.isSameTree(TreeNode(1, TreeNode(2), TreeNode(3)), TreeNode(4)))
+    value = (solution.isSameTree(
+        TreeNode(1, TreeNode(2), TreeNode(3)), TreeNode(4)),
+        TreeNode(1, TreeNode(2), TreeNode(3)), TreeNode(4)
+    )
