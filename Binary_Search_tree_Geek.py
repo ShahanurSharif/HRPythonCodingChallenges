@@ -26,10 +26,13 @@ class BSTNode:
             else:
                 self.right = BSTNode(value)
 
+        print(self.value)
+
 
 
 if "__main__" == __name__:
-    nums = [12, 6, 18, 19, 21, 11, 3, 5, 4, 24, 18]
+    # nums = [12, 6, 18, 19, 21, 11, 3, 5, 4, 24, 18]
+    nums = [12, 6, 18]
     bst = BSTNode()
     for num in nums:
         bst.insert(num)
