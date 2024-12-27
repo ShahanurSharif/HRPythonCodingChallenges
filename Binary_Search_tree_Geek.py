@@ -29,10 +29,21 @@ class BSTNode:
             self.right = BSTNode(value)
             return
 
+    def get_min(self):
+        current = self
+        while current.left is not None:
+            current = current.left
+        return current.value
+
+    def get_max(self):
+        current = self
+        while current.right is not None:
+            current = current.right
+        return current.value
 
     def preorder(self, vals):
-        if self.val is not None:
-            vals.append(self.val)
+        if self.value is not None:
+            vals.append(self.value)
         if self.left is not None:
             self.left.preorder(vals)
         if self.right is not None:
