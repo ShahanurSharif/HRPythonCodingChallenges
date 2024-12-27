@@ -1,4 +1,4 @@
-class BSNode:
+class BSTNode:
     def __init__(self, value=None):
         self.value = value
         self.left = None
@@ -18,18 +18,20 @@ class BSNode:
             if self.left:
                 self.left.insert(value)
             else:
-                self.left = BSNode(value)
+                self.left = BSTNode(value)
 
         if value > self.value:
             if self.right:
                 self.right.insert(value)
             else:
-                self.right = BSNode(value)
-
+                self.right = BSTNode(value)
 
 
 
 if "__main__" == __name__:
-    value = BSNode(5)
+    nums = [12, 6, 18, 19, 21, 11, 3, 5, 4, 24, 18]
+    bst = BSTNode()
+    for num in nums:
+        bst.insert(num)
 
 
