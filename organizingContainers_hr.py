@@ -26,7 +26,7 @@ def organizingContainers(container):
 
 if __name__ == '__main__':
 
-    container =[[1, 1], [1, 1]]
+    container =[[1, 3, 1], [2, 1, 2], [3, 3, 3]]
 
     result = organizingContainers(container)
     print(result)
