@@ -16,7 +16,7 @@ from operator import indexOf
 #
 
 def biggerIsGreater(w):
-    next_string = ""
+    next_string = "no answer"
     length = len(w)
     index_value = []
     for i in range(length):
@@ -25,7 +25,6 @@ def biggerIsGreater(w):
 
     while length>=2:
         last_index = length-1
-        next_string = ""
         if index_value[last_index]>index_value[last_index-1]:
             print(index_value, last_index, last_index-1, index_value[last_index], index_value[last_index-1])
             last_value = index_value[last_index-1]
@@ -35,7 +34,6 @@ def biggerIsGreater(w):
             next_string = "".join([alphabets[value] for value in index_value ])
             break
         else:
-            next_string = "no answer"
             length -= 1
 
     return next_string
