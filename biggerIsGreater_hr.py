@@ -25,6 +25,14 @@ def biggerIsGreater(w):
         index_value.append(indexOf(alphabets, w[i]))
 
 
+    while length>=1:
+        if index_value[length]>index_value[length-1]:
+            last_value = index_value[length-1]
+            previous_value = index_value[length]
+
+            break
+        else:
+            length -= 1
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
