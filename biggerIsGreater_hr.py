@@ -17,8 +17,14 @@ from operator import indexOf
 
 def biggerIsGreater(w):
     next_string = ""
-    for i in range(len(w)):
+    total_index = 0
+    length = len(w)
+    index_value = []
+    for i in range(length):
         print(indexOf(alphabets, w[i]))
+        index_value.append(indexOf(alphabets, w[i]))
+
+    print(index_value)
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
