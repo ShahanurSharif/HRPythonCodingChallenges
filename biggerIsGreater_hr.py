@@ -24,7 +24,7 @@ def biggerIsGreater(w):
         print(indexOf(alphabets, w[i]))
         index_value.append(indexOf(alphabets, w[i]))
 
-    print(index_value)
+
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
