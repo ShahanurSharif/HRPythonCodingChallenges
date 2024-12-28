@@ -6,6 +6,9 @@ import random
 import re
 import sys
 
+from PIL.ImageOps import contain
+
+
 #
 # Complete the 'organizingContainers' function below.
 #
@@ -14,8 +17,11 @@ import sys
 #
 
 def organizingContainers(container):
-    for i in zip(container):
-        print(i)
+    length = len(container)
+    total = list(map(sum, zip(*container)))
+    print(total)
+
+
 
 
 if __name__ == '__main__':
