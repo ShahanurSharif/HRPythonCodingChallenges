@@ -27,6 +27,7 @@ def biggerIsGreater(w):
         last_index = length-1
         next_string = ""
         if index_value[last_index]>index_value[last_index-1]:
+            print(index_value, last_index, last_index-1, index_value[last_index], index_value[last_index-1])
             last_value = index_value[last_index-1]
             previous_value = index_value[last_index]
             index_value[last_index] = last_value
