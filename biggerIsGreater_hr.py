@@ -17,22 +17,27 @@ from operator import indexOf
 
 def biggerIsGreater(w):
     next_string = ""
-    total_index = 0
     length = len(w)
     index_value = []
     for i in range(length):
-        print(indexOf(alphabets, w[i]))
         index_value.append(indexOf(alphabets, w[i]))
 
 
-    while length>=1:
-        if index_value[length]>index_value[length-1]:
-            last_value = index_value[length-1]
-            previous_value = index_value[length]
-
+    while length>=2:
+        last_index = length-1
+        next_string = ""
+        if index_value[last_index]>index_value[last_index-1]:
+            last_value = index_value[last_index-1]
+            previous_value = index_value[last_index]
+            index_value[last_index] = last_value
+            index_value[last_index-1] = previous_value
+            next_string = "".join([alphabets[value] for value in index_value ])
             break
         else:
+            next_string = "no answer"
             length -= 1
+
+    return next_string
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
