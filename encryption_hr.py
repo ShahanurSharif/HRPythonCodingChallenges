@@ -21,8 +21,11 @@ def encryption(s):
     x_col = math.ceil(x_root)
     new_string = ""
     for i in range(0, length):
-        for j in range(0, length):
-            pass
+        if i<x_col:
+            for j in range(0, length):
+                if (j+x_col-i)%x_col==0:
+
+                    new_string += s[j]
         #
         # if (i+1)%4==0:
         #    new_string += s[i]+' '
