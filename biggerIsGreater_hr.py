@@ -33,7 +33,9 @@ def biggerIsGreater(w):
 
     # print(i, j)
     w_arr[i], w_arr[j] = w_arr[j], w_arr[i]
-    print(w, w_arr[i+1:], reversed(w_arr[i+1:]))
+    # print(w, w_arr[i+1:], list(reversed(w_arr[i+1:])))
+    w_arr[i+1:] = list(reversed(w_arr[i+1:]))
+    print(w, w_arr)
 
 
 if __name__ == '__main__':
