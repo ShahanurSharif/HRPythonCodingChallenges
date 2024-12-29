@@ -24,8 +24,12 @@ def biggerIsGreater(w):
 
 
     for i in reversed(range(len(index_value)-1)):
-        print(index_value[i], index_value[i+1])
-        # if index_value[i] < index_value[i+1]:
+        if index_value[i] < index_value[i+1]:
+            print(i, index_value[i], index_value[i+1])
+            break
+        else:
+            return False
+
 
 
     return next_string
