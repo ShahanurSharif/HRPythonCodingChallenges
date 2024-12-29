@@ -35,16 +35,16 @@ def biggerIsGreater(w):
     w_arr[i], w_arr[j] = w_arr[j], w_arr[i]
 
     w_arr[i+1:] = reversed(w_arr[i+1:])
-
+    print(w_arr)
     return "".join(w_arr)
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
     alphabets = "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y z".split(', ')
 
-    T = 5
+    T = 1
 
     for T_itr in range(T):
-        w = "ab,bb,hefg,dhck,dkhc".split(',')
+        w = "dkhc".split(',')
 
         result = biggerIsGreater(w[T_itr])
 
