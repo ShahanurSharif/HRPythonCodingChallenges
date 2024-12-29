@@ -17,14 +17,20 @@ from operator import indexOf
 
 def biggerIsGreater(w):
     next_string = "no answer"
+    print(w)
+
     i = len(w) - 2
     while not (i < 0 or w[i] < w[i + 1]):
         i -= 1
+
     if i < 0:
         return "no answer"
+
     j = len(w) - 1
     while not (w[j] > w[i]):
-        pass
+        j-=1
+
+
 
 
 if __name__ == '__main__':
