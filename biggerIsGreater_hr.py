@@ -18,17 +18,7 @@ from operator import indexOf
 def biggerIsGreater(w):
     next_string = "no answer"
     length = len(w)
-    index_value = []
-    for i in range(length):
-        index_value.append(indexOf(alphabets, w[i]))
-
-
-    for i in reversed(range(len(index_value)-1)):
-        if index_value[i] < index_value[i+1]:
-            print(i, index_value[i], index_value[i+1])
-            break
-        else:
-            return False
+    print('b'<'a')
 
 
 
