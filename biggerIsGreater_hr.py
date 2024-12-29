@@ -17,10 +17,15 @@ from operator import indexOf
 
 def biggerIsGreater(w):
     next_string = "no answer"
-    length = len(w)
-    print('b'<'a')
+    i = len(w) - 2
+    while not (i < 0 or w[i] < w[i + 1]):
+        i -= 1
+    if i < 0:
+        return "no answer"
+    j = len(w) - 1
+    while not (w[j] > w[i]):
+        pass
 
-    return next_string
 
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
@@ -30,7 +35,6 @@ if __name__ == '__main__':
 
     for T_itr in range(T):
         w = "lmno,dcba,dcbb,abdc,abcd,fedcbabcd".split(',')
-
 
         result = biggerIsGreater(w[T_itr])
 
