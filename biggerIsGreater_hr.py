@@ -33,20 +33,19 @@ def biggerIsGreater(w):
 
     # print(i, j)
     w_arr[i], w_arr[j] = w_arr[j], w_arr[i]
-    # print(w, w_arr[i+1:], list(reversed(w_arr[i+1:])))
-    w_arr[i+1:] = list(reversed(w_arr[i+1:]))
-    print(w, w_arr)
 
+    w_arr[i+1:] = reversed(w_arr[i+1:])
 
+    return "".join(w_arr)
 if __name__ == '__main__':
     # fptr = open(os.environ['OUTPUT_PATH'], 'w')
     alphabets = "a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y z".split(', ')
 
-    T = 6
+    T = 5
 
     for T_itr in range(T):
-        w = "lmno,dcba,dcbb,abdc,abcd,fedcbabcd".split(',')
+        w = "ab,bb,hefg,dhck,dkhc".split(',')
 
         result = biggerIsGreater(w[T_itr])
 
-        # print(result)
+        print(result)
