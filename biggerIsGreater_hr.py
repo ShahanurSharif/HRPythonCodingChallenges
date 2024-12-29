@@ -23,18 +23,10 @@ def biggerIsGreater(w):
         index_value.append(indexOf(alphabets, w[i]))
 
 
-    while length>=2:
-        last_index = length-1
-        if index_value[last_index]>index_value[last_index-1]:
-            print(index_value, last_index, last_index-1, index_value[last_index], index_value[last_index-1])
-            last_value = index_value[last_index-1]
-            previous_value = index_value[last_index]
-            index_value[last_index] = last_value
-            index_value[last_index-1] = previous_value
-            next_string = "".join([alphabets[value] for value in index_value ])
-            break
-        else:
-            length -= 1
+    for i in reversed(range(len(index_value)-1)):
+        print(index_value[i], index_value[i+1])
+        # if index_value[i] < index_value[i+1]:
+
 
     return next_string
 
@@ -50,4 +42,4 @@ if __name__ == '__main__':
 
         result = biggerIsGreater(w[T_itr])
 
-        print(result)
+        # print(result)
