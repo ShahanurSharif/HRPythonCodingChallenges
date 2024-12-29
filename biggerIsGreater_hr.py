@@ -30,6 +30,7 @@ def biggerIsGreater(w):
     while not (w[j] > w[i]):
         j-=1
 
+    w[i], w[j] = w[j], w[i]
 
 
 
