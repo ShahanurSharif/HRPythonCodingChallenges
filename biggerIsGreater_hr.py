@@ -20,8 +20,6 @@ def biggerIsGreater(w):
     length = len(w)
     print('b'<'a')
 
-
-
     return next_string
 
 if __name__ == '__main__':
