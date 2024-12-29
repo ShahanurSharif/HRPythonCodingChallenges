@@ -17,21 +17,23 @@ from operator import indexOf
 
 def biggerIsGreater(w):
     next_string = "no answer"
-    print(w)
+    w_arr = list(w)
+    # print(w_arr)
 
-    i = len(w) - 2
-    while not (i < 0 or w[i] < w[i + 1]):
+    i = len(w_arr) - 2
+    while not (i < 0 or w_arr[i] < w_arr[i + 1]):
         i -= 1
 
     if i < 0:
         return "no answer"
 
-    j = len(w) - 1
-    while not (w[j] > w[i]):
+    j = len(w_arr) - 1
+    while not (w_arr[j] > w_arr[i]):
         j-=1
 
-    w[i], w[j] = w[j], w[i]
-
+    # print(i, j)
+    w_arr[i], w_arr[j] = w_arr[j], w_arr[i]
+    print(w, w_arr[i+1:], reversed(w_arr[i+1:]))
 
 
 if __name__ == '__main__':
