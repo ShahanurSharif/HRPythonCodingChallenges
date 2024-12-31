@@ -15,3 +15,27 @@ def Dfs(arr, node):
     for i in neighbors(node):
         if not marked[i]:
             Dfs(arr, i)
+
+def Dfs_Pre(arr, node):
+    visit(node)
+    marked[node] = True
+    for i in neighbors(node):
+        if not marked[i]:
+            Dfs(arr, i)
+
+def Dfs_Post(arr, node):
+    marked[node] = True
+    for i in neighbors(node):
+        if not marked[i]:
+            Dfs(arr, i)
+    visit(node)
+
+
+def DFS_iter(arr, node):
+    stack = [node]
+    while len(stack)>0:
+        node = stack.pop()
+        marked[node] = True
+        for i in neighbors(node):
+            if not marked[i]:
+                stack.append(i)
