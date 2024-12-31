@@ -1,4 +1,4 @@
-arr = [1, 2, 3, 4]
+arr = [1, 2, 3, 4, 5]
 marked = [False]*len(arr)
 
 def visit(node):

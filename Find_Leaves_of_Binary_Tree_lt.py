@@ -9,7 +9,8 @@ class TreeNode:
 
 class Solution:
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        return root
+        visited = [False]*len(root)
+        print(visited)
 
 
 value = [1,2,3,4,5]
