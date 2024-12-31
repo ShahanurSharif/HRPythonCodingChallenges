@@ -1,7 +1,6 @@
 arr = [1, 2, 3, 4]
 marked = [False]*len(arr)
 
-
 def visit(node):
     pass
 
