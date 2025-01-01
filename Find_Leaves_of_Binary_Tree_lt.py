@@ -8,11 +8,13 @@ class TreeNode:
         self.right = right
 
 class Solution:
+
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
         visited = [False]*len(root)
-        print(visited)
+        print(visited, root)
 
 
 value = [1,2,3,4,5]
+
 root = Solution()
 print(root.findLeaves(value))
