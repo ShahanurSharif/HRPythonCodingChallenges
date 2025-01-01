@@ -27,7 +27,7 @@ def Dfs_Post(arr, node):
     marked[node] = True
     for i in neighbors(node):
         if not marked[i]:
-            Dfs(arr, i)
+            Dfs_Post(arr, i)
     visit(node)
 
 

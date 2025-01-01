@@ -7,14 +7,25 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
 
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
-        visited = [False]*len(root)
-        print(visited, root)
+
+        def dfs(node: Optional[TreeNode], leaves: List[List[int]]) -> int:
+            if not node: return -1
 
 
-value = [1,2,3,4,5]
+        result = []
+        dfs(root, result)
+        return result
 
-root = Solution()
-print(root.findLeaves(value))
+
+root = TreeNode(1)
+root.left = TreeNode(2)
+root.right = TreeNode(3)
+root.left.left = TreeNode(4)
+root.left.right = TreeNode(5)
+
+value = Solution()
+print(value.findLeaves(root))
