@@ -11,28 +11,24 @@ class TreeNode:
 class Solution:
 
     def findLeaves(self, root: Optional[TreeNode]) -> List[List[int]]:
+        def dfs(root: Optional[TreeNode]) -> int:
+            if not root:
+                return 0
 
-        def dfs(node: Optional[TreeNode], leaves: List[List[int]]) -> int:
-            print(node, leaves)
-            if not node:
-                return -1
+            l, r = dfs(root.left), dfs(root.right)
+            h = max(l, r)
+            print(h, root.val)
+            if len(result) == h:
+                result.append([])
 
-            left_height = dfs(node.left, leaves)
-            right_height = dfs(node.right, leaves)
-            print(left_height, right_height, leaves)
-
-            curr_height = max(left_height, right_height) + 1
-
-            if curr_height == len(leaves):
-                leaves.append([])
-
-            leaves[curr_height].append(node.val)
-            return curr_height
-
+            result[h].append(root.val)
+            return h+1
 
         result = []
-        dfs(root, result)
+        dfs(root)
         return result
+
+
 
 if __name__ == "__main__":
     root = TreeNode(1)
