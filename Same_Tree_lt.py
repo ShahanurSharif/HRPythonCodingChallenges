@@ -1,4 +1,5 @@
 # Definition for a binary tree node.
+import collections
 from typing import Optional
 
 
@@ -12,12 +13,8 @@ class TreeNode:
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         print(p, q)
-        if len(p) != len(q):
-            return False
-        def level_order_traversal(root: Optional[TreeNode]) -> Optional[list]:
-            if root is None:
-                return []
-
+        visited, queue = set(), collections.deque([p])
+        visited.add(p.val)
 
 
 
