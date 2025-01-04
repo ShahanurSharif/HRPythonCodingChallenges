@@ -13,8 +13,9 @@ class TreeNode:
 class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
         print(p, q)
-        visited, queue = set(), collections.deque([p])
-        visited.add(p.val)
+        visited, queue = set(), collections.deque([p.val])
+        visited.add(p)
+        print(visited, queue)
 
 
 
