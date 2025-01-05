@@ -7,14 +7,13 @@ class TreeNode:
 
 class Solution:
     def dfs(self, root: TreeNode):
-        if not root.left or not root.right:
-            return [root.val, 1]
-
-        temp_sum, temp_num = root.val, 1
+        if root is None:
+            return 0, 0
 
 
     def averageOfSubtree(self, root: TreeNode) -> int:
-        self.dfs(root)
+        left_sum, left_count = self.dfs(root.left)
+        print(left_sum, left_count)
         avg = 0
         return avg
 
