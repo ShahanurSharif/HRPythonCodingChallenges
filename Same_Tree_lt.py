@@ -1,5 +1,3 @@
-# Definition for a binary tree node.
-import collections
 from typing import Optional
 
 
@@ -11,12 +9,16 @@ class TreeNode:
 
 
 class Solution:
-    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
-        print(p, q)
-        visited, queue = set(), collections.deque([p.val])
-        visited.add(p)
-        print(visited, queue)
+    def dfs_preOrder(tree):
 
+        return []
+
+    def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
+
+        self.dfs_preOrder(p)
+        self.dfs_preOrder(q)
+
+        return False
 
 
 
