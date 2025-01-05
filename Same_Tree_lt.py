@@ -1,6 +1,5 @@
 from typing import Optional
 
-
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -9,14 +8,21 @@ class TreeNode:
 
 
 class Solution:
-    def dfs_preOrder(tree):
+    def dfs_preOrder(self, tree, tree_value=[]):
 
-        return []
+        if tree is None:
+            return -1
+
+        tree_value.append(tree.val)
+        self.dfs_preOrder(tree.left)
+        self.dfs_preOrder(tree.right)
+        return tree_value
 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
-        self.dfs_preOrder(p)
-        self.dfs_preOrder(q)
+        p_value = self.dfs_preOrder(p)
+        print(p_value)
+        # self.dfs_preOrder(q)
 
         return False
 
