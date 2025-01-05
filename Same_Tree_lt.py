@@ -11,18 +11,21 @@ class Solution:
     def dfs_preOrder(self, tree, tree_value=[]):
 
         if tree is None:
-            return -1
+            tree_value.append(None)
+            return tree_value
 
         tree_value.append(tree.val)
-        self.dfs_preOrder(tree.left)
-        self.dfs_preOrder(tree.right)
+        self.dfs_preOrder(tree.left, tree_value)
+        self.dfs_preOrder(tree.right, tree_value)
         return tree_value
 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
-        p_value = self.dfs_preOrder(p)
+        p_value = self.dfs_preOrder(p, [])
         # print(p_value)
-        q_value = self.dfs_preOrder(q)
+        q_value = self.dfs_preOrder(q, [])
+
+        print(p_value, q_value)
 
         if p_value != q_value:
             return False
