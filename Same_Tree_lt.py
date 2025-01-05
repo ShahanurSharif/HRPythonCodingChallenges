@@ -14,9 +14,9 @@ class Solution:
             tree_value.append(None)
             return tree_value
 
-        tree_value.append(tree.val)
         self.dfs_preOrder(tree.left, tree_value)
         self.dfs_preOrder(tree.right, tree_value)
+        tree_value.append(tree.val)
         return tree_value
 
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
@@ -25,7 +25,7 @@ class Solution:
         # print(p_value)
         q_value = self.dfs_preOrder(q, [])
 
-        print(p_value, q_value)
+        # print(p_value, q_value)
 
         if p_value != q_value:
             return False
