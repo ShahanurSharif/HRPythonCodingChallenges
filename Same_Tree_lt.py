@@ -21,10 +21,13 @@ class Solution:
     def isSameTree(self, p: Optional[TreeNode], q: Optional[TreeNode]) -> bool:
 
         p_value = self.dfs_preOrder(p)
-        print(p_value)
-        # self.dfs_preOrder(q)
+        # print(p_value)
+        q_value = self.dfs_preOrder(q)
 
-        return False
+        if p_value != q_value:
+            return False
+
+        return True
 
 
 
