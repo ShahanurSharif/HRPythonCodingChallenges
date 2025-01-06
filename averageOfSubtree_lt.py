@@ -10,7 +10,6 @@ class Solution:
         if node is None:
             return 0, 0
 
-
     def averageOfSubtree(self, root: TreeNode) -> int:
         print(root)
         left_sum, left_count = self.dfs(root.left)
