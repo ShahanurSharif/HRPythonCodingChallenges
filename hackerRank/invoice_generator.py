@@ -4,8 +4,8 @@ from datetime import datetime
 from fpdf import FPDF
 
 # Ensure the directory exists
-if not os.path.exists('salary_slip'):
-    os.makedirs('salary_slip')
+if not os.path.exists('../salary_slip'):
+    os.makedirs('../salary_slip')
 
 
 def generate_payslip_pdf(employee_details, pdf):
@@ -161,7 +161,7 @@ def generate_payslips_for_period(pdf):
         total_salary += employee_details['total_payment']
 
     # After generating all payslips, save the PDF
-    pdf_output_file = "salary_slip/salary_slip_jan_to_dec_2019_2020.pdf"
+    pdf_output_file = "../salary_slip/salary_slip_jan_to_dec_2019_2020.pdf"
     pdf.output(pdf_output_file)
 
     print(f"Total salary for all employees: {total_salary}")
