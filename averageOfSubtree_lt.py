@@ -14,6 +14,7 @@ class Solution:
                 return 0, 0
             left_sum, left_count = dfs(root.left)
             right_sum, right_count = dfs(root.right)
+            print(left_sum, left_count, right_sum, right_count)
             subtree_sum = left_sum + right_sum + root.val
             subtree_count = left_count + right_count + 1
 
@@ -37,10 +38,10 @@ class Solution:
 if __name__ == '__main__':
     root = TreeNode(4)
     root.left = TreeNode(8)
-    root.left.left = TreeNode(0)
-    root.left.right = TreeNode(1)
+    # root.left.left = TreeNode(0)
+    # root.left.right = TreeNode(1)
     root.right = TreeNode(5)
-    root.right.right = TreeNode(6)
+    # root.right.right = TreeNode(6)
 
     solution = Solution()
     print(solution.averageOfSubtree(root))
