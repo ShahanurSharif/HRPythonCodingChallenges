@@ -8,7 +8,6 @@ class TreeNode:
 class Solution:
 
     def averageOfSubtree(self, root: TreeNode) -> int:
-        print(root)
 
         def dfs(root):
             if root is None:
