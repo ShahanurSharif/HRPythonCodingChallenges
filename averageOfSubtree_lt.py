@@ -6,15 +6,30 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def dfs(self, node):
-        if node is None:
-            return 0, 0
 
     def averageOfSubtree(self, root: TreeNode) -> int:
         print(root)
-        left_sum, left_count = self.dfs(root.left)
-        right_sum, right_count = self.dfs(root.right)
-        # print(left_sum, left_count)
+
+        def dfs(root):
+            if root is None:
+                return 0, 0
+            left_sum, left_count = dfs(root.left)
+            right_sum, right_count = dfs(root.right)
+            subtree_sum = left_sum + right_sum + root.val
+            subtree_count = left_count + right_count + 1
+
+            if subtree_sum // subtree_count == root.val:
+                nonlocal total_count
+                # increment the result counter as the condition is satisfied
+                total_count += 1
+                # Return the sum and count of the current subtree
+            return subtree_sum, subtree_count
+
+        total_count = 0
+        dfs(root)
+        return total_count
+        # right_sum, right_count = self.dfs(root.right)
+
         # avg = 0
         # return avg
 
