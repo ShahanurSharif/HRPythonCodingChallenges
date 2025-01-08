@@ -9,8 +9,25 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def bfs(self):
-        pass
+    def bfs_level_queue(self, root: Optional[TreeNode], total=[]):
+        if root is None:
+            return
+
+        queue = []
+        queue.append(root)
+        while len(queue)>0:
+            print(queue[0].val, end=' ')
+            total.append(queue[0].val)
+            node = queue.pop(0)
+            if node.left is not None:
+                queue.append(node.left)
+                print('node= ', node, 'left= ', node.left.val)
+
+
+            if node.right is not None:
+                queue.append(node.right)
+                print('node= ', node, 'left= ',node.right.val)
+
 
     def dfs(self, root: Optional[TreeNode], previous_value=None):
         if root is None:
@@ -24,7 +41,7 @@ class Solution:
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         # print('hello world')
-        self.dfs(root)
+        self.bfs_level_queue(root)
         return True
 
 if __name__ == '__main__':
