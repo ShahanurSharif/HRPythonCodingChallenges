@@ -16,19 +16,22 @@ class Solution:
         previous_val = None
         is_valid = True
         while queue:
-            if previous_val is not None and previous_val > queue[0].val:
-                is_valid = False
-                break
 
             current_node = queue.pop(0)
             previous_val = current_node.val
 
             if current_node.left is not None:
+                if previous_val is not None and previous_val <= current_node.left.val:
+                    is_valid = False
+                    break
                 queue.append(current_node.left)
                 print('current_node= ', current_node.val, 'left= ', current_node.left.val)
 
 
             if current_node.right is not None:
+                if previous_val is not None and previous_val >= current_node.right.val:
+                    is_valid = False
+                    break
                 queue.append(current_node.right)
                 print('current_node= ', current_node.val, 'right= ', current_node.right.val)
 
@@ -41,12 +44,12 @@ class Solution:
 
 
 if __name__ == '__main__':
-    node = TreeNode(1)
+    node = TreeNode(2)
     node.left = TreeNode(2)
-    node.right = TreeNode(3)
-    node.left.left = TreeNode(4)
-    node.left.right = TreeNode(5)
-    node.right.left = TreeNode(6)
+    node.right = TreeNode(2)
+    # node.left.left = TreeNode(4)
+    # node.left.right = TreeNode(5)
+    # node.right.left = TreeNode(6)
 
     solution = Solution()
     # print(None>1)
