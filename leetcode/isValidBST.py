@@ -10,22 +10,30 @@ class TreeNode:
 
 class Solution:
     def dfs(self, root: Optional[TreeNode], previous_value=None):
+        # print('hello world')
         if root is None:
-            return root
+            return
 
         getLeftNode = self.dfs(root.left, previous_value)
         getRightNode = self.dfs(root.right, previous_value)
+        print(root.val)
 
-        print(getLeftNode, getRightNode, root.val)
 
         return True
 
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-
-        return self.dfs(root)
+        # print('hello world')
+        self.dfs(root)
+        return True
 
 if __name__ == '__main__':
     node = TreeNode(1)
     node.left = TreeNode(2)
     node.right = TreeNode(3)
+    node.left.left = TreeNode(4)
+    node.left.right = TreeNode(5)
+    node.right.left = TreeNode(6)
+
+    solution = Solution()
+    print(solution.isValidBST(node))
