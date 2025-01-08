@@ -9,7 +9,7 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def bfs_level_queue(self, root: Optional[TreeNode], total=[]):
+    def bfs_level_queue(self, root: Optional[TreeNode], total=[]) -> bool:
         if root is None:
             return
         queue = []
@@ -17,12 +17,13 @@ class Solution:
         previous_node = None
         return_value = True
         while len(queue)>0:
-            if previous_node > queue[0].val:
+            if previous_node is not None and previous_node > queue[0].val:
                 return_value = False
                 break
-            # print(queue[0].val, end=' ')
-            total.append(queue[0].val)
+
             node = queue.pop(0)
+            previous_node = node.val
+
             if node.left is not None:
                 queue.append(node.left)
                 print('node= ', node.val, 'left= ', node.left.val)
@@ -37,20 +38,7 @@ class Solution:
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         # print('hello world')
-        value = self.bfs_level_queue(root)
-        if value == False:
-            return value
-
-        return True
-
-    def dfs(self, root: Optional[TreeNode], previous_value=None):
-        if root is None:
-            return
-        getLeftNode = self.dfs(root.left, previous_value)
-        getRightNode = self.dfs(root.right, previous_value)
-
-
-        return True
+        return self.bfs_level_queue(root)
 
 
 if __name__ == '__main__':
@@ -62,4 +50,5 @@ if __name__ == '__main__':
     node.right.left = TreeNode(6)
 
     solution = Solution()
+    # print(None>1)
     print(solution.isValidBST(node))
