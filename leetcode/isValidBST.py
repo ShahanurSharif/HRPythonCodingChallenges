@@ -21,7 +21,7 @@ class Solution:
             previous_val = current_node.val
 
             if current_node.left is not None:
-                if previous_val is not None and previous_val <= current_node.left.val:
+                if previous_val is not None and previous_val < current_node.left.val:
                     is_valid = False
                     break
                 queue.append(current_node.left)
@@ -29,7 +29,7 @@ class Solution:
 
 
             if current_node.right is not None:
-                if previous_val is not None and previous_val >= current_node.right.val:
+                if previous_val is not None and previous_val > current_node.right.val:
                     is_valid = False
                     break
                 queue.append(current_node.right)
@@ -51,6 +51,8 @@ if __name__ == '__main__':
     # node.left.right = TreeNode(5)
     # node.right.left = TreeNode(6)
 
-    solution = Solution()
+    # solution = Solution()
+    a, b, c = 'hello'
+    print(a, b, c)
     # print(None>1)
-    print(solution.isValidBST(node))
+    # print(solution.isValidBST(node))
