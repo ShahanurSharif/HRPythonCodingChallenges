@@ -14,24 +14,34 @@ class Solution:
             return
         queue = []
         queue.append(root)
+        previous_node = None
+        return_value = True
         while len(queue)>0:
-            print(len(queue))
+            if previous_node > queue[0].val:
+                return_value = False
+                break
             # print(queue[0].val, end=' ')
             total.append(queue[0].val)
             node = queue.pop(0)
             if node.left is not None:
                 queue.append(node.left)
-                # if node.right is not None and node.right.val>node.val:
-                #     return False
                 print('node= ', node.val, 'left= ', node.left.val)
 
 
             if node.right is not None:
                 queue.append(node.right)
-                # if node.left is not None and node.left.val<node.val:
-                #     return False
                 print('node= ', node.val, 'right= ', node.right.val)
 
+        return return_value
+
+
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
+        # print('hello world')
+        value = self.bfs_level_queue(root)
+        if value == False:
+            return value
+
+        return True
 
     def dfs(self, root: Optional[TreeNode], previous_value=None):
         if root is None:
@@ -42,14 +52,6 @@ class Solution:
 
         return True
 
-
-    def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        # print('hello world')
-        value = self.bfs_level_queue(root)
-        if value == False:
-            return value
-
-        return True
 
 if __name__ == '__main__':
     node = TreeNode(1)
