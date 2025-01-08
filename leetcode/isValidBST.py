@@ -12,28 +12,27 @@ class Solution:
     def bfs_level_queue(self, root: Optional[TreeNode], total=[]) -> bool:
         if root is None:
             return
-        queue = []
-        queue.append(root)
-        previous_node = None
-        return_value = True
-        while len(queue)>0:
-            if previous_node is not None and previous_node > queue[0].val:
-                return_value = False
+        queue = [root]
+        previous_val = None
+        is_valid = True
+        while queue:
+            if previous_val is not None and previous_val > queue[0].val:
+                is_valid = False
                 break
 
-            node = queue.pop(0)
-            previous_node = node.val
+            current_node = queue.pop(0)
+            previous_val = current_node.val
 
-            if node.left is not None:
-                queue.append(node.left)
-                print('node= ', node.val, 'left= ', node.left.val)
+            if current_node.left is not None:
+                queue.append(current_node.left)
+                print('current_node= ', current_node.val, 'left= ', current_node.left.val)
 
 
-            if node.right is not None:
-                queue.append(node.right)
-                print('node= ', node.val, 'right= ', node.right.val)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+                print('current_node= ', current_node.val, 'right= ', current_node.right.val)
 
-        return return_value
+        return is_valid
 
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
