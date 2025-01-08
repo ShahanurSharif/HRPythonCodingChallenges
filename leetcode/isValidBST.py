@@ -9,14 +9,14 @@ class TreeNode:
         self.right = right
 
 class Solution:
+    def bfs(self):
+        pass
+
     def dfs(self, root: Optional[TreeNode], previous_value=None):
-        # print('hello world')
         if root is None:
             return
-
         getLeftNode = self.dfs(root.left, previous_value)
         getRightNode = self.dfs(root.right, previous_value)
-        print(root.val)
 
 
         return True
