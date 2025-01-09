@@ -27,6 +27,8 @@ class Solution:
                 '''
                 2
                 '''
+        print(queue)
+        return False
 
 
 
@@ -41,10 +43,10 @@ if __name__ == '__main__':
     q.right.left = TreeNode(3)
     '''
          2
-        /\
-       3  3
-      /\  /\
-     4  5 5 4
+        / \
+       3    3
+      / \  / \
+     4   5 5  4
     '''
 
     solution = Solution()
