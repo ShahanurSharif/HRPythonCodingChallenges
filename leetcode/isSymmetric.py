@@ -7,6 +7,7 @@ class TreeNode:
         self.left = left
         self.right = right
 
+
 class Solution:
     def is_validate(self, root):
         if not root:
@@ -30,25 +31,27 @@ class Solution:
         print(queue)
         return False
 
-
-
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.is_validate(root)
 
+
 if __name__ == '__main__':
-    q = TreeNode(1)
-    q.left = TreeNode(2)
-    q.right = TreeNode(2)
-    q.left.right = TreeNode(3)
-    q.right.left = TreeNode(3)
+    q = TreeNode(2)
+    q.left = TreeNode(3)
+    q.right = TreeNode(3)
+    q.left.left = TreeNode(4)
+    q.left.right = TreeNode(5)
+    q.right.left = TreeNode(4)
+    q.right.right = TreeNode(5)
     '''
-         2
-        / \
-       3    3
-      / \  / \
-     4   5 5  4
+               2
+            /      \
+           3         3
+          / \       /  \
+         4   5     5    4
+        / \ / \   / \   / \
+       6  7 8  9 9   8 7   6
     '''
 
     solution = Solution()
     print(solution.isSymmetric(q))
-
