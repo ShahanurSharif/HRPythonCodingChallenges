@@ -28,6 +28,8 @@ class Solution:
                 2
                 '''
 
+
+
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.is_validate(root)
 
@@ -37,6 +39,13 @@ if __name__ == '__main__':
     q.right = TreeNode(2)
     q.left.right = TreeNode(3)
     q.right.left = TreeNode(3)
+    '''
+         2
+        /\
+       3  3
+      /\  /\
+     4  5 5 4
+    '''
 
     solution = Solution()
     print(solution.isSymmetric(q))
