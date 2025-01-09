@@ -45,13 +45,13 @@ if __name__ == '__main__':
     q.right.left = TreeNode(5)
     q.right.right = TreeNode(4)
     '''
-               2
-            /      \
-           3         3
-          / \       /  \
-         4   5     5    4
-        / \ / \   / \   / \
-       6  7 8  9 9   8 7   6
+                 2
+            /        \
+           3           3
+          / \        /   \
+         4   5      5      4
+        / \ / \    / \    / \
+       6  7 8  9  9   8  7   6
     '''
 
     solution = Solution()
