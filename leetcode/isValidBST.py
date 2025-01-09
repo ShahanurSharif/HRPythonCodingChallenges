@@ -9,33 +9,28 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def bfs_level_queue(self, root: Optional[TreeNode], total=[]) -> bool:
-        if root is None:
-            return
-        queue = [root]
-        previous_val = None
-        is_valid = True
+    def bfs_level_queue(self, root: Optional[TreeNode]) -> bool:
+        if not root:
+            return True # an empty tree consider a valid BST
+
+        queue = [(root, float('-inf'), float('inf'))]
+        # print(queue)
         while queue:
+            node, lower, upper = queue.pop(0)
 
-            current_node = queue.pop(0)
-            previous_val = current_node.val
+            if not lower<node.val<upper:
+                return False
 
-            if current_node.left is not None:
-                if previous_val is not None and previous_val < current_node.left.val:
-                    is_valid = False
-                    break
-                queue.append(current_node.left)
-                print('current_node= ', current_node.val, 'left= ', current_node.left.val)
+            if node.left:
+                queue.append((node.left, lower, node.val))
+
+            if node.right:
+                queue.append((node.right, node.val, upper))
+
+        return True
+                # 1, -inf, 2
 
 
-            if current_node.right is not None:
-                if previous_val is not None and previous_val > current_node.right.val:
-                    is_valid = False
-                    break
-                queue.append(current_node.right)
-                print('current_node= ', current_node.val, 'right= ', current_node.right.val)
-
-        return is_valid
 
 
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
@@ -45,14 +40,11 @@ class Solution:
 
 if __name__ == '__main__':
     node = TreeNode(2)
-    node.left = TreeNode(2)
-    node.right = TreeNode(2)
+    node.left = TreeNode(1)
+    node.right = TreeNode(3)
     # node.left.left = TreeNode(4)
     # node.left.right = TreeNode(5)
     # node.right.left = TreeNode(6)
 
-    # solution = Solution()
-    a, b, c = 'hello'
-    print(a, b, c)
-    # print(None>1)
-    # print(solution.isValidBST(node))
+    solution = Solution()
+    print(solution.isValidBST(node))
