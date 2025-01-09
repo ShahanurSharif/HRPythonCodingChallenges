@@ -9,13 +9,14 @@ class TreeNode:
 
 
 class Solution:
-    def is_validate(self, root):
+    def is_validate(self, root, total=[]):
         if not root:
             return True
 
         queue = [root]
         while queue:
             node = queue.pop(0)
+            total.append(node.val)
 
             if node.left:
                 queue.append(node.left)
@@ -28,7 +29,7 @@ class Solution:
                 '''
                 2
                 '''
-        print(queue)
+        print(total)
         return False
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
@@ -41,8 +42,8 @@ if __name__ == '__main__':
     q.right = TreeNode(3)
     q.left.left = TreeNode(4)
     q.left.right = TreeNode(5)
-    q.right.left = TreeNode(4)
-    q.right.right = TreeNode(5)
+    q.right.left = TreeNode(5)
+    q.right.right = TreeNode(4)
     '''
                2
             /      \
