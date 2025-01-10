@@ -62,6 +62,7 @@ if __name__ == '__main__':
     q.right.right.right = TreeNode(6)
 
     '''
+    
                  2
             /        \
            3           3
@@ -69,6 +70,7 @@ if __name__ == '__main__':
          4   5      5      4
         / \ / \    / \    / \
        6  7 8  9  9   8  7   6
+       
     '''
 
     solution = Solution()
