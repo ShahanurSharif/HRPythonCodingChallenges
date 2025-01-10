@@ -9,18 +9,18 @@ class TreeNode:
 
 class Solution:
     def is_mirror(self, root, path=[]) -> bool:
-        if not root: return True
+        if not root:
+            return
         # if self.get_height(root): return False
 
         if root.left:
-            self.is_mirror(root.left)
+            self.is_mirror(root.left, path)
             path.append('L')
-            val = self.findMirror(root, path.reverse())
-            # if val != root.left.val:
-            #     return False
-            return True
 
-        return False
+
+            # return True
+
+        # return False
 
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
