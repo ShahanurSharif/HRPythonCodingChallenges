@@ -7,26 +7,13 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
 class Solution:
-    def get_height(self, root):
-        left = 0
-        right = 0
-        if root.left:
-            left = self.get_height(root.left) + 1
-        if root.right:
-            right = self.get_height(root.right) + 1
-        return left == right
-
-    def findMirror(self, root, path):
-        print(root, path)
-
-    def is_validate(self, root, path=[]) -> bool:
+    def is_mirror(self, root, path=[]) -> bool:
         if not root: return True
         # if self.get_height(root): return False
 
         if root.left:
-            self.is_validate(root.left)
+            self.is_mirror(root.left)
             path.append('L')
             val = self.findMirror(root, path.reverse())
             # if val != root.left.val:
@@ -37,7 +24,7 @@ class Solution:
 
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        return self.is_validate(root)
+        return self.is_mirror(root)
 
 
 if __name__ == '__main__':
