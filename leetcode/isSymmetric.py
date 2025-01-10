@@ -9,31 +9,32 @@ class TreeNode:
 
 
 class Solution:
-    def is_validate(self, root, total=[], left_val=[], right_val=[]) -> bool:
-        if not root:
+    def get_height(self, root):
+        left = 0
+        right = 0
+        if root.left:
+            left = self.get_height(root.left) + 1
+        if root.right:
+            right = self.get_height(root.right) + 1
+        return left == right
+
+    def findMirror(self, root, path):
+        pass
+
+    def is_validate(self, root, path=[]) -> bool:
+        if not root: return True
+        if self.get_height(root): return False
+
+        if root.left:
+            self.is_validate(root.left)
+            path.append('L')
+            val = self.findMirror(root, path.reverse())
+            if val != root.left.val:
+                return False
             return True
 
-        queue = [root]
-
-        while queue:
-            node = queue.pop(0)
-            total.append(node.val)
-
-            if node.left:
-                queue.append(node.left)
-                left_val.append(node.left.val)
-                '''
-                2
-                '''
-
-            if node.right:
-                queue.append(node.right)
-                right_val.append(node.right.val)
-                '''
-                2
-                '''
-        print(total, left_val, right_val)
         return False
+
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         return self.is_validate(root)
