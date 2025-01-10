@@ -9,22 +9,13 @@ class TreeNode:
 
 class Solution:
     def is_mirror(self, root, path=[]) -> bool:
-        if not root:
-            return
-        # if self.get_height(root): return False
-
-        if root.left:
-            self.is_mirror(root.left, path)
-            path.append('L')
-
-
-            # return True
-
-        # return False
+        return True
 
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
-        return self.is_mirror(root)
+        if root is None:
+            return True
+        return self.is_mirror(root.left, root.right)
 
 
 if __name__ == '__main__':
