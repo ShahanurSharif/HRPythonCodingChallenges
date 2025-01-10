@@ -19,18 +19,18 @@ class Solution:
         return left == right
 
     def findMirror(self, root, path):
-        pass
+        print(root, path)
 
     def is_validate(self, root, path=[]) -> bool:
         if not root: return True
-        if self.get_height(root): return False
+        # if self.get_height(root): return False
 
         if root.left:
             self.is_validate(root.left)
             path.append('L')
             val = self.findMirror(root, path.reverse())
-            if val != root.left.val:
-                return False
+            # if val != root.left.val:
+            #     return False
             return True
 
         return False
