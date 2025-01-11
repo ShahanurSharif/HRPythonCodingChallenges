@@ -12,7 +12,7 @@ class Solution:
         print(left_val, right_val)
         if not left_val and not right_val:
             return True
-        if not left_val or right_val:
+        if not left_val or not right_val:
             return False
 
         return (left_val.val == right_val.val and
