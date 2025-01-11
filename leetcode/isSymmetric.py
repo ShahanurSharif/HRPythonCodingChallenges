@@ -10,10 +10,14 @@ class TreeNode:
 class Solution:
     def is_mirror(self, left_val, right_val) -> bool:
         print(left_val, right_val)
-        if left_val.val != right_val.val:
+        if not left_val.val and not right_val.val:
+            return True
+        if not left_val.val or right_val.val:
             return False
 
-        return True
+        return (left_val.val == right_val.val
+                and self.is_mirror(left_val.val, right_val.val)
+                and self.is_mirror(right_val.val, left_val.val))
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if root is None:
