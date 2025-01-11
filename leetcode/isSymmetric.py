@@ -8,16 +8,16 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def is_mirror(self, left_val, right_val) -> bool:
+    def is_mirror(self, left_val: TreeNode, right_val: TreeNode) -> bool:
         print(left_val, right_val)
-        if not left_val.val and not right_val.val:
+        if not left_val and not right_val:
             return True
-        if not left_val.val or right_val.val:
+        if not left_val or right_val:
             return False
 
-        return (left_val.val == right_val.val
-                and self.is_mirror(left_val.val, right_val.val)
-                and self.is_mirror(right_val.val, left_val.val))
+        return (left_val.val == right_val.val and
+                self.is_mirror(left_val, right_val) and
+                self.is_mirror(right_val, left_val))
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if root is None:
