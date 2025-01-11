@@ -8,9 +8,12 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def is_mirror(self, root, path=[]) -> bool:
-        return True
+    def is_mirror(self, left_val, right_val) -> bool:
+        print(left_val, right_val)
+        if left_val.val != right_val.val:
+            return False
 
+        return True
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if root is None:
