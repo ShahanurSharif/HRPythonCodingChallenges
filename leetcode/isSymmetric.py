@@ -9,15 +9,15 @@ class TreeNode:
 
 class Solution:
     def is_mirror(self, left_val: TreeNode, right_val: TreeNode) -> bool:
-        print(left_val, right_val)
+        # print(left_val, right_val)
         if not left_val and not right_val:
             return True
         if not left_val or not right_val:
             return False
 
         return (left_val.val == right_val.val and
-                self.is_mirror(left_val, right_val) and
-                self.is_mirror(right_val, left_val))
+                self.is_mirror(left_val.left, right_val.right) and
+                self.is_mirror(left_val.right, right_val.left))
 
     def isSymmetric(self, root: Optional[TreeNode]) -> bool:
         if root is None:
