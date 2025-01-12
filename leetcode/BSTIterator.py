@@ -11,7 +11,7 @@ class TreeNode:
 
 class BSTIterator:
     def __init__(self, root: Optional[TreeNode]):
-        pass
+        print(root)
 
     def next(self) -> int:
         pass
@@ -30,3 +30,4 @@ if __name__ == '__main__':
     obj = BSTIterator(root)
     param_1 = obj.next()
     param_2 = obj.hasNext()
+    print(obj, param_1, param_2)
