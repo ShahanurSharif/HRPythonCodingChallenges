@@ -9,7 +9,7 @@ class TreeNode:
 
 class Solution:
     def is_mirror(self, left_val: TreeNode, right_val: TreeNode) -> bool:
-        # print(left_val, right_val)
+        print(left_val, right_val)
         if not left_val and not right_val:
             return True
         if not left_val or not right_val:
