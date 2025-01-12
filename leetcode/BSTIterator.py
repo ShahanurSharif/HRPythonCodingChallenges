@@ -22,7 +22,11 @@ class BSTIterator:
 
 # Your BSTIterator object will be instantiated and called as such:
 if __name__ == '__main__':
-    root = TreeNode(5)
+    root = TreeNode(7)
+    root.left = TreeNode(3)
+    root.right = TreeNode(15)
+    root.right.left = TreeNode(9)
+    root.right.right = TreeNode(20)
 
     obj = BSTIterator(root)
     param_1 = obj.next()
