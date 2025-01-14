@@ -49,14 +49,14 @@ class Solution:
         if root is None:
             return
 
-        self.dfs(root.left)
-        self.dfs(root.right)
+        self.dfs(root.left, tree_value)
+        self.dfs(root.right, tree_value)
         tree_value.append(root.val)
         return tree_value
 
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         value = self.dfs(root1, [])
-        return value
+        print(value)
 
 
 if __name__ == '__main__':
@@ -70,7 +70,10 @@ if __name__ == '__main__':
     root1.right.left = TreeNode(9)
     root1.right.right = TreeNode(8)
 
+    root2 = TreeNode(3)
+
     solution = Solution()
+    solution.leafSimilar(root1, root2)
 
     # root2 = TreeNode(3)
     # root2.left = TreeNode(5)
