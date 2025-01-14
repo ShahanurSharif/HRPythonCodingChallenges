@@ -44,5 +44,25 @@ class TreeNode:
         self.right = right
 
 class Solution:
+    def dfs(self, root: Optional[TreeNode]) -> bool:
+        if not root: return
+
+
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         pass
+
+if __name__ == '__main__':
+    root1 = TreeNode(3)
+    root1.left = TreeNode(5)
+    root1.left.left = TreeNode(6)
+    root1.left.right = TreeNode(2)
+    root1.left.right.left= TreeNode(7)
+    root1.left.right.right = TreeNode(4)
+    root1.right = TreeNode(1)
+    root1.right.left = TreeNode(9)
+    root1.right.right = TreeNode(8)
+    # root2 = TreeNode(3)
+    # root2.left = TreeNode(5)
+    #
+
+
