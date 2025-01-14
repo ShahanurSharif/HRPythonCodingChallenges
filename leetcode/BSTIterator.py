@@ -52,16 +52,21 @@ class BSTIterator:
         self.stack = []
         self._leftmost_inorder(root)
 
-    def _leftmost_inorder(self, root):
-        if not root: return None
-        while root:
-            pass
+    def _leftmost_inorder(self, node):
+        if not node: return None
+        while node:
+            self.stack.append(node)
+            node = node.left
+            # print(self.stack)
 
     def next(self) -> int:
-        pass
+        node = self.stack.pop()
+        if node.right:
+            self._leftmost_inorder(node.right)
+        return node.val
 
     def hasNext(self) -> bool:
-        pass
+        return len(self.stack) > 0
 
 # Your BSTIterator object will be instantiated and called as such:
 if __name__ == '__main__':
