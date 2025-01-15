@@ -48,18 +48,25 @@ class TreeNode:
 
 class Solution:
 
-    def dfs(self, root: Optional[TreeNode], tree_value=[]) -> Optional[list[int]]:
+    def dfs(self, root: Optional[TreeNode]) -> Optional[list[int]]:
         if not root:
             return []
 
         if not root.left and not root.right:
-            return root.val
+            return [root.val]
 
-        left_value = self.dfs(root.left, tree_value)
+        left_value = self.dfs(root.left)
+        right_value = self.dfs(root.right)
+        # print(left_value, right_value, left_value + right_value)
+
+        return left_value + right_value
 
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-        value = self.dfs(root1, [])
-        # print(value)
+        value1 = self.dfs(root1)
+        value2 = self.dfs(root2)
+
+        return value1 == value2
+
 
 
 if __name__ == '__main__':
@@ -74,6 +81,14 @@ if __name__ == '__main__':
     root1.right.right = TreeNode(8)
 
     root2 = TreeNode(3)
+    root2.left = TreeNode(5)
+    root2.left.left = TreeNode(6)
+    root2.left.right = TreeNode(7)
+    root2.right = TreeNode(1)
+    root2.right.left = TreeNode(4)
+    root2.right.right = TreeNode(2)
+    root2.right.right.left = TreeNode(9)
+    root2.right.right.right = TreeNode(8)
 
     solution = Solution()
     solution.leafSimilar(root1, root2)
