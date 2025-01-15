@@ -39,4 +39,15 @@ def generate_tree(arr: List[Optional[int]])-> Optional[TreeNode]:
 
 if __name__ == '__main__':
     arr = [4, 2, 7, 1, 3, 5]
-    print(generate_tree(arr))
+    root = generate_tree(arr)
+
+    def print_leaves(root):
+        if not root:
+            return
+        if not root.left and not root.right:
+            print(root.val, end=" ")
+            print_leaves(root.left)
+            print_leaves(root.right)
+
+    print("Leaves of the tree:")
+    print_leaves(root)  # Output: 5 4
