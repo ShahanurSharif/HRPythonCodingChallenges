@@ -49,10 +49,9 @@ class Solution:
         if root is None:
             return
 
-        self.dfs(root.left, tree_value)
-        self.dfs(root.right, tree_value)
-        tree_value.append(root.val)
-        return tree_value
+        l, r = self.dfs(root.left), self.dfs(root.right)
+        h = max(l,r)
+        print(h)
 
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         value = self.dfs(root1, [])
