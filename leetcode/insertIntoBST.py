@@ -12,6 +12,12 @@ class Solution:
         if root is None:
             return TreeNode(val)
 
+        left_value = self.insertIntoBST(root.left, val)
+        right_value = self.insertIntoBST(root.right, val)
+
+        if val < left_value.val or val > right_value.val:
+            return TreeNode(val)
+
 
 
 if __name__ == '__main__':
