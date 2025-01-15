@@ -47,15 +47,17 @@ class TreeNode:
 class Solution:
     def dfs(self, root: Optional[TreeNode], tree_value=[]) -> Optional[list[int]]:
         if root is None:
-            return
+            return []
 
         l, r = self.dfs(root.left), self.dfs(root.right)
         h = max(l,r)
         print(h)
 
+        return []
+
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         value = self.dfs(root1, [])
-        print(value)
+        # print(value)
 
 
 if __name__ == '__main__':
