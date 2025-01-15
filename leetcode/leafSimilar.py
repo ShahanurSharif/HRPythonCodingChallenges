@@ -55,8 +55,7 @@ class Solution:
         if not root.left and not root.right:
             return root.val
 
-
-
+        left_value = self.dfs(root.left, tree_value)
 
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         value = self.dfs(root1, [])
