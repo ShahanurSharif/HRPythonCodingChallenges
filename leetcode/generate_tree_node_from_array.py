@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, List
 
 
 class TreeNode:
@@ -8,7 +8,7 @@ class TreeNode:
         self.right = right
 
 
-def generate_tree(arr: Optional[list[int]])-> Optional[TreeNode]:
+def generate_tree(arr: List[Optional[int]])-> Optional[TreeNode]:
 
     return TreeNode(arr[0])
 
