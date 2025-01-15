@@ -1,4 +1,6 @@
 '''
+https://leetcode.com/problems/leaf-similar-trees/description/
+
 Consider all the leaves of a binary tree,
 from left to right order, the values of those leaves form a leaf value sequence.
 
@@ -45,15 +47,16 @@ class TreeNode:
 
 
 class Solution:
+
     def dfs(self, root: Optional[TreeNode], tree_value=[]) -> Optional[list[int]]:
-        if root is None:
+        if not root:
             return []
 
-        l, r = self.dfs(root.left), self.dfs(root.right)
-        h = max(l,r)
-        print(h)
+        if not root.left and not root.right:
+            return root.val
 
-        return []
+
+
 
     def leafSimilar(self, root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
         value = self.dfs(root1, [])
