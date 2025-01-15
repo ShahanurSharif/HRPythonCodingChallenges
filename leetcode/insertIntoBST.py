@@ -9,4 +9,20 @@ class TreeNode:
 
 class Solution:
     def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
-        pass
+        if root is None:
+            return TreeNode(val)
+
+
+
+if __name__ == '__main__':
+    root = TreeNode(4)
+    root.left = TreeNode(2)
+    root.right = TreeNode(7)
+    root.left.left = TreeNode(1)
+    root.left.right = TreeNode(3)
+
+    insert_value = 5
+
+    sol = Solution()
+    value = sol.insertIntoBST(root, insert_value)
+    print(value)
