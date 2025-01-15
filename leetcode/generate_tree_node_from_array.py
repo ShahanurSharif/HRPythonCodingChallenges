@@ -38,17 +38,25 @@ def generate_tree(arr: List[Optional[int]])-> Optional[TreeNode]:
 
 
 if __name__ == '__main__':
-    arr = [1, 2, 3, None, 5, None, 4]
+    arr = [1, 2, 3, None, 5, 6, 7]
     root = generate_tree(arr)
 
-    def print_leaves(root):
+
+    # Function to print the tree (for testing purposes).
+    def print_tree(root):
         if not root:
             return
+        queue = [root]
+        result = []
+        while queue:
+            current = queue.pop(0)
+            if current:
+                result.append(current.val)
+                queue.append(current.left)
+                queue.append(current.right)
+            else:
+                result.append(None)
+        print(result)
 
-        if not root.left and not root.right:
-            print(root.val, end=" ")
-        print_leaves(root.left)
-        print_leaves(root.right)
 
-    print("Leaves of the tree:")
-    print_leaves(root)  # Output: 5 4
+    print_tree(root)
