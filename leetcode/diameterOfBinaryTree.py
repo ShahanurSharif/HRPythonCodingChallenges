@@ -32,7 +32,7 @@ The number of nodes in the tree is in the range [1, 104].
 -100 <= Node.val <= 100
 '''
 
-from typing import Optional
+from typing import Optional, List
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -40,11 +40,12 @@ class TreeNode:
         self.left = left
         self.right = right
 
-
-
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode], steps=0) -> int:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode], arr: List[int]) -> int:
+        print(root)
         if root is None: return
+
+
 
         # check value exist in left
         # check value exist in right
@@ -70,4 +71,9 @@ if __name__ == '__main__':
     root.right = TreeNode(3)
     root.left.left = TreeNode(4)
     root.right.left = TreeNode(5)
+
+    arr: list[int] = [1,2,3,4,5]
+
+    solution = Solution()
+    print(solution.diameterOfBinaryTree(root, arr))
 
