@@ -46,15 +46,22 @@ class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode], steps=0) -> int:
         if root is None: return
 
-        if root.left is not None:
-            steps += 1
-            left_value = self.diameterOfBinaryTree(root.left)
+        # check value exist in left
+        # check value exist in right
+        #check value exist in a single traversal
 
-        if root.right is not None:
-            steps += 1
-            right_value = self.diameterOfBinaryTree(root.right)
+        #
 
-        print(left_value, right_value, steps)
+        # if root.left is not None:
+        #     steps += 1
+        #     left_value = self.diameterOfBinaryTree(root.left)
+        #
+        #
+        # if root.right is not None:
+        #     steps += 1
+        #     right_value = self.diameterOfBinaryTree(root.right)
+        #
+        # print(left_value, right_value, steps)
 
 
 if __name__ == '__main__':
