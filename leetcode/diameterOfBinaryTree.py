@@ -46,18 +46,16 @@ class Solution:
         if root is None: return []
 
 
-        if root.left:
-            if root.left.val in arr:
+        if root.left and root.left.val in arr:
                 steps += 1
                 paths[root.left.val] = steps
                 print(steps, root.left.val, paths)
-                self.diameterOfBinaryTree(root.left, arr)
+                self.diameterOfBinaryTree(root.left, arr, steps, paths)
 
-        if root.right:
-            if root.right.val in arr:
+        if root.right and root.right.val in arr:
                 steps += 1
                 paths[root.right.val] = steps
-                self.diameterOfBinaryTree(root.right, arr)
+                self.diameterOfBinaryTree(root.right, arr, steps, paths)
 
         return paths
 
