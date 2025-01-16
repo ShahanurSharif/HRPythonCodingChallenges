@@ -46,25 +46,20 @@ class Solution:
         if root is None:
             return TreeNode(val)
 
-        print(TreeNode, root)
+        # If the value is less than the current node, go to the left subtree.
+        if val < root.val:
+            root.left = self.insertIntoBST(root.left, val)
+        # If the value is greater than the current node, go to the right subtree.
+        else:
+            root.right = self.insertIntoBST(root.right, val)
 
-        if root.left is not None and val<root.left.val:
-            return TreeNode(val)
-
-        if root.right is not None and val < root.right.val:
-            return TreeNode(val)
-
-        self.insertIntoBST(root.left, val)
-        self.insertIntoBST(root.right, val)
+        return root  # Return the root node after insertion.
 
 
 
 if __name__ == '__main__':
-    root = TreeNode(4)
-    root.left = TreeNode(2)
-    root.right = TreeNode(7)
-    root.left.left = TreeNode(1)
-    root.left.right = TreeNode(3)
+    root = None
+
 
     insert_value = 5
 
