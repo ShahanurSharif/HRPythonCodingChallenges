@@ -31,6 +31,9 @@ Constraints:
 The number of nodes in the tree is in the range [1, 104].
 -100 <= Node.val <= 100
 '''
+
+from typing import Optional
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -40,5 +43,24 @@ class TreeNode:
 
 
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
-        pass
+    def diameterOfBinaryTree(self, root: Optional[TreeNode], steps=0) -> int:
+        if root is None: return
+
+        if root.left is not None:
+            steps += 1
+            left_value = self.diameterOfBinaryTree(root.left)
+
+        if root.right is not None:
+            steps += 1
+            right_value = self.diameterOfBinaryTree(root.right)
+
+        print(left_value, right_value, steps)
+
+
+if __name__ == '__main__':
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.right.left = TreeNode(5)
+
