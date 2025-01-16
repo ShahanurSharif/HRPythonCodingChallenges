@@ -41,28 +41,24 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode], arr: List[int]) -> int:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode], arr: List[int], steps = 0, paths=List[int]):
         print(root)
         if root is None: return
 
 
+        if root.left:
+            if root.left.val in arr:
+                steps += 1
+                paths[root.left.val] = steps
+                self.diameterOfBinaryTree(root.left, arr)
 
-        # check value exist in left
-        # check value exist in right
-        #check value exist in a single traversal
+        if root.right:
+            if root.right.val in arr:
+                steps += 1
+                paths[root.right.val] = steps
+                self.diameterOfBinaryTree(root.right, arr)
 
-        #
-
-        # if root.left is not None:
-        #     steps += 1
-        #     left_value = self.diameterOfBinaryTree(root.left)
-        #
-        #
-        # if root.right is not None:
-        #     steps += 1
-        #     right_value = self.diameterOfBinaryTree(root.right)
-        #
-        # print(left_value, right_value, steps)
+        return paths
 
 
 if __name__ == '__main__':
