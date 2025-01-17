@@ -19,7 +19,6 @@ Note that you can cut the piece of wood as many times as you want.
 
 Example 1:
 
-
 Input: m = 3, n = 5, prices = [[1,4,2],[2,2,7],[2,1,3]]
 Output: 19
 Explanation: The diagram above shows a possible scenario. It consists of:
