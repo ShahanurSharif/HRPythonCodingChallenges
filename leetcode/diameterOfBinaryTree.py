@@ -43,18 +43,19 @@ class TreeNode:
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode], arr: List[int], steps = 0, paths={}):
         # print(root)
-        if root is None: return []
+        if root is None: return
 
 
         if root.left and root.left.val in arr:
                 steps += 1
                 paths[root.left.val] = steps
-                print(steps, root.left.val, paths)
+                print('from left', root.left.val, paths)
                 self.diameterOfBinaryTree(root.left, arr, steps, paths)
 
         if root.right and root.right.val in arr:
                 steps += 1
                 paths[root.right.val] = steps
+                print('from right',  root.right.val, paths)
                 self.diameterOfBinaryTree(root.right, arr, steps, paths)
 
         return paths
@@ -72,3 +73,5 @@ if __name__ == '__main__':
     solution = Solution()
     print(solution.diameterOfBinaryTree(root, arr))
 
+# 1, 2, 4
+# 1, 2, 5
