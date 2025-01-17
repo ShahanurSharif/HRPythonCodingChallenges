@@ -45,6 +45,9 @@ class Solution:
         # print(root)
         if root is None: return
 
+        #find the longest path from the node that matches the a value from arr
+
+
 
         if root.left and root.left.val in arr:
                 steps += 1
