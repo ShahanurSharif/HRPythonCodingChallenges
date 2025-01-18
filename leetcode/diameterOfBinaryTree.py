@@ -43,7 +43,6 @@ class TreeNode:
 class Solution:
     def diameterOfBinaryTree(self, root: Optional[TreeNode])->int:
         # print(root)
-
         if root is None: return 0
 
         left_value = self.diameterOfBinaryTree(root.left)
