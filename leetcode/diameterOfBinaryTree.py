@@ -47,8 +47,6 @@ class Solution:
 
         #find the longest path from the node that matches the a value from arr
 
-
-
         if root.left and root.left.val:
                 steps += 1
                 paths[root.left.val] = steps
