@@ -62,6 +62,7 @@ class Solution:
         return paths
 
 
+
 if __name__ == '__main__':
     root = TreeNode(1)
     root.left = TreeNode(2)
