@@ -41,25 +41,20 @@ class TreeNode:
         self.right = right
 
 class Solution:
-    def diameterOfBinaryTree(self, root: Optional[TreeNode], steps = 0, paths={}):
+    def diameterOfBinaryTree(self, root: Optional[TreeNode])->int:
         # print(root)
-        if root is None: return
 
-        #find the longest path from the node that matches the a value from arr
+        if root is None: return 0
 
-        if root.left and root.left.val:
-                steps += 1
-                paths[root.left.val] = steps
-                print('from left', root.left.val, paths)
-                self.diameterOfBinaryTree(root.left, steps, paths)
+        left_value = self.diameterOfBinaryTree(root.left)
+        right_value = self.diameterOfBinaryTree(root.right)
 
-        if root.right and root.right.val:
-                steps += 1
-                paths[root.right.val] = steps
-                print('from right',  root.right.val, paths)
-                self.diameterOfBinaryTree(root.right, steps, paths)
+        max_height = max(left_value, right_value) + 1
+        min_height = min(left_value, right_value) + 1
+        print(max_height, min_height)
+        # print(height)
+        return max_height
 
-        return paths
 
 
 
