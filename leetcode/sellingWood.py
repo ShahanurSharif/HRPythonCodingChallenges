@@ -60,10 +60,13 @@ class Solution:
 
         max_price = sorted_prices[0]
 
-        for price in sorted_prices:
-            if (m>=price[0] and m>=price[1]) and (n>=price[1] and n>=price[0]):
-                pass
+        for arr in sorted_prices:
+            height = arr[0]
+            width = arr[1]
+            price = arr[2]
 
+            if (m >= price[0] and m >= price[1]) and (n >= price[1] and n >= price[0]):
+                pass
 
         return highest_price
 
