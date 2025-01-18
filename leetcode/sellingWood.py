@@ -61,7 +61,7 @@ class Solution:
         max_price = sorted_prices[0]
 
         for price in sorted_prices:
-            if m>=price[0] and m>=price[1] and n>=price[1] and n>=price[0]:
+            if (m>=price[0] and m>=price[1]) and (n>=price[1] and n>=price[0]):
                 pass
 
 
