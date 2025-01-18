@@ -52,14 +52,14 @@ All the shapes of wood (hi, wi) are pairwise distinct.
 '''
 from typing import List
 
+
 class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
         highest_price = 0
-        for price in prices:
-            if price[2] > highest_price:
-                highest_price = price[2]
+        sorted_prices = sorted(prices, key=lambda x: x[-1], reverse=True)
 
-        print(highest_price)
+
+
         return highest_price
 
 
