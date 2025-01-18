@@ -58,6 +58,8 @@ class Solution:
         highest_price = 0
         sorted_prices = sorted(prices, key=lambda x: x[-1], reverse=True)
 
+
+
         return highest_price
 
 
