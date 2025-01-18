@@ -58,6 +58,11 @@ class Solution:
         highest_price = 0
         sorted_prices = sorted(prices, key=lambda x: x[-1], reverse=True)
 
+        max_price = sorted_prices[0]
+
+        for price in sorted_prices:
+            if m>=price[0] and m>=price[1] and n>=price[1] and n>=price[0]:
+                pass
 
 
         return highest_price
