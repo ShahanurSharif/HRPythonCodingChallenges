@@ -54,7 +54,12 @@ from typing import List
 
 class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
-        pass
+        highest_price = 0
+        for price in prices:
+            if price[2] > highest_price:
+                highest_price = price[2]
+
+        print(highest_price)
 
 
 if __name__ == '__main__':
