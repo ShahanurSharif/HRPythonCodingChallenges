@@ -55,3 +55,8 @@ from typing import List
 class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
         pass
+
+
+if __name__ == '__main__':
+    m, n, prices = 4, 6, [[3, 2, 10], [1, 4, 2], [4, 1, 3]]
+    print(Solution().sellingWood(m, n, prices))
