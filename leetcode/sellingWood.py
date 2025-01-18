@@ -60,6 +60,7 @@ class Solution:
                 highest_price = price[2]
 
         print(highest_price)
+        return highest_price
 
 
 if __name__ == '__main__':
