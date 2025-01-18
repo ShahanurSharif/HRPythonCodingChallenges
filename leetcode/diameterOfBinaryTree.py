@@ -41,18 +41,27 @@ class TreeNode:
         self.right = right
 
 class Solution:
+
     def diameterOfBinaryTree(self, root: Optional[TreeNode])->int:
-        # print(root)
-        if root is None: return 0
+        self.diameter = 0  # Initialize the maximum diameter
 
-        left_value = self.diameterOfBinaryTree(root.left)
-        right_value = self.diameterOfBinaryTree(root.right)
+        def dfs(node: TreeNode) -> int:
+            if not node:
+                return 0
 
-        max_height = max(left_value, right_value) + 1
-        # min_height = min(left_value, right_value) + 1
-        # print(max_height)
-        # print(height)
-        return max_height
+            # Recursively get the height of left and right subtrees
+            left_height = dfs(node.left)
+            right_height = dfs(node.right)
+
+            # Update the diameter at this node
+            self.diameter = max(self.diameter, left_height + right_height)
+
+            # Return the height of this subtree
+            return 1 + max(left_height, right_height)
+
+        dfs(root)
+        return self.diameter
+
 
 
 
