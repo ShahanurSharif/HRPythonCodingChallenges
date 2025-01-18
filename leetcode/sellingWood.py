@@ -55,7 +55,8 @@ from typing import List
 
 class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
-        highest_price = 0
+        board_height = m
+        board_width = n
         sorted_prices = sorted(prices, key=lambda x: x[-1], reverse=True)
 
         max_price = sorted_prices[0]
@@ -65,10 +66,9 @@ class Solution:
             width = arr[1]
             price = arr[2]
 
-            if (m >= price[0] and m >= price[1]) and (n >= price[1] and n >= price[0]):
-                pass
 
-        return highest_price
+
+        # return highest_price
 
 
 if __name__ == '__main__':
