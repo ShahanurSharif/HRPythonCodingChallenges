@@ -50,8 +50,8 @@ class Solution:
         right_value = self.diameterOfBinaryTree(root.right)
 
         max_height = max(left_value, right_value) + 1
-        min_height = min(left_value, right_value) + 1
-        print(max_height, min_height)
+        # min_height = min(left_value, right_value) + 1
+        # print(max_height)
         # print(height)
         return max_height
 
