@@ -50,6 +50,7 @@ prices[i].length == 3
 1 <= pricei <= 106
 All the shapes of wood (hi, wi) are pairwise distinct.
 '''
+
 from typing import List
 
 
@@ -65,6 +66,13 @@ class Solution:
             height = arr[0]
             width = arr[1]
             price = arr[2]
+
+            total_price = (board_width//width) * price
+            print(board_width//width, total_price)
+            # remaining_width = board_width
+            # remaining_height = board_height - height
+
+
 
 
 
