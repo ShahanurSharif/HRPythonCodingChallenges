@@ -60,14 +60,18 @@ class Solution:
         board_width = n
         area = m*n
         sorted_quotes = sorted(prices, key=lambda x: x[-1], reverse=True)
-
-        while n and m:
-            for i in range(len(sorted_quotes)):
-                height = sorted_quotes[i][0]
-                width = sorted_quotes[i][1]
-                price = sorted_quotes[i][2]
-
+        total_price = 0
+        for i in range(len(sorted_quotes)):
+            height = sorted_quotes[i][0]
+            width = sorted_quotes[i][1]
+            price = sorted_quotes[i][2]
+            while n>=width and m>=height:
+                total_price = total_price + price
                 n = n - width
+            m = m - height
+
+        print(m, n)
+        return total_price
 
 
 
