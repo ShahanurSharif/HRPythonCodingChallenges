@@ -59,8 +59,13 @@ class Solution:
         board_height = m
         board_width = n
         area = m*n
+
         sorted_quotes = sorted(prices, key=lambda x: x[-1], reverse=True)
         total_price = 0
+
+        #reduce area
+        # also measure remaining height and width
+
         for i in range(len(sorted_quotes)):
             height = sorted_quotes[i][0]
             width = sorted_quotes[i][1]
