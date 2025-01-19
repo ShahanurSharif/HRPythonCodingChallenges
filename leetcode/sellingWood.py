@@ -58,36 +58,16 @@ class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
         board_height = m
         board_width = n
+        area = m*n
         sorted_prices = sorted(prices, key=lambda x: x[-1], reverse=True)
 
         max_price = sorted_prices[0]
 
-        for arr in sorted_prices:
-            height = arr[0]
-            width = arr[1]
-            price = arr[2]
+        while area:
+            pass
 
-
-            total_price = (board_width//width) * price
-
-            remaining_height = board_height - height
-            remaining_width = board_width - (board_width//width)*width - board_width%width
-
-            if remaining_height > 0 and remaining_width > 0:
-                pass
-
-            print(
-                remaining_height, remaining_width
-            )
-
-            # remaining_width = board_width
-            # remaining_height = board_height - height
-
-
-
-
-
-        # return highest_price
+        # for arr in sorted_prices:
+        #     pass
 
 
 if __name__ == '__main__':
