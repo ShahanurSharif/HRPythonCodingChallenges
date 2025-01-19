@@ -59,12 +59,18 @@ class Solution:
         board_height = m
         board_width = n
         area = m*n
-        sorted_prices = sorted(prices, key=lambda x: x[-1], reverse=True)
+        sorted_quotes = sorted(prices, key=lambda x: x[-1], reverse=True)
 
-        max_price = sorted_prices[0]
+        while n and m:
+            for i in range(len(sorted_quotes)):
+                height = sorted_quotes[i][0]
+                width = sorted_quotes[i][1]
+                price = sorted_quotes[i][2]
 
-        while area:
-            pass
+                n = n - width
+
+
+
 
         # for arr in sorted_prices:
         #     pass
