@@ -65,12 +65,13 @@ class Solution:
             height = sorted_quotes[i][0]
             width = sorted_quotes[i][1]
             price = sorted_quotes[i][2]
+            # print(sorted_quotes[i], height, width, price)
             while n>=width and m>=height:
                 total_price = total_price + price
                 n = n - width
             m = m - height
 
-        print(m, n)
+        # print(m, n)
         return total_price
 
 
