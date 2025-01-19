@@ -74,7 +74,9 @@ class Solution:
             while n>=width and m>=height:
                 total_price = total_price + price
                 n = n - width
-            m = m - height
+
+
+
 
         # print(m, n)
         return total_price
