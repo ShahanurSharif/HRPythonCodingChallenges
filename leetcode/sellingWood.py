@@ -68,7 +68,14 @@ class Solution:
             price = arr[2]
 
             total_price = (board_width//width) * price
-            print(board_width//width, total_price)
+
+            remaining_height = height - board_height
+            remaining_width = board_width - (board_width//width)*width - board_width%width
+
+            print(
+                remaining_height, remaining_width
+            )
+
             # remaining_width = board_width
             # remaining_height = board_height - height
 
