@@ -56,12 +56,15 @@ from typing import List
 
 class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
+        print(m, n)
         blocks = []
-        for row in range(1, n+1):
-            for column in range(1, m+1):
-                blocks.append([row, column])
+        for row in range(1, m+1):
+            for column in range(1, n+1):
+                blocks.append([[row, column], 0])
 
-        print(blocks)
+        sorted_price = sorted(prices, key=lambda x: x[-1], reverse=True)
+        print(sorted_price)
+
 
 
 
