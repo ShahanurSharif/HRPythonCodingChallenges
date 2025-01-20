@@ -28,7 +28,7 @@ The number of nodes in each linked list is in the range [1, 100].
 0 <= Node.val <= 9
 It is guaranteed that the list represents a number that does not have leading zeros.
 '''
-from typing import Optional
+from typing import Optional, List
 
 
 # Definition for singly-linked list.
@@ -39,19 +39,22 @@ class ListNode:
 
 
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        def list_node_values(root, arr=[]):
-            if root is None:
-                return
+    def list_node_values(self, root, arr=[]):
+        if root is None:
+            return None
+        arr.append(root.val)
+        self.list_node_values(root.next, arr)
+        return arr
 
-            arr.append(root.val)
-
-            list_node_values(root.next)
-            return arr
-
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> list[int]:
         result = []
-        value = list_node_values(l1, result)
-        print(value)
+        value = self.list_node_values(l1, result)
+        result = []
+        value2 = self.list_node_values(l2, result)
+        result_1 =int(''.join(map(str,(list(reversed(value))))))
+        result_2 =int(''.join(map(str,(list(reversed(value2))))))
+        return [int(digit) for digit in str(result_1 + result_2)]
+        # return value
 
 
 
