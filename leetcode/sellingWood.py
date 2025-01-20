@@ -56,30 +56,13 @@ from typing import List
 
 class Solution:
     def sellingWood(self, m: int, n: int, prices: List[List[int]]) -> int:
-        board_height = m
-        board_width = n
-        area = m*n
+        blocks = []
+        for row in range(1, n+1):
+            for column in range(1, m+1):
+                blocks.append([row, column])
 
-        sorted_quotes = sorted(prices, key=lambda x: x[-1], reverse=True)
-        total_price = 0
+        print(blocks)
 
-        #reduce area
-        # also measure remaining height and width
-
-        for i in range(len(sorted_quotes)):
-            height = sorted_quotes[i][0]
-            width = sorted_quotes[i][1]
-            price = sorted_quotes[i][2]
-            # print(sorted_quotes[i], height, width, price)
-            while n>=width and m>=height:
-                total_price = total_price + price
-                n = n - width
-
-
-
-
-        # print(m, n)
-        return total_price
 
 
 
