@@ -46,14 +46,23 @@ class Solution:
         self.list_node_values(root.next, arr)
         return arr
 
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> list[int]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]):
         result = []
         value = self.list_node_values(l1, result)
         result = []
         value2 = self.list_node_values(l2, result)
         result_1 =int(''.join(map(str,(list(reversed(value))))))
         result_2 =int(''.join(map(str,(list(reversed(value2))))))
-        return [int(digit) for digit in str(result_1 + result_2)]
+        final_result =  [int(digit) for digit in str(result_1 + result_2)]
+
+        dummy = ListNode()
+        curr = dummy
+        for digit in final_result:
+            curr.next = ListNode(digit)
+            curr = curr.next
+        #
+        return dummy.next
+
         # return value
 
 
@@ -68,9 +77,6 @@ if __name__ == '__main__':
     l2 = ListNode(5)
     l2.next = ListNode(6)
     l2.next.next = ListNode(4)
-
-    solution = Solution()
-    result = solution.addTwoNumbers(l1, l2)
 
     solution = Solution()
     print(solution.addTwoNumbers(l1, l2))
