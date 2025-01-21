@@ -41,20 +41,28 @@ s consists of English letters, digits, symbols and spaces.
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         count = 0
-        str_value = s
-        for i in range(len(str_value)):
-            str_value = s[i:]
-            print(str_value, s[i])
-            if s[i] in str_value:
-                duplicate_index = str_value.index(str_value)
-            else:
-                duplicate_index = 0
-            #
-            if duplicate_index + 1 > count:
-                count = duplicate_index + 1
-                i = duplicate_index
+        find_value = s[:1]
+        remaining_value = s[1:]
+        while remaining_value:
+            if find_value in remaining_value:
+                next_duplicate_index = remaining_value.index(find_value)
+                count = next_duplicate_index + 1
+                remaining_value = remaining_value[next_duplicate_index:]
+                print(next_duplicate_index, count, remaining_value)
 
-        return count
+        # for i in range(len(str_value)):
+        #     str_value = s[i:]
+        #     print(str_value, s[i])
+        #     if s[i] in str_value:
+        #         duplicate_index = str_value.index(str_value)
+        #     else:
+        #         duplicate_index = 0
+        #     #
+        #     if duplicate_index + 1 > count:
+        #         count = duplicate_index + 1
+        #         i = duplicate_index
+        #
+        # return count
 
 
 
