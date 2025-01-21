@@ -1,3 +1,4 @@
+
 '''
 https://leetcode.com/problems/add-two-numbers/description/
 You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list.
@@ -47,23 +48,7 @@ class Solution:
         return arr
 
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]):
-        result = []
-        value = self.list_node_values(l1, result)
-        result = []
-        value2 = self.list_node_values(l2, result)
-        result_1 =int(''.join(map(str,(list(reversed(value))))))
-        result_2 =int(''.join(map(str,(list(reversed(value2))))))
-        final_result =  [int(digit) for digit in str(result_1 + result_2)]
-
-        dummy = ListNode()
-        curr = dummy
-        for digit in final_result:
-            curr.next = ListNode(digit)
-            curr = curr.next
-        #
-        return dummy.next
-
-        # return value
+        pass
 
 
 
