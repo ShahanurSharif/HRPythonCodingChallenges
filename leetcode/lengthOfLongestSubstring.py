@@ -36,13 +36,32 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 
 '''
-
+#   a b c a b c b b
+#   0 1 2 3 4 5 6 7
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        pass
+        count = 0
+        str_value = s
+        for i in range(len(str_value)):
+            str_value = s[i:]
+            print(str_value, s[i])
+            if s[0] in str_value:
+                duplicate_index = str_value.index(s[0])
+            else:
+                duplicate_index = 0
+            #
+            if duplicate_index + 1 > count:
+                count = duplicate_index + 1
+                i = duplicate_index
+
+        return count
+
+
+
+
 
 
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.lengthOfLongestSubstring("abcabcbb"))
+    value = solution.lengthOfLongestSubstring("abcabcbb")
