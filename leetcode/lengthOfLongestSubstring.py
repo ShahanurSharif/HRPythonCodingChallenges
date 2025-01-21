@@ -43,12 +43,10 @@ class Solution:
         count = 0
         find_value = s[:1]
         remaining_value = s[1:]
-        while remaining_value:
+        for i in range(len(remaining_value)):
             if find_value in remaining_value:
-                next_duplicate_index = remaining_value.index(find_value)
-                count = next_duplicate_index + 1
-                remaining_value = remaining_value[next_duplicate_index:]
-                print(next_duplicate_index, count, remaining_value)
+                duplicate_index = remaining_value.index(find_value)
+                print(duplicate_index)
 
         # for i in range(len(str_value)):
         #     str_value = s[i:]
