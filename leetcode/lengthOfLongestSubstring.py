@@ -45,8 +45,8 @@ class Solution:
         for i in range(len(str_value)):
             str_value = s[i:]
             print(str_value, s[i])
-            if s[0] in str_value:
-                duplicate_index = str_value.index(s[0])
+            if s[i] in str_value:
+                duplicate_index = str_value.index(str_value)
             else:
                 duplicate_index = 0
             #
