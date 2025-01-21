@@ -45,8 +45,13 @@ class Solution:
         remaining_value = s[1:]
         for i in range(len(remaining_value)):
             if find_value in remaining_value:
-                duplicate_index = remaining_value.index(find_value)
-                print(duplicate_index)
+                next_index = remaining_value.index(find_value)
+                remaining_value = remaining_value[next_index:]
+                # print(remaining_value)
+                i += next_index
+                if next_index > count:
+                    count = next_index + 1
+
 
         # for i in range(len(str_value)):
         #     str_value = s[i:]
