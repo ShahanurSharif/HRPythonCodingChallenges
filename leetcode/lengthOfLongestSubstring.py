@@ -43,7 +43,8 @@ class Solution:
         count = 0
         find_value = s[:1]
         remaining_value = s[1:]
-        for i in range(len(remaining_value)):
+        length = len(remaining_value)
+        for i in range(length):
             print(remaining_value, find_value, i, len(remaining_value))
             if find_value in remaining_value:
                 next_index = remaining_value.index(find_value)
