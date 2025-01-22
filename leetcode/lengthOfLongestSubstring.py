@@ -50,7 +50,7 @@ class Solution:
         length_remaining_value = len(remaining_value)
         # print(s, target_value, s.index(target_value))
         while i<length_remaining_value - 1:
-            print('before ', i, length_remaining_value, target_value, remaining_value, count)
+            # print('before ', i, length_remaining_value, target_value, remaining_value, count)
             # break
             if target_value in remaining_value:
                 # print('before ',s, i, length, target_value, remaining_value)
@@ -67,6 +67,7 @@ class Solution:
                 i += 1
                 target_value = remaining_value[0]
                 remaining_value = remaining_value[i:]
+                print('unique', i, length_remaining_value, target_value, remaining_value, count)
                 # print(s, i, length_remaining_value, target_value, remaining_value, count)
             i=0
             length_remaining_value = len(remaining_value)
