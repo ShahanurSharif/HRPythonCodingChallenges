@@ -55,12 +55,13 @@ class Solution:
             if target_value in remaining_value:
                 # print('before ',s, i, length, target_value, remaining_value)
                 location = remaining_value.index(target_value)
-                remaining_value = remaining_value[location+1:]
-                target_value = remaining_value[0]
-                print('after', i, length_remaining_value, target_value, remaining_value, count)
-                # break
                 if location+1 > count:
                     count = location + 1
+                remaining_value = remaining_value[location+1:]
+                target_value = remaining_value[0]
+                print('after', i, length_remaining_value, target_value, remaining_value, location, count)
+                # break
+
 
             else:
                 i += 1
