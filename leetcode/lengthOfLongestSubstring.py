@@ -44,22 +44,27 @@ from django.template.defaultfilters import length
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         count = 0
-        i=0
+        i = 0
         target_value = s[0]
         remaining_value = s[1:]
         length_remaining_value = len(remaining_value)
-        # print(s, target_value, s.index(target_value))
-        while i<length_remaining_value - 1:
+
+        while i < length_remaining_value - 1:
             # print('before ', i, length_remaining_value, target_value, remaining_value, count)
             # break
             if target_value in remaining_value:
-                # print('before ',s, i, length, target_value, remaining_value)
+                # print(target_value, remaining_value)
+                # break
+                # w wkew
+                # print('before ', i, length_remaining_value, target_value, remaining_value, count)
                 location = remaining_value.index(target_value)
-                if location+1 > count:
+
+                if location + 1 > count:
                     count = location + 1
-                remaining_value = remaining_value[location+1:]
+
+                remaining_value = remaining_value[location + 1:]
                 target_value = remaining_value[0]
-                print('after', i, length_remaining_value, target_value, remaining_value, location, count)
+                # print('after', i, length_remaining_value, target_value, remaining_value, location, count)
                 # break
 
 
@@ -67,11 +72,10 @@ class Solution:
                 i += 1
                 target_value = remaining_value[0]
                 remaining_value = remaining_value[i:]
-                print('unique', i, length_remaining_value, target_value, remaining_value, count)
+                # print('unique', i, length_remaining_value, target_value, remaining_value, count)
                 # print(s, i, length_remaining_value, target_value, remaining_value, count)
-            i=0
+            i = 0
             length_remaining_value = len(remaining_value)
-
 
         # for i in range(len(str_value)):
         #     str_value = s[i:]
@@ -88,11 +92,7 @@ class Solution:
         # return count
 
 
-
-
-
-
-
 if __name__ == '__main__':
     solution = Solution()
     value = solution.lengthOfLongestSubstring("pwwkew")
+    # value = solution.lengthOfLongestSubstring_another("pwwkew")
