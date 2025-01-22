@@ -44,14 +44,18 @@ class Solution:
         find_value = s[:1]
         remaining_value = s[1:]
         for i in range(len(remaining_value)):
+            print(remaining_value, find_value, i, len(remaining_value))
             if find_value in remaining_value:
                 next_index = remaining_value.index(find_value)
                 remaining_value = remaining_value[next_index:]
                 find_value = remaining_value[i]
                 i += next_index
-                print(remaining_value, find_value, next_index, i)
                 if next_index > count:
                     count = next_index + 1
+                    i=0
+            else:
+                find_value = remaining_value[i]
+                remaining_value = remaining_value[i:]
 
 
         # for i in range(len(str_value)):
