@@ -36,6 +36,8 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 
 '''
+
+
 #   a b c a b c b b
 #   0 1 2 3 4 5 6 7
 class Solution:
@@ -44,19 +46,24 @@ class Solution:
         find_value = s[:1]
         remaining_value = s[1:]
         length = len(remaining_value)
-        for i in range(length):
-            print(remaining_value, find_value, i, len(remaining_value))
+        i=0
+        while i<length:
+            print(remaining_value)
             if find_value in remaining_value:
-                next_index = remaining_value.index(find_value)
-                remaining_value = remaining_value[next_index:]
-                find_value = remaining_value[i]
-                i += next_index
-                if next_index > count:
-                    count = next_index + 1
+                duplicate_index = remaining_value.index(find_value)
+                remaining_value = remaining_value[duplicate_index:]
+                if duplicate_index+1 > count:
+                    count = duplicate_index + 1
                     i=0
             else:
                 find_value = remaining_value[i]
                 remaining_value = remaining_value[i:]
+                i+=1
+
+            length = len(remaining_value)
+
+
+
 
 
         # for i in range(len(str_value)):
