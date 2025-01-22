@@ -43,56 +43,44 @@ from django.template.defaultfilters import length
 #   0 1 2 3 4 5 6 7
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        if len(s) == 0:
+            return 0
+        if len(s) == 1:
+            return 1
         count = 0
         i = 0
         target_value = s[0]
         remaining_value = s[1:]
         length_remaining_value = len(remaining_value)
+        if length_remaining_value == 1:
+            if target_value in remaining_value:
+                return remaining_value.index(target_value)+1
+
 
         while i < length_remaining_value - 1:
-            # print('before ', i, length_remaining_value, target_value, remaining_value, count)
-            # break
             if target_value in remaining_value:
-                # print(target_value, remaining_value)
-                # break
-                # w wkew
-                # print('before ', i, length_remaining_value, target_value, remaining_value, count)
                 location = remaining_value.index(target_value)
 
                 if location + 1 > count:
                     count = location + 1
 
-                remaining_value = remaining_value[location + 1:]
                 target_value = remaining_value[0]
-                # print('after', i, length_remaining_value, target_value, remaining_value, location, count)
-                # break
-
+                remaining_value = remaining_value[location + 1:]
 
             else:
                 i += 1
                 target_value = remaining_value[0]
                 remaining_value = remaining_value[i:]
-                # print('unique', i, length_remaining_value, target_value, remaining_value, count)
-                # print(s, i, length_remaining_value, target_value, remaining_value, count)
             i = 0
             length_remaining_value = len(remaining_value)
-
-        # for i in range(len(str_value)):
-        #     str_value = s[i:]
-        #     print(str_value, s[i])
-        #     if s[i] in str_value:
-        #         duplicate_index = str_value.index(str_value)
-        #     else:
-        #         duplicate_index = 0
-        #     #
-        #     if duplicate_index + 1 > count:
-        #         count = duplicate_index + 1
-        #         i = duplicate_index
-        #
-        # return count
+        return count
 
 
 if __name__ == '__main__':
     solution = Solution()
-    value = solution.lengthOfLongestSubstring("pwwkew")
+    arr = ['aa']
+    for value in arr:
+        print(solution.lengthOfLongestSubstring(value))
+    # print(solution.lengthOfLongestSubstring("pwwkew"))
+    # print(solution.lengthOfLongestSubstring("bbbb"))
     # value = solution.lengthOfLongestSubstring_another("pwwkew")
