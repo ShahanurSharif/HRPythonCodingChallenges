@@ -49,25 +49,26 @@ class Solution:
         remaining_value = s[1:]
         length_remaining_value = len(remaining_value)
         # print(s, target_value, s.index(target_value))
-        while i<length_remaining_value:
+        while i<length_remaining_value - 1:
+            print('before ', i, length_remaining_value, target_value, remaining_value, count)
             # break
-            if target_value in s:
-                # print(s, i, length, target_value, remaining_value)
+            if target_value in remaining_value:
+                # print('before ',s, i, length, target_value, remaining_value)
                 location = remaining_value.index(target_value)
                 remaining_value = remaining_value[location+1:]
-                i=0
                 target_value = remaining_value[0]
-                print(s, i, length_remaining_value, target_value, remaining_value)
+                print('after', i, length_remaining_value, target_value, remaining_value, count)
                 # break
-                if location > count + 1:
+                if location+1 > count:
                     count = location + 1
 
             else:
                 i += 1
+                target_value = remaining_value[0]
+                remaining_value = remaining_value[i:]
+                # print(s, i, length_remaining_value, target_value, remaining_value, count)
+            i=0
             length_remaining_value = len(remaining_value)
-
-
-
 
 
         # for i in range(len(str_value)):
@@ -92,4 +93,4 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    value = solution.lengthOfLongestSubstring("abcabcbb")
+    value = solution.lengthOfLongestSubstring("pwwkew")
