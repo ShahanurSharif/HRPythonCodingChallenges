@@ -43,24 +43,13 @@ s consists of English letters, digits, symbols and spaces.
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         count = 0
-        find_value = s[:1]
-        remaining_value = s[1:]
-        length = len(remaining_value)
+        length = len(s)
         i=0
         while i<length:
-            print(remaining_value)
-            if find_value in remaining_value:
-                duplicate_index = remaining_value.index(find_value)
-                remaining_value = remaining_value[duplicate_index:]
-                if duplicate_index+1 > count:
-                    count = duplicate_index + 1
-                    i=0
-            else:
-                find_value = remaining_value[i]
-                remaining_value = remaining_value[i:]
-                i+=1
-
-            length = len(remaining_value)
+            target_value = s[i]
+            remaining_value = s[i+1:]
+            print(s, i, length, target_value, remaining_value)
+            i += 1
 
 
 
