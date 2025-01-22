@@ -36,6 +36,7 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 
 '''
+from django.template.defaultfilters import length
 
 
 #   a b c a b c b b
@@ -43,13 +44,27 @@ s consists of English letters, digits, symbols and spaces.
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         count = 0
-        length = len(s)
         i=0
-        while i<length:
-            target_value = s[i]
-            remaining_value = s[i+1:]
-            print(s, i, length, target_value, remaining_value)
-            i += 1
+        target_value = s[0]
+        remaining_value = s[1:]
+        length_remaining_value = len(remaining_value)
+        # print(s, target_value, s.index(target_value))
+        while i<length_remaining_value:
+            # break
+            if target_value in s:
+                # print(s, i, length, target_value, remaining_value)
+                location = remaining_value.index(target_value)
+                remaining_value = remaining_value[location+1:]
+                i=0
+                target_value = remaining_value[0]
+                print(s, i, length_remaining_value, target_value, remaining_value)
+                # break
+                if location > count + 1:
+                    count = location + 1
+
+            else:
+                i += 1
+            length_remaining_value = len(remaining_value)
 
 
 
