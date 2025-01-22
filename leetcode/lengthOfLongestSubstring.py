@@ -47,8 +47,9 @@ class Solution:
             if find_value in remaining_value:
                 next_index = remaining_value.index(find_value)
                 remaining_value = remaining_value[next_index:]
-                # print(remaining_value)
+                find_value = remaining_value[i]
                 i += next_index
+                print(remaining_value, find_value, next_index, i)
                 if next_index > count:
                     count = next_index + 1
 
