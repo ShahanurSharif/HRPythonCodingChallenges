@@ -1,6 +1,6 @@
 '''
 https://leetcode.com/problems/selling-pieces-of-wood/description/
-
+TODO: incomplete
 2312. Selling Pieces of Wood
 Attempted
 Hard
