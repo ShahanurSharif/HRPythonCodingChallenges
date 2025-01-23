@@ -44,14 +44,24 @@ from django.template.defaultfilters import length
 #   0 1 2 3 4 5 6 7
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        pass
+        # left
+        # right
+        char_map = {}
+        left = 0
+        max_length = 0
 
+        for right in range(len(s)):
+            print(right, s[right])
+            if s[right] in char_map and char_map[s[right]]>=left:
+                left = char_map[s[right]] + 1
+
+            char_map[s[right]] = right
+            # print(char_map)
 
 if __name__ == '__main__':
     solution = Solution()
-    arr = ['aa']
-    for value in arr:
-        print(solution.lengthOfLongestSubstring(value))
-    # print(solution.lengthOfLongestSubstring("pwwkew"))
+
+    # print(solution.lengthOfLongestSubstring('aa'))
+    print(solution.lengthOfLongestSubstring("abcabcbb"))
     # print(solution.lengthOfLongestSubstring("bbbb"))
     # value = solution.lengthOfLongestSubstring_another("pwwkew")
