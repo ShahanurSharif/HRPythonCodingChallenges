@@ -51,8 +51,9 @@ class Solution:
         max_length = 0
 
         for right in range(len(s)):
-            print(right, s[right])
+            # print(right, s[right], char_map[s[right]])
             if s[right] in char_map and char_map[s[right]]>=left:
+                print(right, s[right], char_map[s[right]])
                 left = char_map[s[right]] + 1
 
             char_map[s[right]] = right
