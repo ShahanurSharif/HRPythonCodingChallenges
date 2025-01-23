@@ -9,14 +9,20 @@ class HashTable:
             h += ord(char)
         return h % self.MAX
 
-    def add(self, key, value):
+    def __setitem__(self, key, value):
         h = self._get_hash(key)
         self.arr[h] = value
 
-    def get(self, key):
+    def __getitem__(self, key):
         h = self._get_hash(key)
         return self.arr[h]
 
+    def __delitem__(self, key):
+        h = self._get_hash(key)
+        self.arr[h] = None
+
 t = HashTable()
-t.add('march 9', 300)
-print(t.get('march 9'))
+t['march 9'] =300
+t['march 6'] =301
+del t['march 6']
+print(t.arr)
