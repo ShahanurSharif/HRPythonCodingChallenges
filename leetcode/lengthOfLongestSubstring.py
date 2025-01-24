@@ -49,14 +49,27 @@ class Solution:
         char_map = {}
         left = 0
         max_length = 0
-
+        # abcabcbb
+        '''
+        0->
+            right = 0
+            s[0] = a
+            char_map[a] = 0
+            left = 0
+            char_map[a]>=left
+            left = char_map[a](0) + 1
+        1->
+        2->
+        3->
+        4->
+        '''
         for right in range(len(s)):
-            # print(right, s[right], char_map[s[right]])
             if s[right] in char_map and char_map[s[right]]>=left:
-                print(right, s[right], char_map[s[right]])
+                print(right, s[right], char_map[s[right]], left)
                 left = char_map[s[right]] + 1
 
             char_map[s[right]] = right
+            max_length = max(max_length, right - left + 1)
             # print(char_map)
 
 if __name__ == '__main__':
