@@ -52,13 +52,9 @@ class Solution:
         # abcabcbb
         '''
         0->
-            right = 0
-            s[0] = a
-            char_map[a] = 0
-            left = 0
-            char_map[a]>=left
-            left = char_map[a](0) + 1
+        
         1->
+
         2->
         3->
         4->
