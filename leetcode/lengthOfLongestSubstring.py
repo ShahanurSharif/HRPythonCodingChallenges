@@ -52,6 +52,9 @@ class Solution:
         # abcabcbb
         '''
         0->
+        s = 0
+        char_map[{a:0}]
+        left = 0
         
         1->
 
@@ -60,9 +63,11 @@ class Solution:
         4->
         '''
         for right in range(len(s)):
+
             if s[right] in char_map and char_map[s[right]]>=left:
                 print(right, s[right], char_map[s[right]], left)
                 left = char_map[s[right]] + 1
+
 
             char_map[s[right]] = right
             max_length = max(max_length, right - left + 1)
