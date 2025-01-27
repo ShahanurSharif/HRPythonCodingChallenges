@@ -67,6 +67,7 @@ class Solution:
                 left = char_map[s[right]] + 1
                 print(True)
 
+
             char_map[s[right]] = right
             max_length = max(max_length, right - left + 1)
             print(right, s[right], char_map, char_map[s[right]], left, max_length)
