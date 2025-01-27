@@ -52,31 +52,31 @@ class Solution:
         # abcabcbb
         '''
         0->
-        s = 0
+        s = a
         char_map[{a:0}]
         left = 0
-        
+        max_length = 0
+        right 0
         1->
-
         2->
         3->
         4->
         '''
         for right in range(len(s)):
-
             if s[right] in char_map and char_map[s[right]]>=left:
-                print(right, s[right], char_map[s[right]], left)
                 left = char_map[s[right]] + 1
 
-
             char_map[s[right]] = right
+            print(right, s[right], char_map, char_map[s[right]], left)
             max_length = max(max_length, right - left + 1)
             # print(char_map)
+        return max_length
 
 if __name__ == '__main__':
     solution = Solution()
 
     # print(solution.lengthOfLongestSubstring('aa'))
-    print(solution.lengthOfLongestSubstring("abcabcbb"))
+    # print(solution.lengthOfLongestSubstring("abcabcbb"))
     # print(solution.lengthOfLongestSubstring("bbbb"))
-    # value = solution.lengthOfLongestSubstring_another("pwwkew")
+    value = solution.lengthOfLongestSubstring("pwwkew")
+    print(value)
