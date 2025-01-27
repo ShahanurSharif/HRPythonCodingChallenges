@@ -65,6 +65,7 @@ class Solution:
         for right in range(len(s)):
             if s[right] in char_map and char_map[s[right]]>=left:
                 left = char_map[s[right]] + 1
+                print(True)
 
             char_map[s[right]] = right
             print(right, s[right], char_map, char_map[s[right]], left)
