@@ -39,25 +39,19 @@ class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         new_arr = sorted(nums1 + nums2)
         total_len = len(new_arr)
-        total_sum = sum(new_arr)
-        if total_sum < 1:
-            return 0
-        if total_len == 1:
-            return new_arr[0]
-        if total_len == 2:
-            return total_sum / 2
-        if total_len < 1:
-            return 0
 
+        # If the array has an even length, return the average of the two middle elements
         if total_len % 2 == 0:
-            return .5 * ((total_len / 2) + ((total_len / 2) + 1))
+            mid1 = new_arr[total_len // 2 - 1]
+            mid2 = new_arr[total_len // 2]
+            return (mid1 + mid2) / 2
+        # If the array has an odd length, return the middle element
         else:
-            position = (total_len + 1) / 2
-            return new_arr[int(position) - 1]
+            return new_arr[total_len // 2]
 
 if __name__ == '__main__':
-    nums1 = []
-    nums2 = [2, 3]
+    nums1 = [3]
+    nums2 = [-2, -1]
 
     solution = Solution()
     print(solution.findMedianSortedArrays(nums1, nums2))
