@@ -38,8 +38,14 @@ from typing import List
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
         new_arr = sorted(nums1+nums2)
-        total_sum = sum(new_arr)
-        return total_sum / len(new_arr)
+        total_len = len(new_arr)
+        if total_len % 2 == 0:
+            return .5*(total_len/2 + (total_len/2 +1))
+        else:
+            return (total_len + 1) / 2
+
+            #odd
+        # find number is even or odd
 
 if __name__ == '__main__':
     nums1 = [1,3]
