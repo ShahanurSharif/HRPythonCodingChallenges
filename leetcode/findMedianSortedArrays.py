@@ -33,14 +33,21 @@ nums2.length == n
 -106 <= nums1[i], nums2[i] <= 106
 '''
 from typing import List
+
+
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        if len(nums1) > len(nums2):
-            nums1, nums2 = nums2, nums1
+        new_arr = sorted(nums1 + nums2)
+        total_len = len(new_arr)
 
-        x, y = len(nums1), len(nums2)
-        low, high = 0, x
-
+        # If the array has an even length, return the average of the two middle elements
+        if total_len % 2 == 0:
+            mid1 = new_arr[total_len // 2 - 1]
+            mid2 = new_arr[total_len // 2]
+            return (mid1 + mid2) / 2
+        # If the array has an odd length, return the middle element
+        else:
+            return new_arr[total_len // 2]
 
 if __name__ == '__main__':
     nums1 = [3]
