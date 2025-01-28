@@ -37,19 +37,27 @@ from typing import List
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        new_arr = sorted(nums1+nums2)
+        new_arr = sorted(nums1 + nums2)
         total_len = len(new_arr)
-        if total_len % 2 == 0:
-            return .5*(total_len/2 + (total_len/2 +1))
-        else:
-            return (total_len + 1) / 2
+        total_sum = sum(new_arr)
+        if total_sum < 1:
+            return 0
+        if total_len == 1:
+            return new_arr[0]
+        if total_len == 2:
+            return total_sum / 2
+        if total_len < 1:
+            return 0
 
-            #odd
-        # find number is even or odd
+        if total_len % 2 == 0:
+            return .5 * ((total_len / 2) + ((total_len / 2) + 1))
+        else:
+            position = (total_len + 1) / 2
+            return new_arr[int(position) - 1]
 
 if __name__ == '__main__':
-    nums1 = [1,3]
-    nums2 = [2]
+    nums1 = []
+    nums2 = [2, 3]
 
     solution = Solution()
     print(solution.findMedianSortedArrays(nums1, nums2))
