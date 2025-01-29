@@ -49,6 +49,7 @@ class Solution:
         else:
             return new_arr[total_len // 2]
 
+
 if __name__ == '__main__':
     nums1 = [3]
     nums2 = [-2, -1]
