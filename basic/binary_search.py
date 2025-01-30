@@ -37,7 +37,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    nums = [-1,0,3,5,9,12]
-    target = 9
+    nums = [5]
+    target = 5
     print(Solution().search(nums, target))
 
