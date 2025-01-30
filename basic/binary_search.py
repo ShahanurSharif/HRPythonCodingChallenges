@@ -21,7 +21,8 @@ class Solution:
 
         while low_value<high_value:
             print([low_index, low_value], [mid_index, mid_value], [high_index, high_value])
-            mid_index = low_index + (low_index - high_index) // 2
+            mid_index = low_index + (high_index - low_index) // 2
+            mid_value = nums[mid_index]
             if mid_value == target:
                 return nums.index(target)
             elif mid_value < target:
