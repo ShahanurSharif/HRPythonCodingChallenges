@@ -22,3 +22,29 @@ Constraints:
 
 0 <= x <= 231 - 1
 '''
+# 0 1 2 3 4
+# 0, 1, 2, 3, 4, 5, 6, 7, 8
+
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        low, high = 0, x
+        while low <= high:
+            mid = low + (high - low) // 2
+            if mid * mid == x:
+                return mid
+            elif mid * mid > x:
+                high = mid - 1
+            else:
+                low = mid + 1
+        return high
+
+
+
+
+
+if __name__ == '__main__':
+    solution = Solution()
+    print(solution.mySqrt(8))
+
+    # 8
+
