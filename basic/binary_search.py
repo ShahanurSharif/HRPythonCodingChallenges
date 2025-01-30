@@ -16,7 +16,8 @@ class Solution:
         high = len(nums) - 1
         mid = len(nums) // 2
 
-        while high < low:
+        while low <= high:
+            print(low, high)
             if nums[mid] == target:
                 return nums.index(target)
 
@@ -26,6 +27,9 @@ class Solution:
                 high = nums[mid - 1]
 
             mid = mid // 2
+
+            if high == low:
+                return -1
 
 if __name__ == '__main__':
     nums = [-1,0,3,5,9,12]
