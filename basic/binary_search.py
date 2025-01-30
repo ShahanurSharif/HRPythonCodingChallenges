@@ -12,7 +12,8 @@ Explanation: 2 does not exist in nums so return -1
 from typing import List
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        low = nums[0]
+        low_index = 0
+        low = nums[low_index]
         high = len(nums) - 1
         mid = len(nums) // 2
 
@@ -22,11 +23,13 @@ class Solution:
                 return nums.index(target)
 
             if nums[mid] < target:
+                low_index = mid + 1
                 low = nums[mid + 1]
             else:
+                high_index = mid - 1
                 high = nums[mid - 1]
 
-            mid = mid // 2
+            mid = low_index + (low_index - high_index) // 2
 
             if high == low:
                 return -1
