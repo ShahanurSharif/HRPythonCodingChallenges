@@ -14,31 +14,24 @@ class Solution:
     def search(self, nums: List[int], target: int) -> int:
         if len(nums) == 0:
             return -1
-        if len(nums) == 1 and nums[0] == target:
-            return nums[0]
-
-
+        if len(nums) == 1:
+            return 0 if nums[0] == target else -1
 
         low_index = 0
-        low_value = nums[low_index]
         high_index = len(nums) - 1
-        high_value = nums[high_index]
 
-        while low_value<high_value:
+        while low_index<=high_index:
             # print([low_index, low_value], [mid_index, mid_value], [high_index, high_value])
             mid_index = low_index + (high_index - low_index) // 2
             mid_value = nums[mid_index]
             if mid_value == target:
-                return nums.index(target)
+                return mid_index
             elif mid_value < target:
                 low_index = mid_index + 1
-                low_value = nums[low_index]
             else:
                 high_index = mid_index - 1
-                high_value = nums[mid_index - 1]
 
-            if high_index == low_index:
-                return -1
+        return -1
 
 
 if __name__ == '__main__':
