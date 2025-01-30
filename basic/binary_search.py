@@ -26,3 +26,9 @@ class Solution:
                 high = nums[mid - 1]
 
             mid = mid // 2
+
+if __name__ == '__main__':
+    nums = [-1,0,3,5,9,12]
+    target = 9
+    print(Solution().search(nums, target))
+
