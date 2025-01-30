@@ -13,25 +13,25 @@ from typing import List
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
         low_index = 0
-        low = nums[low_index]
-        high = len(nums) - 1
-        mid = len(nums) // 2
+        low_value = nums[low_index]
+        high_index = len(nums) - 1
+        high_value = nums[high_index]
+        mid_index = len(nums) // 2
+        mid_value = nums[mid_index]
 
-        while low < high:
-            print(low, high)
-            if nums[mid] == target:
+        while low_value<high_value:
+            print([low_index, low_value], [mid_index, mid_value], [high_index, high_value])
+            mid_index = low_index + (low_index - high_index) // 2
+            if mid_value == target:
                 return nums.index(target)
-
-            if nums[mid] < target:
-                low_index = mid + 1
-                low = nums[mid + 1]
+            elif mid_value < target:
+                low_index = mid_index + 1
+                low_value = nums[low_index]
             else:
-                high_index = mid - 1
-                high = nums[mid - 1]
+                high_index = mid_index - 1
+                high_value = nums[mid_index - 1]
 
-            mid = low_index + (low_index - high_index) // 2
-
-            if high == low:
+            if high_index == low_index:
                 return -1
 
 
