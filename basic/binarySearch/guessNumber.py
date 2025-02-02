@@ -3,7 +3,8 @@ We are playing the Guess Game. The game is as follows:
 
 I pick a number from 1 to n. You have to guess which number I picked.
 
-Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.
+Every time you guess wrong, I will tell you whether the number I picked is higher or
+lower than your guess.
 
 You call a pre-defined API int guess(int num), which returns three possible results:
 
@@ -40,3 +41,7 @@ class Solution:
         high = 2**31
         while low <= high:
             mid = (low + high) // 2
+
+if __name__ == '__main__':
+    solution = Solution()
+    print(solution.guessNumber(10))
