@@ -40,7 +40,8 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        print(nums, target)
+        first_value = nums[0]
+        last_value = nums[-1]
 
 if __name__ == '__main__':
     solution = Solution()
