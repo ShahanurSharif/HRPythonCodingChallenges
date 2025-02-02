@@ -35,13 +35,29 @@ Constraints:
 1 <= pick <= n
 '''
 
+
+def guess(mid):
+    pass
+
+
 class Solution:
     def guessNumber(self, n: int) -> int:
         low = 1
-        high = 2**31
+        high = n
+
         while low <= high:
-            mid = (low + high) // 2
+            mid = low + (high - low) // 2
+            # print(low, mid, high)
+            result = guess(mid)
+            if result == 0:
+                return mid
+            if result == -1:
+                high = mid - 1
+            else:
+                low = mid + 1
+
+        return -1
 
 if __name__ == '__main__':
-    solution = Solution()
+    solution = Solution()   
     print(solution.guessNumber(10))
