@@ -31,3 +31,15 @@ All values of nums are unique.
 nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 '''
+from typing import List
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        print(nums, target)
+
+if __name__ == '__main__':
+    solution = Solution()
+    nums = [4,5,6,7,0,1,2]
+    target = 4
+    print(solution.search(nums, target))
