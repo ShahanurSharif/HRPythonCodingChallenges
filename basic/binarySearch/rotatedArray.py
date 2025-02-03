@@ -40,11 +40,20 @@ from typing import List
 
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        first_value = nums[0]
-        last_value = nums[-1]
+        first_index = 0
+        last_index = len(nums) - 1
+        while first_index <= last_index:
+            middle_index = (first_index + last_index) // 2
+            if nums[middle_index] == target:
+                return middle_index
+            elif nums[middle_index] > target:
+                last_index = middle_index - 1
+            else:
+                first_index = middle_index + 1
+        return -1
 
 if __name__ == '__main__':
     solution = Solution()
     nums = [4,5,6,7,0,1,2]
-    target = 4
+    target = 0
     print(solution.search(nums, target))
