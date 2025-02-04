@@ -54,13 +54,16 @@ class Solution:
 
     def search(self, nums: List[int], target: int) -> int:
         lowest_index = self.findLowest_number_index(nums)
-        print(lowest_index, target)
+        pivot = nums[lowest_index]
+        if target == pivot:
+            return lowest_index
+
         if target > nums[lowest_index]:
             low = lowest_index
             high = len(nums) - 1
         else:
             low = 0
-            high = lowest_index
+            high = lowest_index - 1
 
         # print(low, high)
 
