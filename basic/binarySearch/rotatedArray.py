@@ -38,23 +38,34 @@ nums is an ascending array that is possibly rotated.
 from typing import List
 
 
+
 class Solution:
-    def search(self, nums: List[int], target: int) -> int:
-        first_index = 0
-        last_index = len(nums) - 1
-        while first_index <= last_index:
-            middle_index = (first_index + last_index) // 2
-            # print(middle_index)
-            if nums[middle_index] == target:
-                return middle_index
-            elif nums[first_index] == target:
-                return first_index
-            elif nums[last_index] == target:
-                return last_index
-            elif target < nums[first_index]:
-                first_index = middle_index + 1
+    def findLowest_number_index(self, nums):
+        low, high = 0, len(nums) - 1
+        while low <= high:
+            mid = low + (high - low) // 2
+            if nums[mid] > nums[high]:
+                low = mid + 1
             else:
-                last_index = middle_index - 1
+                high = mid
+        return low
+
+
+
+    def search(self, nums: List[int], target: int) -> int:
+        lowest_index = self.findLowest_number_index(nums)
+        print(lowest_index)
+        # if lowest_index == target:
+        #     return lowest_index
+        #
+        # if lowest_index > target:
+        #     low = lowest_index
+        #     high = len(nums) - 1
+        # else:
+        #     high = lowest_index - 1
+        #     low = 0
+        #
+        # while low <= high:
 
         return -1
 
