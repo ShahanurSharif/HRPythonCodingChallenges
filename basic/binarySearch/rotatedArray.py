@@ -42,7 +42,7 @@ from typing import List
 class Solution:
     def findLowest_number_index(self, nums):
         low, high = 0, len(nums) - 1
-        while low <= high:
+        while low < high:
             mid = low + (high - low) // 2
             if nums[mid] > nums[high]:
                 low = mid + 1
@@ -67,7 +67,7 @@ class Solution:
         #
         # while low <= high:
 
-        return -1
+        # return -1
 
 if __name__ == '__main__':
     solution = Solution()
