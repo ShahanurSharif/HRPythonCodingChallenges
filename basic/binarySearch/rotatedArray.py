@@ -65,7 +65,7 @@ class Solution:
             low = 0
             high = lowest_index - 1
 
-        print(low, high)
+        # print(nums, low, high)
 
         while low <= high:
             mid = low + (high - low) // 2
@@ -77,23 +77,10 @@ class Solution:
                 low = mid + 1
 
         return -1
-        # if lowest_index == target:
-        #     return lowest_index
-        #
-        # if lowest_index > target:
-        #     low = lowest_index
-        #     high = len(nums) - 1
-        # else:
-        #     high = lowest_index - 1
-        #     low = 0
-        #
-        # while low <= high:
-
-        # return -1
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [3, 1]
+    nums = [3, 1, 2]
 
     target = 3
     print(solution.search(nums, target))
