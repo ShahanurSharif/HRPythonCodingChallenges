@@ -57,7 +57,7 @@ class Solution:
         pivot = nums[lowest_index]
         if target == pivot:
             return lowest_index
-
+        # print(target, pivot)
         if target > nums[lowest_index]:
             low = lowest_index
             high = len(nums) - 1
@@ -65,7 +65,7 @@ class Solution:
             low = 0
             high = lowest_index - 1
 
-        # print(low, high)
+        print(low, high)
 
         while low <= high:
             mid = low + (high - low) // 2
@@ -93,7 +93,7 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [4, 5, 6, 7, 8, 0, 1, 2]
+    nums = [3, 1]
 
-    target = 1
+    target = 3
     print(solution.search(nums, target))
