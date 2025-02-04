@@ -40,11 +40,11 @@ from typing import List
 
 
 class Solution:
-    def findLowest_number_index(self, nums):
-        low, high = 0, len(nums) - 1
+    def findLowest_number_index(self, arr):
+        low, high = 0, len(arr) - 1
         while low < high:
             mid = low + (high - low) // 2
-            if nums[mid] > nums[high]:
+            if arr[mid] > arr[high]:
                 low = mid + 1
             else:
                 high = mid
@@ -54,7 +54,26 @@ class Solution:
 
     def search(self, nums: List[int], target: int) -> int:
         lowest_index = self.findLowest_number_index(nums)
-        print(lowest_index)
+        print(nums[lowest_index], target)
+        if target > nums[lowest_index]:
+            low = lowest_index
+            high = len(nums) - 1
+        else:
+            low = 0
+            high = lowest_index
+
+        print(low, high)
+
+        while low <= high:
+            mid = low + (high - low) // 2
+            if target == nums[mid]:
+                return mid
+            elif target < nums[mid]:
+                high = mid - 1
+            else:
+                low = mid + 1
+
+        return -1
         # if lowest_index == target:
         #     return lowest_index
         #
@@ -71,7 +90,7 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [1, 3]
+    nums = [4, 5, 6, 7, 0, 1, 2]
 
-    target = 3
+    target = 0
     print(solution.search(nums, target))
