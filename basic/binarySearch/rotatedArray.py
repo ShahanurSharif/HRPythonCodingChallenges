@@ -44,17 +44,23 @@ class Solution:
         last_index = len(nums) - 1
         while first_index <= last_index:
             middle_index = (first_index + last_index) // 2
+            # print(middle_index)
             if nums[middle_index] == target:
                 return middle_index
-            elif nums[middle_index] > target:
-                last_index = middle_index - 1
-            else:
+            elif nums[first_index] == target:
+                return first_index
+            elif nums[last_index] == target:
+                return last_index
+            elif target < nums[first_index]:
                 first_index = middle_index + 1
+            else:
+                last_index = middle_index - 1
+
         return -1
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [4,5,6,7,0,1,2]
+    nums = [1, 3]
 
-    target = 0
+    target = 3
     print(solution.search(nums, target))
