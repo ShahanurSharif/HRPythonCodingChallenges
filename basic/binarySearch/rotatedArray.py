@@ -54,7 +54,7 @@ class Solution:
 
     def search(self, nums: List[int], target: int) -> int:
         lowest_index = self.findLowest_number_index(nums)
-        print(nums[lowest_index], target)
+        print(lowest_index, target)
         if target > nums[lowest_index]:
             low = lowest_index
             high = len(nums) - 1
@@ -62,7 +62,7 @@ class Solution:
             low = 0
             high = lowest_index
 
-        print(low, high)
+        # print(low, high)
 
         while low <= high:
             mid = low + (high - low) // 2
@@ -90,7 +90,7 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [4, 5, 6, 7, 0, 1, 2]
+    nums = [4, 5, 6, 7, 8, 0, 1, 2]
 
-    target = 0
+    target = 1
     print(solution.search(nums, target))
