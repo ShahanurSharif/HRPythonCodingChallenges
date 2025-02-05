@@ -38,7 +38,12 @@ from typing import List
 
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
-        pass
+        low, high = 0, len(nums) - 1
+        while low <= high:
+            mid = (low + high) // 2
+
+
+        return high
 
 if __name__ == '__main__':
     solution = Solution()
