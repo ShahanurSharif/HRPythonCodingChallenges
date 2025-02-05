@@ -54,6 +54,7 @@ class Solution:
 
     def binarySearch(self, arr: List[int], target: int, add_value=0) -> int:
         low, high = 0, len(arr) - 1
+
         while low <= high:
             mid = low + (high - low) // 2
             if target == arr[mid]:
@@ -63,7 +64,7 @@ class Solution:
             else:
                 low = mid + 1
 
-        return 0
+        return -1
 
     def search(self, nums: List[int], target: int) -> int:
         lowest_index = self.findLowest_number_index(nums)
@@ -73,9 +74,11 @@ class Solution:
 
         left_arr = nums[:lowest_index]
         right_arr = nums[lowest_index:]
+        # print(left_arr, right_arr)
 
         value = self.binarySearch(left_arr, target)
-        if value == 0:
+        print(value)
+        if value == -1:
             value = self.binarySearch(right_arr, target, len(left_arr))
         else:
             value = -1
@@ -85,7 +88,7 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [3]
+    nums = [3, 1]
 
     target = 3
     print(solution.search(nums, target))
