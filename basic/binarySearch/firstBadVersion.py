@@ -31,10 +31,16 @@ Constraints:
 
 1 <= bad <= n <= 231 - 1
 '''
+from soupsieve.util import lower
+
 
 # The isBadVersion API is already defined for you.
 # def isBadVersion(version: int) -> bool:
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
-        pass
+        low, high = 0, n
+
+        while low <= high:
+            mid = (low + high) // 2
+            value = isBadVersion(mid)
