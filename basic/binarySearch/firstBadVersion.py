@@ -42,20 +42,21 @@ def isBadVersion(value):
     else:
         return False
 
+
 class Solution:
     def firstBadVersion(self, n: int) -> int:
         low, high = 0, n
 
         while low <= high:
             mid = (low + high) // 2
-            value = isBadVersion(mid)
 
-            if not value:
-                low = mid + 1
+            if isBadVersion(mid):
+                high = mid
             else:
-                high = mid - 1
+                low = mid + 1
 
         return low
+
 
 if __name__ == '__main__':
     s = Solution()
