@@ -77,11 +77,10 @@ class Solution:
         # print(left_arr, right_arr)
 
         value = self.binarySearch(left_arr, target)
-        print(value)
+        print('value',value)
         if value == -1:
             value = self.binarySearch(right_arr, target, len(left_arr))
-        else:
-            value = -1
+
         return value
 
 
