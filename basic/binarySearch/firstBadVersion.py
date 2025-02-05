@@ -36,6 +36,11 @@ from soupsieve.util import lower
 
 # The isBadVersion API is already defined for you.
 # def isBadVersion(version: int) -> bool:
+def isBadVersion(value):
+    if value >= 3:
+        return True
+    else:
+        return False
 
 class Solution:
     def firstBadVersion(self, n: int) -> int:
@@ -44,3 +49,27 @@ class Solution:
         while low <= high:
             mid = (low + high) // 2
             value = isBadVersion(mid)
+
+            if not value:
+                low = mid + 1
+            else:
+                high = mid - 1
+
+        return low
+
+if __name__ == '__main__':
+    s = Solution()
+    print(s.firstBadVersion(10))
+'''
+1 => false, 
+2 => false, 
+3 => true, 
+4 => true, 
+5 => true, 
+6 => true, 
+7 => true, 
+8 => true, 
+9 => true,
+10 => true,
+
+'''
