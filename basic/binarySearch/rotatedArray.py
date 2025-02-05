@@ -35,6 +35,7 @@ All values of nums are unique.
 nums is an ascending array that is possibly rotated.
 -104 <= target <= 104
 '''
+from contextlib import nullcontext
 from typing import List
 
 
@@ -51,36 +52,40 @@ class Solution:
         return low
 
 
+    def binarySearch(self, arr: List[int], target: int, add_value=0) -> int:
+        low, high = 0, len(arr) - 1
+        while low <= high:
+            mid = low + (high - low) // 2
+            if target == arr[mid]:
+                return add_value + mid
+            elif target < arr[mid]:
+                high = mid - 1
+            else:
+                low = mid + 1
+
+        return 0
 
     def search(self, nums: List[int], target: int) -> int:
         lowest_index = self.findLowest_number_index(nums)
         pivot = nums[lowest_index]
         if target == pivot:
             return lowest_index
-        # print(target, pivot)
-        if target > nums[lowest_index]:
-            low = lowest_index
-            high = len(nums) - 1
+
+        left_arr = nums[:lowest_index]
+        right_arr = nums[lowest_index:]
+
+        value = self.binarySearch(left_arr, target)
+        if value == 0:
+            value = self.binarySearch(right_arr, target, len(left_arr))
         else:
-            low = 0
-            high = lowest_index - 1
+            value = -1
+        return value
 
-        # print(nums, low, high)
 
-        while low <= high:
-            mid = low + (high - low) // 2
-            if target == nums[mid]:
-                return mid
-            elif target < nums[mid]:
-                high = mid - 1
-            else:
-                low = mid + 1
-
-        return -1
 
 if __name__ == '__main__':
     solution = Solution()
-    nums = [3, 1, 2]
+    nums = [3]
 
     target = 3
     print(solution.search(nums, target))
