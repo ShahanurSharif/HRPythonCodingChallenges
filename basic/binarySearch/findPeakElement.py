@@ -39,16 +39,25 @@ from typing import List
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         low, high = 0, len(nums) - 1
+
+        if high + 1 <= 1:
+            return 0
+
+
         while low <= high:
-            mid = (low + high) // 2
+            mid = low + (high - low) // 2
+            print(mid)
             if nums[mid] > nums[mid + 1]:
-                high = mid
-            else:
+                return mid
+
+            elif nums[mid] < nums[mid + 1]:
                 low = mid + 1
+            else:
+                high = mid
 
         return high
 
 if __name__ == '__main__':
     solution = Solution()
-    for arr in [[1,2,1,3,5,6,4], [1, 2, 3, 1]]:
+    for arr in [[1,2,1,3,5,6,4], [1, 2, 3, 1], [1, 2]]:
         print(solution.findPeakElement(arr))
