@@ -51,6 +51,7 @@ Can you think of an algorithm which has O(logN) search complexity?
 All the elements to the left of inflection point > first element of the array.
 All the elements to the right of inflection point < first element of the array.
 '''
+from typing import List
 
 class Solution:
     def findMin(self, nums: List[int]) -> int:
