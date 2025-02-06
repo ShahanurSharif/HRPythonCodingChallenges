@@ -37,7 +37,17 @@ from typing import List
 
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        pass
+        low, high = 0, len(nums) - 1
+        value = []
+        while low <= high:
+            mid = (low + high) // 2
+            if nums[mid] == target:
+                value.append(mid)
+                low = mid + 1
+            else:
+                if target < nums[mid]:
+                    pass
+
 
 if __name__ == '__main__':
     test_cases = [
