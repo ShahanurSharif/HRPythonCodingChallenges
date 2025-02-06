@@ -55,4 +55,25 @@ from typing import List
 
 class Solution:
     def findMin(self, nums: List[int]) -> int:
-        pass
+        low, high = 0, len(nums) - 1
+        while low < high:
+            mid = (low + high) // 2
+            if nums[mid] > nums[high]:
+                low = mid + 1
+            else:
+                high = mid
+        return nums[low]
+
+
+if __name__ == '__main__':
+    test_cases = [
+        [3, 4, 5, 1, 2],  # Output: 1
+        [4, 5, 6, 7, 0, 1, 2],  # Output: 0
+        [11, 13, 15, 17],  # Output: 11
+        [1],  # Output: 1 (Single element)
+        [2, 1],  # Output: 1 (Smallest rotation possible)
+        [5, 6, 7, 8, 9, 1, 2, 3],  # Output: 1
+    ]
+    solution = Solution()
+    for case in test_cases:
+        print(solution.findMin(case))
