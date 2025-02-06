@@ -40,34 +40,28 @@ class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
         low, high = 0, len(nums) - 1
 
-        if high + 1 <= 1:
-            return 0
-
-
         while low < high:
-            mid = low + (high - low) // 2
-            print(mid)
-            if nums[mid] > nums[mid + 1]:
-                return mid
+            mid = (low + high) // 2
 
-            elif nums[mid] < nums[mid + 1]:
-                low = mid + 1
-            else:
+            if nums[mid] > nums[mid + 1]:
                 high = mid
+            else:
+                low = mid + 1
 
         return low
 
 if __name__ == '__main__':
     solution = Solution()
     testcases = [
-        [1, 2, 1, 3, 5, 6, 4],  # Peak at index 1 or 5
-        [1, 2, 3, 1],  # Peak at index 2
-        [1, 2],  # Peak at index 1
-        [2, 1],  # Peak at index 0
-        [1],  # Peak at index 0 (single element)
-        [1, 2, 3, 4, 5],  # Peak at index 4
-        [5, 4, 3, 2, 1],  # Peak at index 0
-        [1, 3, 2, 4, 6, 5],  # Peaks at index 1 or 4
+        [6, 5, 4, 3, 2, 3, 2]
+        # [1, 2, 1, 3, 5, 6, 4],  # Peak at index 1 or 5
+        # [1, 2, 3, 1],  # Peak at index 2
+        # [1, 2],  # Peak at index 1
+        # [2, 1],  # Peak at index 0
+        # [1],  # Peak at index 0 (single element)
+        # [1, 2, 3, 4, 5],  # Peak at index 4
+        # [5, 4, 3, 2, 1],  # Peak at index 0
+        # [1, 3, 2, 4, 6, 5],  # Peaks at index 1 or 4
 
     ]
     for arr in testcases:
