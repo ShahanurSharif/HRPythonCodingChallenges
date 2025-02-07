@@ -74,15 +74,15 @@ class Solution:
 
 if __name__ == '__main__':
     test_cases = [
-        # ([5, 7, 7, 8, 8, 10], 8, [3, 4]),  # Target 8 appears at indices 3 and 4
-        # ([5, 7, 7, 8, 8, 10], 6, [-1, -1]),  # Target 6 is not in the array
-        # ([], 0, [-1, -1]),  # Empty array, target not found
-        # ([1], 1, [0, 0]),  # Single element, target found at index 0
-        # ([1, 1, 1, 1, 1], 1, [0, 4]),  # All elements are the target
-        # ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5, [4, 4]),  # Target at a single index
-        # ([2, 4, 4, 4, 6, 6, 7, 8, 8, 10], 4, [1, 3]),  # Multiple occurrences of the target
-        # ([1, 3, 3, 5, 5, 5, 7, 9], 5, [3, 5]),  # Target appears in the middle
-        # ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11, [-1, -1]),  # Target not in the array
+        ([5, 7, 7, 8, 8, 10], 8, [3, 4]),  # Target 8 appears at indices 3 and 4
+        ([5, 7, 7, 8, 8, 10], 6, [-1, -1]),  # Target 6 is not in the array
+        ([], 0, [-1, -1]),  # Empty array, target not found
+        ([1], 1, [0, 0]),  # Single element, target found at index 0
+        ([1, 1, 1, 1, 1], 1, [0, 4]),  # All elements are the target
+        ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 5, [4, 4]),  # Target at a single index
+        ([2, 4, 4, 4, 6, 6, 7, 8, 8, 10], 4, [1, 3]),  # Multiple occurrences of the target
+        ([1, 3, 3, 5, 5, 5, 7, 9], 5, [3, 5]),  # Target appears in the middle
+        ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 11, [-1, -1]),  # Target not in the array
         ([5, 5, 5, 5, 5, 5, 5], 5, [0, 6]),  # All elements are the same as the target
     ]
 
