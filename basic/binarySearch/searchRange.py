@@ -42,6 +42,12 @@ class Solution:
         value = []
         if len(nums) == 0:
             return [-1, -1]
+        if nums[low] == target:
+            value.append(low)
+
+        if nums[high] == target:
+            value.append(high)
+
         while low+1 < high:
             if len(value) == 2: return value
 
