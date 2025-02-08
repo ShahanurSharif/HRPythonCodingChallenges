@@ -35,18 +35,18 @@ nums is a non-decreasing array.
 # [5, 7, 7, 8, 8, 10]
 
 from typing import List
+
+
 class Solution:
     def findBound(self, isFirst: bool) -> int:
         bound = -1
         return bound
 
-        return bound
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         first = self.findBound(True)
         last = self.findBound(False)
 
         return [first, last]
-
 
 
 if __name__ == '__main__':
