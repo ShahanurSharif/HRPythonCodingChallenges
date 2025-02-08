@@ -38,9 +38,13 @@ from typing import List
 
 class Solution:
     def findBound(self, first, last):
-        pass
+        bound = -1
+
+        return bound
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        first, last = 0, len(nums) - 1
+        first = self.findBound()
+        last = self.findBound()
+
         return [first, last]
 
 
