@@ -37,38 +37,11 @@ from typing import List
 # [5, 7, 7, 8, 8, 10]
 
 class Solution:
+    def findBound(self, first, last):
+        pass
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        low, high = 0, len(nums) - 1
-        value = []
-        if len(nums) == 0:
-            return [-1, -1]
-        if nums[low] == target:
-            value.append(low)
-
-        if nums[high] == target:
-            value.append(high)
-
-        while low+1 < high:
-            if len(value) == 2: return value
-
-            mid = (low + high) // 2
-            if nums[mid] == target:
-                value.append(mid)
-            if target < nums[mid]:
-                high = mid
-            else:
-                low = mid
-
-        if len(value) == 2: return value
-
-        if nums[low] == target:
-            value.append(low)
-        if nums[high] == target:
-            value.append(high)
-
-        if len(value)==0:
-            return [-1, -1]
-        return value
+        first, last = 0, len(nums) - 1
+        return [first, last]
 
 
 
