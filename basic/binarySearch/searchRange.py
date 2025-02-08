@@ -38,13 +38,27 @@ from typing import List
 
 
 class Solution:
-    def findBound(self, isFirst: bool) -> int:
+    def findBound(self, arr: List[int], target, isFirst: bool) -> int:
         bound = -1
+        low, high = 0, len(arr) - 1
+
+        while low<=high:
+            mid = (low + high) // 2
+            if arr[mid] == target:
+                bound = mid
+                if isFirst:
+                    high = mid - 1
+                else:
+                    low = mid + 1
+            elif arr[mid] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
         return bound
 
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        first = self.findBound(True)
-        last = self.findBound(False)
+        first = self.findBound(nums, target, True)
+        last = self.findBound(nums, target, False)
 
         return [first, last]
 
