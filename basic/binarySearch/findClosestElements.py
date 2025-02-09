@@ -15,6 +15,7 @@ An integer a is closer to x than an integer b if:
 Example 1:
 
 Input: arr = [1,2,3,4,5], k = 4, x = 3
+|1-4| = 3
 
 Output: [1,2,3,4]
 
@@ -43,32 +44,15 @@ class Solution:
 
 if __name__ == '__main__':
     testcases = [
-        # Test Case 1: Basic case
         [[1, 2, 3, 4, 5], 4, 3, [1, 2, 3, 4]],
-
-        # Test Case 2: x is smaller than all elements
-        [[1, 1, 2, 3, 4, 5], 4, -1, [1, 1, 2, 3]],
-
-        # Test Case 3: x is larger than all elements
-        [[1, 2, 3, 4, 5, 6, 7, 8], 3, 10, [6, 7, 8]],
-
-        # Test Case 4: k is equal to array length
-        [[10, 20, 30, 40, 50], 5, 25, [10, 20, 30, 40, 50]],
-
-        # Test Case 5: Only one element in the array
-        [[5], 1, 5, [5]],
-
-        # Test Case 6: x is exactly one of the elements
-        [[1, 2, 3, 4, 5, 6, 7, 8, 9], 4, 6, [4, 5, 6, 7]],
-
-        # Test Case 7: Array contains negative numbers
-        [[-10, -5, 0, 5, 10], 3, -3, [-5, 0, 5]],
-
-        # Test Case 8: x is exactly in the middle of the array
-        [[1, 3, 5, 7, 9], 2, 5, [3, 5]],
-
-        # Test Case 9: Large k value
-        [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8, 5, [2, 3, 4, 5, 6, 7, 8, 9]],
+        # [[1, 1, 2, 3, 4, 5], 4, -1, [1, 1, 2, 3]],
+        # [[1, 2, 3, 4, 5, 6, 7, 8], 3, 10, [6, 7, 8]],
+        # [[10, 20, 30, 40, 50], 5, 25, [10, 20, 30, 40, 50]],
+        # [[5], 1, 5, [5]],
+        # [[1, 2, 3, 4, 5, 6, 7, 8, 9], 4, 6, [4, 5, 6, 7]],
+        # [[-10, -5, 0, 5, 10], 3, -3, [-5, 0, 5]],
+        # [[1, 3, 5, 7, 9], 2, 5, [3, 5]],
+        # [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8, 5, [2, 3, 4, 5, 6, 7, 8, 9]],
     ]
 
     solution = Solution()
