@@ -2,7 +2,9 @@
 Find K Closest Elements
 
 Solution
-Given a sorted integer array arr, two integers k and x, return the k closest integers to x in the array. The result should also be sorted in ascending order.
+Given a sorted integer array arr, two integers k and x,
+return the k closest integers to x in the array.
+The result should also be sorted in ascending order.
 
 An integer a is closer to x than an integer b if:
 
@@ -70,7 +72,6 @@ if __name__ == '__main__':
 
     solution = Solution()
     for testcase in testcases:
-        # solution.findClosestElements(testcase[0], testcase[1], testcase[2])
         result = solution.findClosestElements(testcase[0], testcase[1], testcase[2])
         print(result)
         # assert result == testcase[3]
