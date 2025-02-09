@@ -34,6 +34,45 @@ arr is sorted in ascending order.
 
 from typing import List
 
+
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        pass
+        return arr
+
+
+if __name__ == '__main__':
+    testcases = [
+        # Test Case 1: Basic case
+        [[1, 2, 3, 4, 5], 4, 3, [1, 2, 3, 4]],
+
+        # Test Case 2: x is smaller than all elements
+        [[1, 1, 2, 3, 4, 5], 4, -1, [1, 1, 2, 3]],
+
+        # Test Case 3: x is larger than all elements
+        [[1, 2, 3, 4, 5, 6, 7, 8], 3, 10, [6, 7, 8]],
+
+        # Test Case 4: k is equal to array length
+        [[10, 20, 30, 40, 50], 5, 25, [10, 20, 30, 40, 50]],
+
+        # Test Case 5: Only one element in the array
+        [[5], 1, 5, [5]],
+
+        # Test Case 6: x is exactly one of the elements
+        [[1, 2, 3, 4, 5, 6, 7, 8, 9], 4, 6, [4, 5, 6, 7]],
+
+        # Test Case 7: Array contains negative numbers
+        [[-10, -5, 0, 5, 10], 3, -3, [-5, 0, 5]],
+
+        # Test Case 8: x is exactly in the middle of the array
+        [[1, 3, 5, 7, 9], 2, 5, [3, 5]],
+
+        # Test Case 9: Large k value
+        [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8, 5, [2, 3, 4, 5, 6, 7, 8, 9]],
+    ]
+
+    solution = Solution()
+    for testcase in testcases:
+        solution.findClosestElements(testcase[0], testcase[1], testcase[2])
+        result = solution.findClosestElements(testcase[0], testcase[1], testcase[2])
+        print(result)
+        assert result == testcase[3]
