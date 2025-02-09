@@ -15,7 +15,12 @@ An integer a is closer to x than an integer b if:
 Example 1:
 
 Input: arr = [1,2,3,4,5], k = 4, x = 3
-|1-4| = 3
+|1-3| = 2
+|2-3| = 1
+|3-3| = 0
+|4-3| = 1
+|5-3| = 2
+
 
 Output: [1,2,3,4]
 
