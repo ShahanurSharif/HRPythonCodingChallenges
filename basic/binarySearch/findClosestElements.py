@@ -51,18 +51,22 @@ from typing import List
 
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
-        left, right = 0, len(arr) - 1
+        # Initialize two pointers for the binary search range
+        left, right = 0, len(arr) - k
+
+        # Perform binary search to find the closest starting index
         while left < right:
-            mid = (left + right) // 2
-            if arr[mid] < x:
-                left = mid + 1
+            mid = (left + right) // 2  # Find the middle index
+
+            # Compare distances to x
+            # If arr[mid] is farther from x than arr[mid + k], move right
+            if x - arr[mid] > arr[mid + k] - x:
+                left = mid + 1  # Move right
             else:
-                right = mid
+                right = mid  # Move left
 
-        left = right - 1
-
-
-        return []
+        # The best starting index is found at 'left'
+        return arr[left:left + k]
 
 
 if __name__ == '__main__':
