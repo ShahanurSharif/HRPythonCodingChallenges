@@ -49,8 +49,15 @@ arr is sorted in ascending order.
 from typing import List
 class Solution:
     def findClosestElements(self, arr: List[int], k: int, x: int) -> List[int]:
+        left, right = 0, len(arr) - 1
+        while left < right:
+            mid = (left + right) // 2
+            if arr[mid] < x:
+                pass
+            else:
+                pass
 
-        return arr
+        return []
 
 
 if __name__ == '__main__':
