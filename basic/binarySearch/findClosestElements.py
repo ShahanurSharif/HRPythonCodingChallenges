@@ -53,9 +53,9 @@ class Solution:
         while left < right:
             mid = (left + right) // 2
             if arr[mid] < x:
-                pass
+                left = mid + 1
             else:
-                pass
+                right = mid
 
         return []
 
