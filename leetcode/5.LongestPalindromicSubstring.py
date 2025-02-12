@@ -41,7 +41,12 @@ Acceptance Rate
 '''
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        pass
+        value = dict()
+        for i in range(len(s)):
+            if s[i] in value and value[s[i]]>0:
+                value[s[i]] = i+1
+            else:
+                value[s[i]] = 1
 
 if __name__ == '__main__':
     testcases = [
