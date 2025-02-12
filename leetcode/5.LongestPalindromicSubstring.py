@@ -39,6 +39,7 @@ Submissions
 Acceptance Rate
 35.2%
 '''
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         value = dict()
