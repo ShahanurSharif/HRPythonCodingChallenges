@@ -46,6 +46,7 @@ class Solution:
         if len(s) <= 1:
             return s
         value = dict()
+        highest_value = [0, 0, 0]
         for i in range(len(s)):
             if s[i] in value:
                 value[s[i]][1] = i+1
@@ -53,9 +54,11 @@ class Solution:
             else:
                 value[s[i]] = [i,i+1, i + 1 - i ]
 
-        sorted_data = dict(sorted(value.items(), key=lambda x: (-x[1][-1], x[1][0])))
-        first_item = list(sorted_data.keys())[0]
-        return s[sorted_data[first_item][0]:sorted_data[first_item][1]]
+            if value[s[i]][2] > highest_value[2]:
+                highest_value = value
+
+
+        return s[highest_value[0]:highest_value[1]]
 
 
 if __name__ == '__main__':
