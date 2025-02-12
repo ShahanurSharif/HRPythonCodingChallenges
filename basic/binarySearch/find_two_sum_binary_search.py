@@ -18,6 +18,7 @@ def twoSum(arr, target):
 
     # Iterate through each element in the array
     for i in range(len(arr)):
+        print(arr)
         complement = target - arr[i]
 
         # Use binary search to find the complement
