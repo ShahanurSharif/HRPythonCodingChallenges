@@ -46,7 +46,7 @@ class Solution:
         if len(s) <= 1:
             return s
         value = dict()
-        highest_value = [0, 0, 0]
+        highest_value = [0, 1, 0]
         for i in range(len(s)):
             if s[i] in value:
                 value[s[i]][1] = i+1
