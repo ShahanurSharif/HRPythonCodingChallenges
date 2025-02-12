@@ -49,12 +49,13 @@ class Solution:
             else:
                 value[s[i]] = 1
 
+        print(value)
 
 if __name__ == '__main__':
     testcases = [
         # Basic cases
-        ("babad", "bab"),  # "aba" is also a valid answer
-        # ("cbbd", "bb"),
+        # ("babad", "bab"),  # "aba" is also a valid answer
+        ("cbbd", "bb"),
 
         # Single character
         # ("a", "a"),
