@@ -42,7 +42,7 @@ Acceptance Rate
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        print(s[0:3])
+        # print(s[0:3])
 
         value = dict()
         for i in range(len(s)):
@@ -52,13 +52,14 @@ class Solution:
             else:
                 value[s[i]] = [i,i+1, i + 1 - i ]
 
-        print(value)
+        sorted_data = dict(sorted(value.items(), key=lambda x: (-x[1][-1], x[1][0])))
+        print(sorted_data)
 
 if __name__ == '__main__':
     testcases = [
         # Basic cases
-        ("babad", "bab"),  # "aba" is also a valid answer
-        # ("cbbd", "bb"),
+        # ("babad", "bab"),  # "aba" is also a valid answer
+        ("cbbd", "bb"),
 
         # Single character
         # ("a", "a"),
