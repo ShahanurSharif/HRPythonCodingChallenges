@@ -42,20 +42,23 @@ Acceptance Rate
 
 class Solution:
     def longestPalindrome(self, s: str) -> str:
+        print(s[0:3])
+
         value = dict()
         for i in range(len(s)):
-            if s[i] in value and value[s[i]]>0:
-                value[s[i]] = i+1
+            if s[i] in value:
+                value[s[i]][1] = i+1
+                value[s[i]][2] = value[s[i]][1] - value[s[i]][0]
             else:
-                value[s[i]] = 1
+                value[s[i]] = [i,i+1, i + 1 - i ]
 
         print(value)
 
 if __name__ == '__main__':
     testcases = [
         # Basic cases
-        # ("babad", "bab"),  # "aba" is also a valid answer
-        ("cbbd", "bb"),
+        ("babad", "bab"),  # "aba" is also a valid answer
+        # ("cbbd", "bb"),
 
         # Single character
         # ("a", "a"),
