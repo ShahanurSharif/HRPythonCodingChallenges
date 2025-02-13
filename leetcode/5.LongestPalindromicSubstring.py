@@ -40,6 +40,7 @@ Acceptance Rate
 35.2%
 '''
 
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         # print(s[1:3])
@@ -49,14 +50,13 @@ class Solution:
         highest_value = [0, 1, 0]
         for i in range(len(s)):
             if s[i] in value:
-                value[s[i]][1] = i+1
+                value[s[i]][1] = i + 1
                 value[s[i]][2] = value[s[i]][1] - value[s[i]][0]
             else:
-                value[s[i]] = [i,i+1, i + 1 - i ]
+                value[s[i]] = [i, i + 1, i + 1 - i]
 
             if value[s[i]][2] > highest_value[2]:
                 highest_value = value
-
 
         return s[highest_value[0]:highest_value[1]]
 
