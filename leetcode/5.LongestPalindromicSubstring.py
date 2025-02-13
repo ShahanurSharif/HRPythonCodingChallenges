@@ -46,8 +46,11 @@ class Solution:
         # print(st)
         return st == st[::-1]
 
-    def make_palindrome(self, s, start, end):
-        pass
+    def make_palindrome(self, s, right, val) -> int:
+        val[s[right]][1] = right + 1
+        val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
+        return val
+
     def longestPalindrome(self, s: str) -> str:
         # print(s[1:3])
         if len(s) <= 1:
@@ -57,10 +60,7 @@ class Solution:
         highest_value = [0, 1, 0]
         for i in range(len(s)):
             if s[i] in value:
-                value[s[i]][0] = self.make_palindrome(s, value[s[i]][0], value[s[i]][1])
-                value[s[i]][1] = i + 1
-                value[s[i]][2] = value[s[i]][1] - value[s[i]][0]
-
+                value = self.make_palindrome(s, i, value)
             else:
                 value[s[i]] = [i, i + 1, i + 1 - i]
             # print(value[s[i]][2], highest_value[2])
