@@ -42,6 +42,10 @@ Acceptance Rate
 
 
 class Solution:
+    def is_palindrome(self, st: str) -> bool:
+        print(st)
+        return st == st[::-1]
+
     def longestPalindrome(self, s: str) -> str:
         # print(s[1:3])
         if len(s) <= 1:
@@ -49,7 +53,7 @@ class Solution:
         value = dict()
         highest_value = [0, 1, 0]
         for i in range(len(s)):
-            if s[i] in value:
+            if s[i] in value and self.is_palindrome(s[value[s[i]][1]:value[s[i]][2]]):
                 value[s[i]][1] = i + 1
                 value[s[i]][2] = value[s[i]][1] - value[s[i]][0]
             else:
@@ -66,25 +70,25 @@ if __name__ == '__main__':
         # Basic cases
         # ("babad", "bab"),  # "aba" is also a valid answer
         # ("cbbd", "bb"),
-        #
-        # # Single character
+        # #
+        # # # Single character
         # ("a", "a"),
         # ("z", "z"),
-        #
-        # # Two identical characters
+        # #
+        # # # Two identical characters
         # ("aa", "aa"),
         # ("bb", "bb"),
-        #
-        # # Palindromic entire string
+        # #
+        # # # Palindromic entire string
         # ("racecar", "racecar"),
         # ("abba", "abba"),
         #
         # # Mixed cases with a long palindrome in the middle
         # ("abcdefghgfedcba", "abcdefghgfedcba"),
-        # ("forgeeksskeegfor", "geeksskeeg"),
+        ("forgeeksskeegfor", "geeksskeeg"),
         #
         # # Edge cases
-        ("", ""),  # Empty string
+        # ("", ""),  # Empty string
         # ("abcd", "a"),  # Any single character is a valid palindrome
         # ("abccba", "abccba"),  # Even-length palindrome
         # ("abcba", "abcba"),  # Odd-length palindrome
