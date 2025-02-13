@@ -39,6 +39,7 @@ Submissions
 Acceptance Rate
 35.2%
 '''
+from typing import List
 
 
 class Solution:
@@ -46,7 +47,7 @@ class Solution:
         # print(st)
         return st == st[::-1]
 
-    def make_palindrome(self, s, right, val) -> int:
+    def make_palindrome(self, s, right, val: List) -> List[int]:
         new_str = s[ val[s[right]][0]:val[s[right]][1] ]
         new_str_len = len(new_str)
         if self.is_palindrome(new_str):
@@ -55,7 +56,7 @@ class Solution:
             return val
         else:
             for left in new_str:
-                if self.is_palindrome(new_str[left:new_str_len]):
+                if self.is_palindrome(new_str[left:new_str_len-1]):
                     val[s[right]][0] = left
                     val[s[right]][1] = right + 1
                     val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
