@@ -47,8 +47,12 @@ class Solution:
         return st == st[::-1]
 
     def make_palindrome(self, s, right, val) -> int:
-        val[s[right]][1] = right + 1
-        val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
+        if self.is_palindrome(s[ val[s[right]][0]:val[s[right]][1] ] ):
+            val[s[right]][1] = right + 1
+            val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
+            return val
+        else:
+            pass
         return val
 
     def longestPalindrome(self, s: str) -> str:
