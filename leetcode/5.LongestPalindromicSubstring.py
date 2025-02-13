@@ -43,7 +43,7 @@ Acceptance Rate
 
 class Solution:
     def is_palindrome(self, st: str) -> bool:
-        print(st)
+        # print(st)
         return st == st[::-1]
 
     def longestPalindrome(self, s: str) -> str:
@@ -53,48 +53,26 @@ class Solution:
         value = dict()
         highest_value = [0, 1, 0]
         for i in range(len(s)):
-            if s[i] in value and self.is_palindrome(s[value[s[i]][1]:value[s[i]][2]]):
+            if s[i] in value:
                 value[s[i]][1] = i + 1
                 value[s[i]][2] = value[s[i]][1] - value[s[i]][0]
             else:
                 value[s[i]] = [i, i + 1, i + 1 - i]
             # print(value[s[i]][2], highest_value[2])
             if value[s[i]][2] > highest_value[2]:
-                highest_value = value[s[i]]
+                if self.is_palindrome(s[value[s[i]][0]:value[s[i]][1]]):
+                    print(i, value[s[i]])
+                    highest_value = value[s[i]]
         #
+        print(highest_value, value)
         return s[highest_value[0]:highest_value[1]]
 
 
 if __name__ == '__main__':
     testcases = [
         # Basic cases
-        # ("babad", "bab"),  # "aba" is also a valid answer
-        # ("cbbd", "bb"),
-        # #
-        # # # Single character
-        # ("a", "a"),
-        # ("z", "z"),
-        # #
-        # # # Two identical characters
-        # ("aa", "aa"),
-        # ("bb", "bb"),
-        # #
-        # # # Palindromic entire string
-        # ("racecar", "racecar"),
-        # ("abba", "abba"),
-        #
-        # # Mixed cases with a long palindrome in the middle
-        # ("abcdefghgfedcba", "abcdefghgfedcba"),
-        ("forgeeksskeegfor", "geeksskeeg"),
-        #
-        # # Edge cases
-        # ("", ""),  # Empty string
-        # ("abcd", "a"),  # Any single character is a valid palindrome
-        # ("abccba", "abccba"),  # Even-length palindrome
-        # ("abcba", "abcba"),  # Odd-length palindrome
-        #
-        # # Long input
-        # ("a" * 1000, "a" * 1000),  # All characters are the same, entire string is a palindrome
+        ("aacabdkacaa", "aca")
+
     ]
     solution = Solution()
     for testcase in testcases:
