@@ -52,17 +52,17 @@ class Solution:
             return s
         value = dict()
         highest_value = [0, 1, 0]
-        for i in range(len(s)):
-            if s[i] in value:
-                value[s[i]][1] = i + 1
-                value[s[i]][2] = value[s[i]][1] - value[s[i]][0]
+        for right in range(len(s)):
+            if s[right] in value:
+                value[s[right]][1] = right + 1
+                value[s[right]][2] = value[s[right]][1] - value[s[right]][0]
             else:
-                value[s[i]] = [i, i + 1, i + 1 - i]
-            # print(value[s[i]][2], highest_value[2])
-            if value[s[i]][2] > highest_value[2]:
-                if self.is_palindrome(s[value[s[i]][0]:value[s[i]][1]]):
-                    print(i, value[s[i]])
-                    highest_value = value[s[i]]
+                value[s[right]] = [right, right + 1, right + 1 - right]
+            # print(value[s[right]][2], highest_value[2])
+            if value[s[right]][2] > highest_value[2]:
+                if self.is_palindrome(s[value[s[right]][0]:value[s[right]][1]]):
+                    print(right, value[s[right]])
+                    highest_value = value[s[right]]
         #
         print(highest_value, value)
         return s[highest_value[0]:highest_value[1]]
