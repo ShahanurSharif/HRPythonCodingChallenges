@@ -50,19 +50,24 @@ class Solution:
     # aacabdkacaa
     # {'a': [0, 1, 1]}
     def make_palindrome(self, s, right, val: List) -> List[int]:
-        print(
-            s,
-            right,
-            val[s[right]],
-            s[val[s[right]][0]: right+1]
-        )
+        # print(
+        #     s,
+        #     right,
+        #     val[s[right]],
+        #     s[val[s[right]][0]: right+1]
+        # )
         new_str = s[val[s[right]][0]: right+1]
         new_len = len(new_str)
         if self.is_palindrome(new_str):
-            val[s[right]][1] = right+1
-            val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
+            # print(new_str)
+            val[s[right]].insert(new_len, right+1)
+            val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
         else:
+            # acabdka
+
             for i in range(len(new_str)):
+
+                print(val, new_str[i], new_str[val[s[right]]])
                 pass
             # move left
 
@@ -109,13 +114,13 @@ if __name__ == '__main__':
         ("aacabdkacaa", "aca")
 
     ]
-    arr=[1, 2, 3, 4, 5, 6]
-    arr.insert(len(arr) - 1, 's')
-    print(arr)
+    # arr=[1, 2, 3, 4, 5, 6]
+    # arr.insert(len(arr) - 1, 's')
+    # print(arr)
     # print(testcase[0])
     solution = Solution()
     for testcase in testcases:
-        pass
-        # value = solution.longestPalindrome(testcase[0])
+        # pass
+        value = solution.longestPalindrome(testcase[0])
         # print(value)
         # assert value == testcase[1]
