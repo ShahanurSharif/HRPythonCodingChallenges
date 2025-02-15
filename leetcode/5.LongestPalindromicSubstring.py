@@ -47,9 +47,16 @@ class Solution:
         # print(st)
         return st == st[::-1]
 
+    # aacabdkacaa
+    # {'a': [0, 1, 1]}
     def make_palindrome(self, s, right, val: List) -> List[int]:
-        new_str = s[ val[s[right]][0]:val[s[right]][-2] ]
-        print(new_str)
+        print(
+            val,
+            right,
+            s[val[0]:right+1]
+        )
+        # new_str = s[value[s[right]][0]: right+1]
+        # print(new_str)
         # new_str_len = len(new_str)
         # if self.is_palindrome(new_str):
         #     val[s[right]].append(right + 1)
@@ -80,7 +87,7 @@ class Solution:
             if value[s[i]][2] > highest_value[2]:
                 highest_value = value[s[i]]
         #
-        print(highest_value, value)
+        # print(highest_value, value)
         return s[highest_value[0]:highest_value[1]]
 
 
