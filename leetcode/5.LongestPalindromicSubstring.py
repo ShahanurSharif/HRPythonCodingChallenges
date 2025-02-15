@@ -51,10 +51,14 @@ class Solution:
     # {'a': [0, 1, 1]}
     def make_palindrome(self, s, right, val: List) -> List[int]:
         print(
-            val,
+            s,
             right,
-            s[val[0]:right+1]
+            val[s[right]],
+            s[val[s[right]][0]: right+1]
         )
+        new_str = s[val[s[right]][0]: right+1]
+        new_len = len(new_str)
+
         # new_str = s[value[s[right]][0]: right+1]
         # print(new_str)
         # new_str_len = len(new_str)
