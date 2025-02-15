@@ -48,18 +48,20 @@ class Solution:
         return st == st[::-1]
 
     def make_palindrome(self, s, right, val: List) -> List[int]:
-        new_str = s[ val[s[right]][0]:val[s[right]][1] ]
-        new_str_len = len(new_str)
-        if self.is_palindrome(new_str):
-            val[s[right]].append(right + 1)
-            val[s[right]].append(val[s[right]][-2] - val[s[right]][0])
-            return val
-        else:
-            for left in new_str:
-                if self.is_palindrome(new_str[left:new_str_len-1]):
-                    val[s[right]][0] = left
-                    val[s[right]][1] = right + 1
-                    val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
+        new_str = s[ val[s[right]][0]:val[s[right]][-2] ]
+        print(new_str)
+        # new_str_len = len(new_str)
+        # if self.is_palindrome(new_str):
+        #     val[s[right]].append(right + 1)
+        #     val[s[right]].append(val[s[right]][-2] - val[s[right]][0])
+        #     return val
+        # else:
+        #     for left in new_str:
+        #         if not self.is_palindrome(new_str[left:new_str_len-1]):
+        #             val[s[right]].pop(left)
+        #             val[s[right]].append(right + 1)
+        #             val[s[right]].append(val[s[right]][-2] - val[s[right]][0])
+        # return val
         return val
 
     def longestPalindrome(self, s: str) -> str:
