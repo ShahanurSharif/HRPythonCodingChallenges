@@ -58,7 +58,15 @@ class Solution:
         )
         new_str = s[val[s[right]][0]: right+1]
         new_len = len(new_str)
+        if self.is_palindrome(new_str):
+            val[s[right]][1] = right+1
+            val[s[right]][2] = val[s[right]][1] - val[s[right]][0]
+        else:
+            for i in range(len(new_str)):
+                pass
+            # move left
 
+            # aacabdkacaa
         # new_str = s[value[s[right]][0]: right+1]
         # print(new_str)
         # new_str_len = len(new_str)
@@ -101,9 +109,13 @@ if __name__ == '__main__':
         ("aacabdkacaa", "aca")
 
     ]
+    arr=[1, 2, 3, 4, 5, 6]
+    arr.insert(len(arr) - 1, 's')
+    print(arr)
+    # print(testcase[0])
     solution = Solution()
     for testcase in testcases:
-        # print(testcase[0][-2])
-        value = solution.longestPalindrome(testcase[0])
+        pass
+        # value = solution.longestPalindrome(testcase[0])
         # print(value)
         # assert value == testcase[1]
