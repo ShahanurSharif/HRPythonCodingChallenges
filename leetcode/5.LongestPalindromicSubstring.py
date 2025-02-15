@@ -65,8 +65,9 @@ class Solution:
         else:
             # acabdka
             # 0, 2, 4
-            for i in val[s[right]]:
-                print(new_str, s[val[s[right]][i]: right+1])
+            #check index to shift the right one
+            for i in range(len(val[s[right]])):
+                print(new_str, s[val[s[right]][i]: right+1], val, i)
                 # if self.is_palindrome(s[val[s[right]][i]: right+1]):
 
             # move left
