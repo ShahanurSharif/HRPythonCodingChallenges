@@ -64,11 +64,11 @@ class Solution:
             val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
         else:
             # acabdka
+            # 0, 2, 4
+            for i in val[s[right]]:
+                print(new_str, s[val[s[right]][i]: right+1])
+                # if self.is_palindrome(s[val[s[right]][i]: right+1]):
 
-            for i in range(len(new_str)):
-
-                print(val, new_str[i], new_str[val[s[right]]])
-                pass
             # move left
 
             # aacabdkacaa
