@@ -47,9 +47,7 @@ class Solution:
         # print(st)
         return st == st[::-1]
 
-    # aacabdkacaa
-    # {'a': [0, 1, 1]}
-    def make_palindrome(self, s, right, val: List) -> List[int]:
+    def make_palindrome(self, s, right, val):
         new_str = s[val[s[right]][0]: right + 1]
         new_len = len(new_str)
         if self.is_palindrome(new_str):
@@ -80,30 +78,60 @@ class Solution:
         for i in range(len(s)):
             if s[i] in value:
                 value = self.make_palindrome(s, i, value)
-                # print(value)
             else:
                 value[s[i]] = [i, i + 1, i + 1 - i]
-            # print(value[s[i]][2], highest_value[2])
+
             if value[s[i]][-1] > highest_value[-1]:
                 highest_value = value[s[i]]
-        #
-        # print(highest_value, value)
-        return s[highest_value[0]:highest_value[-1]]
+
+        return s[highest_value[0]:highest_value[-2]]
 
 
 if __name__ == '__main__':
     testcases = [
         # Basic cases
-        ("aacabdkacaa", "aca")
+        # ("aacabdkacaa", "aca"),  # Provided test case
+
+        # Edge cases
+        # ("a", "a"),  # Single character string
+        # ("aa", "aa"),  # Two identical characters
+        # ("ab", "a"),  # Two different characters
+        #
+        # Palindromes of different lengths
+        ("racecar", "racecar"),  # Entire string is a palindrome
+        # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
+        # ("cbbd", "bb"),  # Even length palindrome
+        #
+        # # Longest palindrome at edges
+        # ("abcracecar", "racecar"),  # Palindrome at the end
+        # ("racecarxyz", "racecar"),  # Palindrome at the beginning
+        #
+        # # All identical characters
+        # ("aaaaaa", "aaaaaa"),  # Entire string is palindrome
+        #
+        # # No palindromes longer than 1
+        # ("abcdefg", "a"),  # All unique characters
+        #
+        # # Mixed cases
+        # ("abacdfgdcaba", "aba"),  # Multiple small palindromes
+        # ("bananas", "anana"),  # Odd-length palindrome
+        #
+        # # Special characters and digits
+        # ("1234321abc", "1234321"),  # Numeric palindrome
+        # ("a1b2b1a", "a1b2b1a"),  # Mixed characters palindrome
+        #
+        # # Large input case
+        # ("a" * 1000, "a" * 1000),  # Stress test (all identical)
 
     ]
-    # arr=[1, 2, 3, 4, 5, 6]
-    # arr.insert(len(arr) - 1, 's')
-    # print(arr)
-    # print(testcase[0])
+
     solution = Solution()
     for testcase in testcases:
         # pass
         value = solution.longestPalindrome(testcase[0])
         print(value)
-        # assert value == testcase[1]
+        try:
+            assert value == testcase[1]
+        except AssertionError as e:
+            print(f'Assertion failed at the {str(e)} line')
+            exit(1)
