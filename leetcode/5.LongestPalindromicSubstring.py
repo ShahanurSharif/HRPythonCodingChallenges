@@ -84,11 +84,11 @@ class Solution:
             else:
                 value[s[i]] = [i, i + 1, i + 1 - i]
             # print(value[s[i]][2], highest_value[2])
-            if value[s[i]][2] > highest_value[2]:
+            if value[s[i]][-1] > highest_value[-1]:
                 highest_value = value[s[i]]
         #
         # print(highest_value, value)
-        return s[highest_value[0]:highest_value[1]]
+        return s[highest_value[0]:highest_value[-1]]
 
 
 if __name__ == '__main__':
