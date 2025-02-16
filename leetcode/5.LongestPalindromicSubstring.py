@@ -56,18 +56,24 @@ class Solution:
         #     val[s[right]],
         #     s[val[s[right]][0]: right+1]
         # )
-        new_str = s[val[s[right]][0]: right+1]
+        new_str = s[val[s[right]][0]: right + 1]
         new_len = len(new_str)
         if self.is_palindrome(new_str):
             # print(new_str)
-            val[s[right]].insert(new_len, right+1)
+            val[s[right]].insert(new_len, right + 1)
             val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
         else:
             # acabdka
             # 0, 2, 4
-            #check index to shift the right one
+            # check index to shift the left one
             for i in range(len(val[s[right]])):
-                print(new_str, s[val[s[right]][i]: right+1], val, i)
+                # is palindrome
+                # new palindrome is greater than previous
+
+                if ((s[right] == s[val[s[right]][i]] and
+                     self.is_palindrome(s[val[s[right]][i]: right + 1])) and
+                        val[s[right]][-1] < len(s[val[s[right]][i]: right + 1])):
+                    print(s[right], s[val[s[right]][i]], new_str, s[val[s[right]][i]: right + 1], val, i)
                 # if self.is_palindrome(s[val[s[right]][i]: right+1]):
 
             # move left
