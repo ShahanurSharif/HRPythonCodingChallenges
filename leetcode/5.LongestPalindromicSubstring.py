@@ -73,7 +73,15 @@ class Solution:
                 if ((s[right] == s[val[s[right]][i]] and
                      self.is_palindrome(s[val[s[right]][i]: right + 1])) and
                         val[s[right]][-1] < len(s[val[s[right]][i]: right + 1])):
-                    print(s[right], s[val[s[right]][i]], new_str, s[val[s[right]][i]: right + 1], val, i)
+                    print(
+                        'hello',
+                        s[right],
+                        s[val[s[right]][i]],
+                        new_str,
+                        s[val[s[right]][i]: right + 1],
+                        val,
+                        i
+                    )
                 # if self.is_palindrome(s[val[s[right]][i]: right+1]):
 
             # move left
