@@ -67,13 +67,13 @@ class Solution:
             # 0, 2, 4
             # check index to shift the left one
             for i in range(len(val[s[right]])):
-                new_str = s[val[s[right]][i]: right + 1]
-                new_len = len(new_str)
+                # is palindrome
+                # new palindrome is greater than previous
                 if s[right] == s[val[s[right]][i]]:
-                    if self.is_palindrome(new_str):
-                        if val[s[right]][-1] < new_len:
-
+                    if self.is_palindrome(s[val[s[right]][i]: right + 1]):
+                        if val[s[right]][-1] < len(s[val[s[right]][i]: right + 1]):
                             val[s[right]] = val[s[right]][i:]
+                            val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
                             print(val)
                             # val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
                             # val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
