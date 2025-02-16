@@ -50,43 +50,23 @@ class Solution:
     # aacabdkacaa
     # {'a': [0, 1, 1]}
     def make_palindrome(self, s, right, val: List) -> List[int]:
-        # print(
-        #     s,
-        #     right,
-        #     val[s[right]],
-        #     s[val[s[right]][0]: right+1]
-        # )
         new_str = s[val[s[right]][0]: right + 1]
         new_len = len(new_str)
         if self.is_palindrome(new_str):
-            # print(new_str)
             val[s[right]].insert(new_len, right + 1)
             val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
         else:
-            # acabdka
-            # 0, 2, 4
-            # check index to shift the left one
+            remove_indexes = []
             for i in range(len(val[s[right]])):
-                # is palindrome
-                # new palindrome is greater than previous
                 if s[right] == s[val[s[right]][i]]:
                     if self.is_palindrome(s[val[s[right]][i]: right + 1]):
                         if val[s[right]][-1] < len(s[val[s[right]][i]: right + 1]):
-                            val[s[right]] = val[s[right]][i:]
+                            remove_indexes.append(i)
                             val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
-                            print(val)
-                            # val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
-                            # val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
-                            # print(
-                            #     'hello',
-                            #     s[right],
-                            #     s[val[s[right]][i]],
-                            #     new_str,
-                            #     s[val[s[right]][i]: right + 1],
-                            #     val,
-                            #     i,
-                            #     right
-                            # )
+                            # print(val, s[val[s[right]][i]: right + 1])
+            if remove_indexes:
+                val[s[right]] = val[s[right]][remove_indexes[-1]:]
+                val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
 
         return val
 
@@ -100,6 +80,7 @@ class Solution:
         for i in range(len(s)):
             if s[i] in value:
                 value = self.make_palindrome(s, i, value)
+                # print(value)
             else:
                 value[s[i]] = [i, i + 1, i + 1 - i]
             # print(value[s[i]][2], highest_value[2])
@@ -124,5 +105,5 @@ if __name__ == '__main__':
     for testcase in testcases:
         # pass
         value = solution.longestPalindrome(testcase[0])
-        # print(value)
+        print(value)
         # assert value == testcase[1]
