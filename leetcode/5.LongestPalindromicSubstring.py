@@ -47,6 +47,12 @@ class Solution:
         # print(st)
         return st == st[::-1]
 
+    # 0-r 1-a 2-c 3-e 4-c 5-a 6-r
+    # [
+    # 2, 3, 1
+    # 2, 3, 5, 3
+    # ]
+
     def make_palindrome(self, s, right, val):
         new_str = s[val[s[right]][0]: right + 1]
         new_len = len(new_str)
@@ -61,7 +67,7 @@ class Solution:
                         if val[s[right]][-1] < len(s[val[s[right]][i]: right + 1]):
                             remove_indexes.append(i)
                             val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
-                            # print(val, s[val[s[right]][i]: right + 1])
+
             if remove_indexes:
                 val[s[right]] = val[s[right]][remove_indexes[-1]:]
                 val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
@@ -78,6 +84,7 @@ class Solution:
         for i in range(len(s)):
             if s[i] in value:
                 value = self.make_palindrome(s, i, value)
+                print(value)
             else:
                 value[s[i]] = [i, i + 1, i + 1 - i]
 
