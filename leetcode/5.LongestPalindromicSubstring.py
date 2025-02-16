@@ -67,40 +67,27 @@ class Solution:
             # 0, 2, 4
             # check index to shift the left one
             for i in range(len(val[s[right]])):
-                # is palindrome
-                # new palindrome is greater than previous
+                new_str = s[val[s[right]][i]: right + 1]
+                new_len = len(new_str)
+                if s[right] == s[val[s[right]][i]]:
+                    if self.is_palindrome(new_str):
+                        if val[s[right]][-1] < new_len:
 
-                if ((s[right] == s[val[s[right]][i]] and
-                     self.is_palindrome(s[val[s[right]][i]: right + 1])) and
-                        val[s[right]][-1] < len(s[val[s[right]][i]: right + 1])):
-                    print(
-                        'hello',
-                        s[right],
-                        s[val[s[right]][i]],
-                        new_str,
-                        s[val[s[right]][i]: right + 1],
-                        val,
-                        i
-                    )
-                # if self.is_palindrome(s[val[s[right]][i]: right+1]):
+                            val[s[right]] = val[s[right]][i:]
+                            print(val)
+                            # val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
+                            # val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
+                            # print(
+                            #     'hello',
+                            #     s[right],
+                            #     s[val[s[right]][i]],
+                            #     new_str,
+                            #     s[val[s[right]][i]: right + 1],
+                            #     val,
+                            #     i,
+                            #     right
+                            # )
 
-            # move left
-
-            # aacabdkacaa
-        # new_str = s[value[s[right]][0]: right+1]
-        # print(new_str)
-        # new_str_len = len(new_str)
-        # if self.is_palindrome(new_str):
-        #     val[s[right]].append(right + 1)
-        #     val[s[right]].append(val[s[right]][-2] - val[s[right]][0])
-        #     return val
-        # else:
-        #     for left in new_str:
-        #         if not self.is_palindrome(new_str[left:new_str_len-1]):
-        #             val[s[right]].pop(left)
-        #             val[s[right]].append(right + 1)
-        #             val[s[right]].append(val[s[right]][-2] - val[s[right]][0])
-        # return val
         return val
 
     def longestPalindrome(self, s: str) -> str:
