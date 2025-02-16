@@ -54,23 +54,24 @@ class Solution:
     # ]
 
     def make_palindrome(self, s, right, val):
+        # print(right)
         new_str = s[val[s[right]][0]: right + 1]
         new_len = len(new_str)
         if self.is_palindrome(new_str):
             val[s[right]].insert(new_len, right + 1)
             val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
-        else:
-            remove_indexes = []
-            for i in range(len(val[s[right]])):
-                if s[right] == s[val[s[right]][i]]:
-                    if self.is_palindrome(s[val[s[right]][i]: right + 1]):
-                        if val[s[right]][-1] < len(s[val[s[right]][i]: right + 1]):
-                            remove_indexes.append(i)
-                            val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
-
-            if remove_indexes:
-                val[s[right]] = val[s[right]][remove_indexes[-1]:]
-                val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
+        # else:
+        #     remove_indexes = []
+        #     for i in range(len(val[s[right]])):
+        #         if s[right] == s[val[s[right]][i]]:
+        #             if self.is_palindrome(s[val[s[right]][i]: right + 1]):
+        #                 if val[s[right]][-1] < len(s[val[s[right]][i]: right + 1]):
+        #                     remove_indexes.append(i)
+        #                     val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
+        #
+        #     if remove_indexes:
+        #         val[s[right]] = val[s[right]][remove_indexes[-1]:]
+        #         val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
 
         return val
 
@@ -82,7 +83,7 @@ class Solution:
 
         highest_value = [0, 1, 0]
         for i in range(len(s)):
-            if s[i] in value:
+            if s[i] in value and s[i]=='c':
                 value = self.make_palindrome(s, i, value)
                 print(value)
             else:
