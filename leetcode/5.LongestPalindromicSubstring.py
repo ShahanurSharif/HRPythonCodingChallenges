@@ -49,7 +49,7 @@ class Solution:
 
     def make_palindrome(self, s, right, val):
 
-        new_str = s[val[s[right]]['indices'][0]: right + 1]
+        new_str = s[val[s[right]][0]: right + 1]
         if self.is_palindrome(new_str):
             val[s[right]].append(right)
         else:
