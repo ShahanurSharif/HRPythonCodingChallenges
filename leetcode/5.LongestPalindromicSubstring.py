@@ -55,24 +55,23 @@ class Solution:
 
     def make_palindrome(self, s, right, val):
         # print(right)
-        new_str = s[val[s[right]][0]: right + 1]
-        new_len = len(new_str)
-        print(new_str, right)
+        new_str = s[val[s[right]]['indices'][0]: right + 1]
+        # print(new_str, val[s[right]], right)
         if self.is_palindrome(new_str):
-            val[s[right]].insert(new_len, right)
-            val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
-        # else:
-        #     remove_indexes = []
-        #     for i in range(len(val[s[right]])):
-        #         if s[right] == s[val[s[right]][i]]:
-        #             if self.is_palindrome(s[val[s[right]][i]: right + 1]):
-        #                 if val[s[right]][-1] < len(s[val[s[right]][i]: right + 1]):
-        #                     remove_indexes.append(i)
-        #                     val[s[right]].insert(len(s[val[s[right]][i]: right + 1]), right + 1)
-        #
-        #     if remove_indexes:
-        #         val[s[right]] = val[s[right]][remove_indexes[-1]:]
-        #         val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
+            val[s[right]]['indices'].append(right)
+            val[s[right]]['total'] = val[s[right]]['indices'][-1] - val[s[right]]['indices'][0] + 1
+        else:
+            remove_indexes = []
+            for i in range(len(val[s[right]]['indices'])):
+                if s[right] == s[val[s[right]]['indices'][i]]:
+                    if self.is_palindrome(s[val[s[right]]['indices'][i]: right + 1]):
+                        if val[s[right]]['total'] < len(s[val[s[right]]['indices'][i]: right + 1]):
+                            remove_indexes.append(i)
+                            val[s[right]]['indices'].append(right)
+
+            if remove_indexes:
+                val[s[right]]['indices'] = val[s[right]][remove_indexes[-1]:]
+                val[s[right]]['total'] = val[s[right]][-1] - val[s[right]][0]
 
         return val
 
@@ -84,14 +83,13 @@ class Solution:
 
         highest_value = [0, 1, 0]
         for i in range(len(s)):
-            if s[i] in value and s[i]=='c':
+            if s[i] in value:
                 value = self.make_palindrome(s, i, value)
-                print(value)
             else:
-                value[s[i]] = [i, i, i + 1 - i]
+                value[s[i]]={'indices': [i], 'total': 1}
 
-            if value[s[i]][-1] > highest_value[-1]:
-                highest_value = value[s[i]]
+            if value[s[i]]['total'] > highest_value[-1]:
+                highest_value = [value[s[i]]['indices'][0], value[s[i]]['indices'][-1], value[s[i]]['total']]
 
         return s[highest_value[0]:highest_value[-2]+1]
 
@@ -99,7 +97,7 @@ class Solution:
 if __name__ == '__main__':
     testcases = [
         # Basic cases
-        # ("aacabdkacaa", "aca"),  # Provided test case
+        ("aacabdkacaa", "aca"),  # Provided test case
 
         # Edge cases
         # ("a", "a"),  # Single character string
@@ -107,7 +105,7 @@ if __name__ == '__main__':
         # ("ab", "a"),  # Two different characters
         #
         # Palindromes of different lengths
-        ("racecar", "racecar"),  # Entire string is a palindrome
+        # ("racecar", "racecar"),  # Entire string is a palindrome
         # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
         # ("cbbd", "bb"),  # Even length palindrome
         #
