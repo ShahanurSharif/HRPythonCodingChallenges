@@ -51,20 +51,18 @@ class Solution:
 
         new_str = s[val[s[right]]['indices'][0]: right + 1]
         if self.is_palindrome(new_str):
-            val[s[right]]['indices'].append(right)
-            val[s[right]]['total'] = val[s[right]]['indices'][-1] - val[s[right]]['indices'][0] + 1
+            val[s[right]].append(right)
         else:
             remove_indexes = []
-            for i in range(len(val[s[right]]['indices'])):
-                if s[right] == s[val[s[right]]['indices'][i]]:
-                    if self.is_palindrome(s[val[s[right]]['indices'][i]: right + 1]):
-                        if val[s[right]]['total'] < len(s[val[s[right]]['indices'][i]: right + 1]):
+            for i in range(len(val[s[right]])):
+                if s[right] == s[val[s[right]][i]]:
+                    if self.is_palindrome(s[val[s[right]][i]: right + 1]):
+                        if len(val[s[right]]) < len(s[val[s[right]][i]: right + 1]):
                             remove_indexes.append(i)
-                            val[s[right]]['indices'].append(right)
+                            val[s[right]].append(right)
             # print(remove_indexes[-1])
             if remove_indexes:
-                val[s[right]]['indices'] = val[s[right]]['indices'][remove_indexes[-1]:]
-                val[s[right]]['total'] = val[s[right]]['indices'][-1] - val[s[right]]['indices'][0]
+                val[s[right]] = val[s[right]][remove_indexes[-1]:]
             print(val, new_str)
         return val
 
@@ -79,10 +77,10 @@ class Solution:
             if s[i] in value:
                 value = self.make_palindrome(s, i, value)
             else:
-                value[s[i]]={'indices': [i], 'total': 1}
+                value[s[i]]=[i]
 
-            if value[s[i]]['total'] > highest_value[-1]:
-                highest_value = [value[s[i]]['indices'][0], value[s[i]]['indices'][-1], value[s[i]]['total']]
+            if len(value[s[i]]) > highest_value[-1]:
+                highest_value = [value[s[i]][0], value[s[i]][-1], len(value[s[i]])]
 
         return s[highest_value[0]:highest_value[-2]+1]
 
