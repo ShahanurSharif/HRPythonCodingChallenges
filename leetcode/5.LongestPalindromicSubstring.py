@@ -44,19 +44,12 @@ from typing import List
 
 class Solution:
     def is_palindrome(self, st: str) -> bool:
-        # print(st)
         return st == st[::-1]
 
-    # 0-r 1-a 2-c 3-e 4-c 5-a 6-r
-    # [
-    # 2, 3, 1
-    # 2, 3, 5, 3
-    # ]
 
     def make_palindrome(self, s, right, val):
-        # print(right)
+
         new_str = s[val[s[right]]['indices'][0]: right + 1]
-        # print(new_str, val[s[right]], right)
         if self.is_palindrome(new_str):
             val[s[right]]['indices'].append(right)
             val[s[right]]['total'] = val[s[right]]['indices'][-1] - val[s[right]]['indices'][0] + 1
@@ -68,11 +61,11 @@ class Solution:
                         if val[s[right]]['total'] < len(s[val[s[right]]['indices'][i]: right + 1]):
                             remove_indexes.append(i)
                             val[s[right]]['indices'].append(right)
-
+            # print(remove_indexes[-1])
             if remove_indexes:
-                val[s[right]]['indices'] = val[s[right]][remove_indexes[-1]:]
-                val[s[right]]['total'] = val[s[right]][-1] - val[s[right]][0]
-
+                val[s[right]]['indices'] = val[s[right]]['indices'][remove_indexes[-1]:]
+                val[s[right]]['total'] = val[s[right]]['indices'][-1] - val[s[right]]['indices'][0]
+            print(val, new_str)
         return val
 
     def longestPalindrome(self, s: str) -> str:
