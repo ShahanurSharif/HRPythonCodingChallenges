@@ -57,8 +57,9 @@ class Solution:
         # print(right)
         new_str = s[val[s[right]][0]: right + 1]
         new_len = len(new_str)
+        print(new_str, right)
         if self.is_palindrome(new_str):
-            val[s[right]].insert(new_len, right + 1)
+            val[s[right]].insert(new_len, right)
             val[s[right]][-1] = val[s[right]][-2] - val[s[right]][0]
         # else:
         #     remove_indexes = []
@@ -87,12 +88,12 @@ class Solution:
                 value = self.make_palindrome(s, i, value)
                 print(value)
             else:
-                value[s[i]] = [i, i + 1, i + 1 - i]
+                value[s[i]] = [i, i, i + 1 - i]
 
             if value[s[i]][-1] > highest_value[-1]:
                 highest_value = value[s[i]]
 
-        return s[highest_value[0]:highest_value[-2]]
+        return s[highest_value[0]:highest_value[-2]+1]
 
 
 if __name__ == '__main__':
