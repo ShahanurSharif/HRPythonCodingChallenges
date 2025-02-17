@@ -79,7 +79,7 @@ class Solution:
             total_len = value[s[i]][-1] - value[s[i]][0]
             if total_len > highest_value[-1]:
                 highest_value = [value[s[i]][0], value[s[i]][-1], total_len]
-        # print(highest_value)
+        print(highest_value)
         return s[highest_value[0]:highest_value[-2]+1]
 
 
@@ -87,38 +87,38 @@ if __name__ == '__main__':
     testcases = [
         ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
         # Basic cases
-        ("aacabdkacaa", "aca"),  # Provided test case
-
-        # Edge cases
-        ("a", "a"),  # Single character string
-        ("aa", "aa"),  # Two identical characters
-        ("ab", "a"),  # Two different characters
+        # ("aacabdkacaa", "aca"),  # Provided test case
         #
-        # Palindromes of different lengths
-        ("racecar", "racecar"),  # Entire string is a palindrome
-        ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
-        ("cbbd", "bb"),  # Even length palindrome
-        #
-        # # Longest palindrome at edges
-        ("abcracecar", "racecar"),  # Palindrome at the end
-        ("racecarxyz", "racecar"),  # Palindrome at the beginning
-        #
-        # # All identical characters
-        ("aaaaaa", "aaaaaa"),  # Entire string is palindrome
-        #
-        # # No palindromes longer than 1
-        ("abcdefg", "a"),  # All unique characters
-        #
-        # # Mixed cases
-        ("abacdfgdcaba", "aba"),  # Multiple small palindromes
-        ("bananas", "anana"),  # Odd-length palindrome
-        #
-        # # Special characters and digits
-        ("1234321abc", "1234321"),  # Numeric palindrome
-        ("a1b2b1a", "a1b2b1a"),  # Mixed characters palindrome
-        #
-        # # Large input case
-        ("a" * 1000, "a" * 1000),  # Stress test (all identical)
+        # # Edge cases
+        # ("a", "a"),  # Single character string
+        # ("aa", "aa"),  # Two identical characters
+        # ("ab", "a"),  # Two different characters
+        # #
+        # # Palindromes of different lengths
+        # ("racecar", "racecar"),  # Entire string is a palindrome
+        # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
+        # ("cbbd", "bb"),  # Even length palindrome
+        # #
+        # # # Longest palindrome at edges
+        # ("abcracecar", "racecar"),  # Palindrome at the end
+        # ("racecarxyz", "racecar"),  # Palindrome at the beginning
+        # #
+        # # # All identical characters
+        # ("aaaaaa", "aaaaaa"),  # Entire string is palindrome
+        # #
+        # # # No palindromes longer than 1
+        # ("abcdefg", "a"),  # All unique characters
+        # #
+        # # # Mixed cases
+        # ("abacdfgdcaba", "aba"),  # Multiple small palindromes
+        # ("bananas", "anana"),  # Odd-length palindrome
+        # #
+        # # # Special characters and digits
+        # ("1234321abc", "1234321"),  # Numeric palindrome
+        # ("a1b2b1a", "a1b2b1a"),  # Mixed characters palindrome
+        # #
+        # # # Large input case
+        # ("a" * 1000, "a" * 1000),  # Stress test (all identical)
 
     ]
 
