@@ -47,19 +47,23 @@ class Solution:
         def check(i, j):
             left = i
             right = j - 1
+
             while left < right:
                 if s[left] != s[right]:
                     return False
 
                 left += 1
                 right -= 1
+                print(left, right)
 
             return True
 
-        for from_right in range(len(s), 0, -1):
-            for start in range(len(s) - from_right + 1):
-                pass
-                print(from_right, start)
+        # racecar
+        for from_right in range( len(s), 0, -1 ):
+            for start in range( len(s) - from_right + 1 ):
+                if check(start, start + from_right):
+                    return s[start:start + from_right]
+        return ""
 
 
 
