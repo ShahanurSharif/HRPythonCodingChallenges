@@ -50,8 +50,10 @@ class Solution:
             return True
 
         for from_right in range(len(s), 0, -1):
-            for start in range(len(s), - from_right + 1):
+            # print(from_right)
+            for start in range(len(s) - from_right + 1):
                 pass
+                print(start)
 
 
 
