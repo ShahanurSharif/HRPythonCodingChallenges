@@ -47,13 +47,19 @@ class Solution:
         def check(i, j):
             left = i
             right = j - 1
+            while left < right:
+                if s[left] != s[right]:
+                    return False
+
+                left += 1
+                right -= 1
+
             return True
 
         for from_right in range(len(s), 0, -1):
-            # print(from_right)
             for start in range(len(s) - from_right + 1):
                 pass
-                print(start)
+                print(from_right, start)
 
 
 
