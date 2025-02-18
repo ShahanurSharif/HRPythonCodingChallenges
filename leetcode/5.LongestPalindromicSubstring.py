@@ -43,50 +43,21 @@ from typing import List
 
 
 class Solution:
-    def is_palindrome(self, st: str) -> bool:
-        return st == st[::-1]
-
-    def make_palindrome(self, s, right, val):
-        new_str = s[val[s[right]][0]: right + 1]
-        if self.is_palindrome(new_str):
-            val[s[right]].append(right)
-        else:
-            remove_indexes = []
-            for i in range(len(val[s[right]])):
-                if s[right] == s[val[s[right]][i]]:
-                    if self.is_palindrome(s[val[s[right]][i]: right + 1]):
-                        total_len = val[s[right]][-1] - val[s[right]][0]
-                        if total_len < len(s[val[s[right]][i]: right + 1]):
-                            remove_indexes.append(i)
-                            val[s[right]].append(right)
-            if remove_indexes:
-                val[s[right]] = val[s[right]][remove_indexes[-1]:]
-
-        return val
-
     def longestPalindrome(self, s: str) -> str:
-        # print(s[1:3])
-        if len(s) <= 1:
-            return s
-        value = dict()
+        def check(i, j):
+            left = i
+            right = j - 1
+            return True
 
-        highest_value = [0, 0, 0]
-        for i in range(len(s)):
-            if s[i] in value:
-                value = self.make_palindrome(s, i, value)
-            else:
-                value[s[i]]=[i]
-            total_len = value[s[i]][-1] - value[s[i]][0]
-            if total_len > highest_value[-1]:
-                highest_value = [value[s[i]][0], value[s[i]][-1], total_len]
-        print(highest_value)
-        return s[highest_value[0]:highest_value[-2]+1]
+        for from_right in range(len(s), 0, -1):
+            for start in range(len(s), - from_right + 1):
+                pass
 
 
 
 if __name__ == '__main__':
     testcases = [
-        ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
+        # ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
         # Basic cases
         # ("aacabdkacaa", "aca"),  # Provided test case
         #
@@ -96,7 +67,7 @@ if __name__ == '__main__':
         # ("ab", "a"),  # Two different characters
         # #
         # # Palindromes of different lengths
-        # ("racecar", "racecar"),  # Entire string is a palindrome
+        ("racecar", "racecar"),  # Entire string is a palindrome
         # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
         # ("cbbd", "bb"),  # Even length palindrome
         # #
