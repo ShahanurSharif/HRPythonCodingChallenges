@@ -47,7 +47,8 @@ class Solution:
         def check(i, j):
             left = i
             right = j - 1
-
+            print(s[left], s[right])
+            print(left, right)
             while left < right:
                 if s[left] != s[right]:
                     return False
@@ -61,7 +62,7 @@ class Solution:
                 # 4-c
                 # 5-a
                 # 6-r
-                print(left, right)
+
 
             return True
 
