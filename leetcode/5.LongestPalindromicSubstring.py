@@ -75,8 +75,19 @@ class Solution:
         for i in range(n):
             dp[i][i] = True
 
+        # babad
+        for i in range(n - 1):
+            print(s[i], s[i + 1])
+            if s[i] == s[i + 1]:
+                dp[i][i + 1] = True
+                ans = [i, i + 1]
 
+        for diff in range( 2, n ):
+            for i in range(n - diff):
+                print(diff, i)
+                # j = i + diff
 
+            # pass
         print(dp)
 
 if __name__ == '__main__':
