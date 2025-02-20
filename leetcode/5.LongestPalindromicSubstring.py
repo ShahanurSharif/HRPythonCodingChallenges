@@ -54,6 +54,13 @@ class Solution:
 
                 left += 1
                 right -= 1
+                # 0-r
+                # 1-a
+                # 2-c
+                # 3-e
+                # 4-c
+                # 5-a
+                # 6-r
                 print(left, right)
 
             return True
@@ -64,6 +71,9 @@ class Solution:
                 if check(start, start + from_right):
                     return s[start:start + from_right]
         return ""
+
+    def longestPalindromeDp(self, s: str) -> str:
+        pass
 
 
 
