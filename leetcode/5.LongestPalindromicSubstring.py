@@ -102,8 +102,8 @@ if __name__ == '__main__':
         # ("ab", "a"),  # Two different characters
         # #
         # # Palindromes of different lengths
-        # ("racecar", "racecar"),  # Entire string is a palindrome
-        ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
+        ("racecar", "racecar"),  # Entire string is a palindrome
+        # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
         # ("cbbd", "bb"),  # Even length palindrome
         # #
         # # # Longest palindrome at edges
