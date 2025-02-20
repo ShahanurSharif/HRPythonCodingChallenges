@@ -47,28 +47,21 @@ class Solution:
         def check(i, j):
             left = i
             right = j - 1
-            print(s[left], s[right])
-            print(left, right)
+            print(left, right, s[left], s[right])
             while left < right:
                 if s[left] != s[right]:
                     return False
 
                 left += 1
                 right -= 1
-                # 0-r
-                # 1-a
-                # 2-c
-                # 3-e
-                # 4-c
-                # 5-a
-                # 6-r
-
 
             return True
 
         # racecar
         for from_right in range( len(s), 0, -1 ):
+            # print(from_right)
             for start in range( len(s) - from_right + 1 ):
+                # print(from_right, start+from_right, len(s), len(s) - from_right + 1)
                 if check(start, start + from_right):
                     return s[start:start + from_right]
         return ""
@@ -80,7 +73,7 @@ class Solution:
 
 if __name__ == '__main__':
     testcases = [
-        # ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
+        ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
         # Basic cases
         # ("aacabdkacaa", "aca"),  # Provided test case
         #
@@ -90,7 +83,7 @@ if __name__ == '__main__':
         # ("ab", "a"),  # Two different characters
         # #
         # # Palindromes of different lengths
-        ("racecar", "racecar"),  # Entire string is a palindrome
+        # ("racecar", "racecar"),  # Entire string is a palindrome
         # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
         # ("cbbd", "bb"),  # Even length palindrome
         # #
@@ -121,5 +114,5 @@ if __name__ == '__main__':
     for testcase in testcases:
         # pass
         value = solution.longestPalindrome(testcase[0])
-        # print(value)
+        print(value)
         assert value == testcase[1]
