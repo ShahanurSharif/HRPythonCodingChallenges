@@ -67,13 +67,21 @@ class Solution:
         return ""
 
     def longestPalindromeDp(self, s: str) -> str:
-        pass
+        n = len(s)
+        dp = [[False] * n for _ in range(n)]
+        # print(dp)
+
+        ans = [0, 0]
+        for i in range(n):
+            dp[i][i] = True
 
 
+
+        print(dp)
 
 if __name__ == '__main__':
     testcases = [
-        ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
+        # ("abbcccbbbcaaccbababcbcabca", "bbcccbb"),
         # Basic cases
         # ("aacabdkacaa", "aca"),  # Provided test case
         #
@@ -84,7 +92,7 @@ if __name__ == '__main__':
         # #
         # # Palindromes of different lengths
         # ("racecar", "racecar"),  # Entire string is a palindrome
-        # ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
+        ("babad", "bab"),  # Multiple valid outputs ("aba" also valid)
         # ("cbbd", "bb"),  # Even length palindrome
         # #
         # # # Longest palindrome at edges
@@ -113,6 +121,7 @@ if __name__ == '__main__':
     solution = Solution()
     for testcase in testcases:
         # pass
-        value = solution.longestPalindrome(testcase[0])
+        # value = solution.longestPalindrome(testcase[0])
+        value = solution.longestPalindromeDp(testcase[0])
         print(value)
         assert value == testcase[1]
