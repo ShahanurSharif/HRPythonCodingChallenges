@@ -1,6 +1,3 @@
-from pygments.style import ansicolors
-
-
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = []
