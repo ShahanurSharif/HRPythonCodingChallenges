@@ -67,29 +67,31 @@ class Solution:
         return ""
 
     def longestPalindromeDp(self, s: str) -> str:
-        n = len(s)
-        dp = [[False] * n for _ in range(n)]
-        # print(dp)
+        def expeand(i, j):
+            left = i
+            right = j
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                left -=1
+                right += 1
+
+            return right - left - 1
 
         ans = [0, 0]
-        for i in range(n):
-            dp[i][i] = True
 
-        # babad
-        for i in range(n - 1):
-            print(s[i], s[i + 1])
-            if s[i] == s[i + 1]:
-                dp[i][i + 1] = True
-                ans = [i, i + 1]
+        for i in range(len(s)):
+            odd_length = expeand(i, i)
+            print(i, odd_length)
+            if odd_length > ans[1] - ans[0] + 1:
+                dist = odd_length // 2
+                ans = [i - dist, i + dist]
 
-        for diff in range( 2, n ):
-            for i in range(n - diff):
-                print(diff, i)
-                # j = i + diff
+            even_length = expeand(i, i + 1)
+            if even_length > ans[1] - ans[0] + 1:
+                dist = ( even_length // 2 ) - 1
+                ans = [i - dist, i + 1 + dist]
 
-            # pass
-
-        print(dp)
+        i, j = ans
+        return s[i: j + 1]
 
 
 if __name__ == '__main__':
