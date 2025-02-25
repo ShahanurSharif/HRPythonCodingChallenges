@@ -1,6 +1,24 @@
+from pygments.style import ansicolors
+
+
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        result = ['', '']
+        ans = []
+        # ans.append(['*']*numRows)
+        # print(ans)
+        for i in range(len(s)):
+            for j in range(numRows):
+                ans.append([j])
+
+
+        print(ans)
+
+            # PAYPALISHIRING
+        # value = [
+        #     ['p', 'p'],
+        #     ['a'],
+        #     ['y']
+        # ]
 
 
 if __name__ == '__main__':
