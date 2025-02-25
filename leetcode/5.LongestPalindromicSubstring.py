@@ -80,12 +80,12 @@ class Solution:
 
         for i in range(len(s)):
             odd_length = expeand(i, i)
-            print(i, odd_length)
             if odd_length > ans[1] - ans[0] + 1:
                 dist = odd_length // 2
                 ans = [i - dist, i + dist]
 
             even_length = expeand(i, i + 1)
+
             if even_length > ans[1] - ans[0] + 1:
                 dist = ( even_length // 2 ) - 1
                 ans = [i - dist, i + 1 + dist]
