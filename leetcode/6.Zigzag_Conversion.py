@@ -1,12 +1,16 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = []
+        #  1,  2,  3,  4,  5,
+        #  6,  7,  8,  *, 10,
+        # 11, 12,  *, 14, 15,
+        # 16,  *, 18, 19, 20,
+        #  *,  *,  *,  *,  *,
+        i=0
+        while i != len(s) + 1:
+            for j in range(numRows):
+                i+=1
 
-        # (
-        #  [1, 1], [2, 1], [3, 1],
-        #  [2, 2],
-        #  [3,1], [3, 2], [3, 3]
-        # )
 
 
 if __name__ == '__main__':
