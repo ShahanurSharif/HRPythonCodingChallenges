@@ -12,9 +12,9 @@ class Solution:
 if __name__ == '__main__':
     s = Solution()
     testcases = [
-        ("PAYPALISHIRING", 3),
-        # ("PAYPALISHIRING", 4),
-        # ("A", 1),
+        ("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"),
+        # ("PAYPALISHIRING", 4, "PINALSIGYAHRPI"),
+        # ("A", 1, "A"),
         # ("", 1),
         # ("AB", 1),
         # ("ABCD", 2),
