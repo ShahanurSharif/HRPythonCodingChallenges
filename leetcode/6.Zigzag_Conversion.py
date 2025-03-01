@@ -6,10 +6,10 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = []
-        i=0
-        while i != len(s) + 1:
-            for j in range(numRows):
-                i+=1
+        rows = [[] for _ in range(numRows)]
+        for i in range(len(s)):
+            print(i)
+
 
 
 
@@ -17,6 +17,7 @@ if __name__ == '__main__':
     s = Solution()
     testcases = [
         ("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"),
+        ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, "AGMSYBFHLNRTXZCEIKOQUWDJPV")
         # ("PAYPALISHIRING", 4, "PINALSIGYAHRPI"),
         # ("A", 1, "A"),
         # ("", 1),
