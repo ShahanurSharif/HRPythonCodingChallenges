@@ -3,6 +3,11 @@
 # 11, 12,  *, 14, 15,
 # 16,  *, 18, 19, 20,
 #  *,  *,  *,  *,  *,
+
+#p * a
+#a P l
+#y * i
+
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = []
