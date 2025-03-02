@@ -5,6 +5,7 @@
 #  *,  *,  *,  *,  *,
 from heapq import merge
 
+from numpy.ma.extras import row_stack
 from pyautogui import printInfo
 
 
@@ -19,10 +20,11 @@ class Solution:
             # print(i, char, i % numRows)
             ans[i % numRows].append(char)
 
-        # print(ans)
+        print(ans)
 
-        for row in ans:
-            print(list(merge(row)))
+        # merge_string = "".join(["".join(row) for row in ans])
+
+        # return merge_string
 
 
 if __name__ == '__main__':
