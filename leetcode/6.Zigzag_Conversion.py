@@ -3,6 +3,10 @@
 # 11, 12,  *, 14, 15,
 # 16,  *, 18, 19, 20,
 #  *,  *,  *,  *,  *,
+from heapq import merge
+
+from pyautogui import printInfo
+
 
 #p * a
 #a P l
@@ -15,7 +19,10 @@ class Solution:
             # print(i, char, i % numRows)
             ans[i % numRows].append(char)
 
-        print(ans)
+        # print(ans)
+
+        for row in ans:
+            print(list(merge(row)))
 
 
 if __name__ == '__main__':
