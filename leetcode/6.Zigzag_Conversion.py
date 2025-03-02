@@ -14,7 +14,8 @@ class Solution:
         # rows = [[] for _ in range(numRows)]
         # print(rows)
         for i, char in enumerate(s):
-            ans[i % numRows].append(char)
+            print(i, char)
+            # ans[i % numRows].append(char)
         # for i in range(len(s)):
         #     print(i)
 
