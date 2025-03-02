@@ -11,9 +11,12 @@
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = []
-        rows = [[] for _ in range(numRows)]
-        for i in range(len(s)):
-            print(i)
+        # rows = [[] for _ in range(numRows)]
+        # print(rows)
+        for i, char in enumerate(s):
+            ans[i % numRows].append(char)
+        # for i in range(len(s)):
+        #     print(i)
 
 
 
