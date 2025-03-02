@@ -10,17 +10,19 @@
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        ans = []
+        ans = [[] for _ in range(numRows)]
         for i, char in enumerate(s):
-            print(i, char, i % numRows)
+            # print(i, char, i % numRows)
             ans[i % numRows].append(char)
+
+        print(ans)
 
 
 if __name__ == '__main__':
     s = Solution()
     testcases = [
         ("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"),
-        ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, "AGMSYBFHLNRTXZCEIKOQUWDJPV")
+        # ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, "AGMSYBFHLNRTXZCEIKOQUWDJPV")
         # ("PAYPALISHIRING", 4, "PINALSIGYAHRPI"),
         # ("A", 1, "A"),
         # ("", 1),
