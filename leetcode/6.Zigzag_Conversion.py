@@ -26,7 +26,6 @@ class Solution:
 
         # return merge_string
 
-
 if __name__ == '__main__':
     s = Solution()
     testcases = [
