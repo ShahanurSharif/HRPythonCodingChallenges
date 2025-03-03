@@ -9,15 +9,15 @@ from numpy.ma.extras import row_stack
 from pyautogui import printInfo
 
 
-#p * a
-#a P l
-#y * i
+#p-0 * a
+#a-1 P l
+#y-2 * i
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = [[] for _ in range(numRows)]
         for i, char in enumerate(s):
-            # print(i, char, i % numRows)
+            print(i, char, i % numRows)
             ans[i % numRows].append(char)
 
         print(ans)
