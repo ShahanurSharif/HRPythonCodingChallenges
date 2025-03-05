@@ -12,7 +12,6 @@ from pyautogui import printInfo
 #p-0 * a
 #a-1 P l
 #y-2 * i
-
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         ans = [[] for _ in range(numRows)]
