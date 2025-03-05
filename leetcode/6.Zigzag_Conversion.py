@@ -20,6 +20,14 @@ class Solution:
 
         for char in s:
             print(index, step, char)
+            rows[index] += char
+
+            if index == 0:
+                step = 1
+            elif index == numRows - 1:
+                step = -1
+
+            index += step
 
 if __name__ == '__main__':
     s = Solution()
