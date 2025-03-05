@@ -39,24 +39,23 @@ class Solution:
         else:
             reversed_value = int(str(x)[::-1])
 
-        print(2**31 - 1, (2**31 - 1)>reversed_value>-2**31)
-        if (2**31 - 1)>reversed_value>-2**31:
-            return 0
-        else:
+        if ((2**31) - 1)>reversed_value>-2**31:
             return reversed_value
+        else:
+            return 0
 
 if __name__ == '__main__':
     test_cases = [
-        # (123, 321),
-        # (-123, -321),
-        # (120, 21),
-        # (0, 0),
+        (123, 321),
+        (-123, -321),
+        (120, 21),
+        (0, 0),
         (1534236469, 0),   # Overflow case
-        # (-2147483648, 0),  # Overflow case
-        # (1463847412, 2147483641),
-        # (-1463847412, -2147483641),
-        # (1000000003, 0),   # Overflow case
-        # (-1000000003, 0)   # Overflow case
+        (-2147483648, 0),  # Overflow case
+        (1463847412, 2147483641),
+        (-1463847412, -2147483641),
+        (1000000003, 0),   # Overflow case
+        (-1000000003, 0)   # Overflow case
     ]
     s = Solution()
     for case in test_cases:
