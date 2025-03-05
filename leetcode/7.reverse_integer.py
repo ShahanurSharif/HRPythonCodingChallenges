@@ -30,3 +30,31 @@ Constraints:
 -231 <= x <= 231 - 1
 
 '''
+class Solution:
+    def reverse(self, x: int) -> int:
+        value = 0
+        if x.bit_length()>32:
+            return value
+
+        for i in str(x):
+            print(i)
+
+        return value
+
+if __name__ == '__main__':
+    test_cases = [
+        (123, 321),
+        (-123, -321),
+        (120, 21),
+        (0, 0),
+        (1534236469, 0),   # Overflow case
+        (-2147483648, 0),  # Overflow case
+        (1463847412, 2147483641),
+        (-1463847412, -2147483641),
+        (1000000003, 0),   # Overflow case
+        (-1000000003, 0)   # Overflow case
+    ]
+    s = Solution()
+    for case in test_cases:
+        value = s.reverse(case[0])
+        print(value, value==case[1])
