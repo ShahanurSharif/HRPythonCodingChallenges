@@ -30,6 +30,7 @@ class Solution:
                 step = -1
 
             index += step
+            print(index, step, numRows - 1)
 
         return ''.join(rows)
 
