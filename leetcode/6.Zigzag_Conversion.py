@@ -1,7 +1,7 @@
 #  *,  *,  *,  *,  *,
-#  6,  7,  8,  *, 10,
-# 11, 12,  *, 14, 15,
-# 16,  *, 18, 19, 20,
+#  5,  6,  7,  *,  9,
+# 10, 11,  *, 13, 14,
+# 15,  *, 17, 18, 19,
 #  *,  *,  *,  *,  *,
 from heapq import merge
 
@@ -14,21 +14,17 @@ from pyautogui import printInfo
 #y-2 * i
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        ans = [[] for _ in range(numRows)]
-        for i, char in enumerate(s):
-            print(i, char, i % numRows)
-            ans[i % numRows].append(char)
+        rows = [""]*numRows
 
-        print(ans)
+        index, step = 0, 1
 
-        # merge_string = "".join(["".join(row) for row in ans])
-
-        # return merge_string
+        for char in s:
+            print(index, step, char)
 
 if __name__ == '__main__':
     s = Solution()
     testcases = [
-        ("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"),
+        # ("PAYPALISHIRING", 3, "PAHNAPLSIIGYIR"),
         # ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, "AGMSYBFHLNRTXZCEIKOQUWDJPV")
         # ("PAYPALISHIRING", 4, "PINALSIGYAHRPI"),
         # ("A", 1, "A"),
@@ -37,7 +33,7 @@ if __name__ == '__main__':
         # ("ABCD", 2),
         # ("ABCDE", 4),
         # ("ABCDEFGHIJKLMNO", 5),
-        # ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5),
+        ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5),
         # ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 6),
         # ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 7),
         # ("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 1000),
