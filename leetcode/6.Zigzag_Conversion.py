@@ -14,12 +14,14 @@ from pyautogui import printInfo
 #y-2 * i
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
+        if numRows == 1 or numRows >= len(s):
+            return s
+
         rows = [""]*numRows
 
         index, step = 0, 1
 
         for char in s:
-            print(index, step, char)
             rows[index] += char
 
             if index == 0:
@@ -28,6 +30,8 @@ class Solution:
                 step = -1
 
             index += step
+
+        return ''.join(rows)
 
 if __name__ == '__main__':
     s = Solution()
