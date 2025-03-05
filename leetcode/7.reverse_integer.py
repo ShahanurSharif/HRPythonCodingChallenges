@@ -30,19 +30,20 @@ Constraints:
 -231 <= x <= 231 - 1
 
 '''
-from audioop import reverse
 
 
 class Solution:
     def reverse(self, x: int) -> int:
         if x<0:
-            reversed_value = int(str(x)[::-1])
+            reversed_value = int('-'+str(x)[::-1][:-1])
         else:
-            reversed_value = int(str(x))
+            reversed_value = int(str(x)[::-1])
 
-        print(reversed_value)
-        # if reversed_value<-2**31 and reversed_value>2^31 - 1:
-        #     pass
+        print(2**31 - 1, (2**31 - 1)>reversed_value>-2**31)
+        if (2**31 - 1)>reversed_value>-2**31:
+            return 0
+        else:
+            return reversed_value
 
 if __name__ == '__main__':
     test_cases = [
@@ -50,8 +51,8 @@ if __name__ == '__main__':
         # (-123, -321),
         # (120, 21),
         # (0, 0),
-        # (1534236469, 0),   # Overflow case
-        (-2147483648, 0),  # Overflow case
+        (1534236469, 0),   # Overflow case
+        # (-2147483648, 0),  # Overflow case
         # (1463847412, 2147483641),
         # (-1463847412, -2147483641),
         # (1000000003, 0),   # Overflow case
