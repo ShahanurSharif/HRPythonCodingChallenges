@@ -101,17 +101,9 @@ s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+
 
 class Solution:
     def myAtoi(self, s: str) -> int:
-        new_str = ''
-        signs = ''
-        new_str_length = len(s)
-        for i in range(new_str_length):
-            if new_str=='' and s[i] == '-':
-                signs = s[i]
-            if s[i].isdigit():
-                new_str+=s[i]
-
-            if len(new_str)>0 and s[i].isalpha():
-                break
+        s=s.strip()
+        is_negative = s[0] if s[0] == '-' else ''
+        print(is_negative)
 
 
 
@@ -135,8 +127,8 @@ class Solution:
 
 if __name__ == '__main__':
     test_cases = [
-        # ("42", 42),
-        (" -042", -42),
+        ("42", 42),
+        # (" -042", -42),
         # (" -042c3", -42),
         # ("1337c0d3", 1337),
         # ("0-1", 0),
