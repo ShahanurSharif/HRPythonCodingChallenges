@@ -16,8 +16,8 @@ Whitespace: Ignore any leading whitespace (" ").
 Signedness: Determine the sign by checking if the next character is '-' or '+', assuming positivity if neither present.
 Conversion: Read the integer by skipping leading zeros until a non-digit character is encountered or the end of the
 string is reached. If no digits were read, then the result is 0.
-Rounding: If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then round the integer to remain in
-the range. Specifically, integers less than -231 should be rounded to -231, and integers greater than 231 - 1
+Rounding: If the integer is out of the 32-bit signed integer range [-2**31, 2**31 - 1], then round the integer to remain in
+the range. Specifically, integers less than -231 should be rounded to -2**31, and integers greater than 231 - 1
 should be rounded to 231 - 1.
 Return the integer as the final result.
 
@@ -97,3 +97,57 @@ Constraints:
 0 <= s.length <= 200
 s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
 '''
+
+
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        new_str = None
+
+        for i in range(len(s)):
+            if new_str is None and s[i] == '-':
+                new_str = s[i]
+            if s[i].isdigit():
+                new_str += s[i]
+            if not s[i].isdigit() and new_str is not None:
+                break
+        print(new_str)
+        return int(new_str)
+
+    '''
+    Whitespace: Ignore any leading whitespace (" ").
+    
+    Signedness: Determine the sign by checking if the next character is '-' or '+', 
+    assuming positivity if neither present.
+    
+    Conversion: Read the integer by skipping leading zeros until a non-digit character 
+    is encountered or the end of the string is reached. If no digits were read, then the result is 0.
+    
+    Rounding: If the integer is out of the 32-bit signed integer range [-231, 231 - 1], 
+    then round the integer to remain in the range. Specifically, integers less than -231 
+    should be rounded to -231, and integers greater than 231 - 1 should be rounded to 231 - 1.
+    '''
+
+
+if __name__ == '__main__':
+    test_cases = [
+        # ("42", 42),
+        (" -042", -42),
+        # ("1337c0d3", 1337),
+        # ("0-1", 0),
+        # ("words and 987", 0),
+        # ("", 0),
+        # ("   +42", 42),
+        # ("   -42", -42),
+        # ("   00042", 42),
+        # ("-2147483649", -2147483648),  # Below the minimum 32-bit integer range
+        # ("2147483648", 2147483647),  # Above the maximum 32-bit integer range
+        # ("0000000000012345678", 12345678),
+        # ("3.14", 3),
+        # ("-3.14", -3),
+        # ("+3.14", 3),
+    ]
+    solution = Solution()
+    for case in test_cases:
+        value = solution.myAtoi(case[0])
+        print(value, value == case[1])
+        assert value == case[1]
