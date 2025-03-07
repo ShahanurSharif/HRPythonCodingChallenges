@@ -104,10 +104,7 @@ class Solution:
         s=s.lstrip()
 
         sign_multiplier = -1 if s[0] == '-' else 1
-        # print(is_negative)
 
-
-        # print(int(signs + new_str))
         return 0
 
     '''
