@@ -102,8 +102,8 @@ s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+
 class Solution:
     def myAtoi(self, s: str) -> int:
         s=s.lstrip()
-        print(s)
-        # is_negative = s[0] if s[0] == '-' else ''
+
+        sign_multiplier = -1 if s[0] == '-' else 1
         # print(is_negative)
 
 
