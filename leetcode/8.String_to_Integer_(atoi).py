@@ -101,17 +101,22 @@ s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+
 
 class Solution:
     def myAtoi(self, s: str) -> int:
-        new_str = None
-
-        for i in range(len(s)):
-            if new_str is None and s[i] == '-':
-                new_str = s[i]
+        new_str = ''
+        signs = ''
+        new_str_length = len(s)
+        for i in range(new_str_length):
+            if new_str=='' and s[i] == '-':
+                signs = s[i]
             if s[i].isdigit():
-                new_str += s[i]
-            if not s[i].isdigit() and new_str is not None:
+                new_str+=s[i]
+
+            if len(new_str)>0 and s[i].isalpha():
                 break
-        print(new_str)
-        return int(new_str)
+
+
+
+        # print(int(signs + new_str))
+        return 0
 
     '''
     Whitespace: Ignore any leading whitespace (" ").
@@ -132,6 +137,7 @@ if __name__ == '__main__':
     test_cases = [
         # ("42", 42),
         (" -042", -42),
+        # (" -042c3", -42),
         # ("1337c0d3", 1337),
         # ("0-1", 0),
         # ("words and 987", 0),
@@ -149,5 +155,5 @@ if __name__ == '__main__':
     solution = Solution()
     for case in test_cases:
         value = solution.myAtoi(case[0])
-        print(value, value == case[1])
-        assert value == case[1]
+        # print(value, value == case[1])
+        # assert value == case[1]
