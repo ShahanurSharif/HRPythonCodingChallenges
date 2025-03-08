@@ -97,22 +97,39 @@ Constraints:
 0 <= s.length <= 200
 s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+', '-', and '.'.
 '''
+from hackerRank.rr_2_breaking_the_record import result
+
 
 class Solution:
     def myAtoi(self, s: str) -> int:
+        value = 0
         s=s.lstrip()
-        sign_multiplier = -1 if s[0] == '-' else 1
-        index=1 if sign_multiplier == -1 else 0
+        index = 0
+        sign_multiplier = 1
+        if len(s) == 0:
+            return 0
+        if s[0] == '-':
+            sign_multiplier = -1
+            index = 1
+        if s[0] == '+':
+            sign_multiplier = 1
+            index=1
 
-        new_str = ''
         while index < len(s):
-            print(index, s[index], new_str)
+            if not ('0'<= s[index] <= '9'):
+                return value * sign_multiplier
 
-            index +=1
+            value = value * 10 + ord(s[index]) - ord('0')
 
+            min_int_32 = 2**31
+            if value*sign_multiplier <= -min_int_32:
+                return -min_int_32
+            if value*sign_multiplier >= min_int_32-1:
+                return min_int_32-1
 
-        print(new_str)
-        return 0
+            index += 1
+
+        return value*sign_multiplier
 
     '''
     Whitespace: Ignore any leading whitespace (" ").
@@ -151,5 +168,5 @@ if __name__ == '__main__':
     solution = Solution()
     for case in test_cases:
         value = solution.myAtoi(case[0])
-        # print(value, value == case[1])
+        print(value, value == case[1])
         # assert value == case[1]
