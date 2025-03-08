@@ -101,9 +101,17 @@ s consists of English letters (lower-case and upper-case), digits (0-9), ' ', '+
 class Solution:
     def myAtoi(self, s: str) -> int:
         s=s.lstrip()
-
         sign_multiplier = -1 if s[0] == '-' else 1
+        index=1 if sign_multiplier == -1 else 0
 
+        new_str = ''
+        while index < len(s):
+            print(index, s[index], new_str)
+
+            index +=1
+
+
+        print(new_str)
         return 0
 
     '''
