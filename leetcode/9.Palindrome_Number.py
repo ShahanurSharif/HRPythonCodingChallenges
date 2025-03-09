@@ -34,6 +34,19 @@ Follow up: Could you solve it without converting the integer to a string?
 '''
 
 class Solution:
+    def isPalindromeBest(self, x: int) -> bool:
+        if x<0 or (x%10==0 and x!=0):
+            return False
+
+        reverse_half = 0
+        while x>reverse_half:
+            digit = x%10
+            reverse_half = reverse_half * 10 + digit
+            x = x//10
+
+        return x == reverse_half or x == reverse_half // 10
+
+
     def isPalindrome(self, x: int) -> bool:
         total_len = len(str(x))
         if total_len==0 or total_len==1:
@@ -59,30 +72,23 @@ if __name__ == '__main__':
     solution = Solution()
 
     # Example Test Cases
-    print(solution.isPalindrome(121))  # True
-    print(solution.isPalindrome(-121))  # False
-    print(solution.isPalindrome(10))  # False
+    test_cases = [
+        (121, True),
+        (-121, False),
+        (10, False),
+        (0, True),
+        (1, True),
+        (12321, True),
+        (1221, True),
+        (1001, True),
+        (1000021, False),
+        (-101, False)
+    ]
 
-    # Additional Edge Cases
-    print(solution.isPalindrome(0))  # True (Single digit palindrome)
-    print(solution.isPalindrome(1))  # True (Single digit palindrome)
-    print(solution.isPalindrome(12321))  # True (Odd-length palindrome)
-    print(solution.isPalindrome(1221))  # True (Even-length palindrome)
-    print(solution.isPalindrome(1001))  # True (Palindrome with zeros in between)
-    print(solution.isPalindrome(1000021))  # False (Similar digits but not a palindrome)
-    print(solution.isPalindrome(-101))  # False (Negative numbers are never palindromes)
+    # Loop with assertions
+    for num, expected in test_cases:
+        # assert solution.isPalindrome(num) == expected, f"Test failed for input: {num}"
+        assert solution.isPalindromeBest(num) == expected, f"Test failed for input: {num}"
+        # assert solution.isPalindromeAnother(num) == expected, f"Test failed for input: {num}"
 
-
-    # Example Test Cases
-    print(solution.isPalindromeAnother(121))  # True
-    print(solution.isPalindromeAnother(-121))  # False
-    print(solution.isPalindromeAnother(10))  # False
-
-    # Additional Edge Cases
-    print(solution.isPalindromeAnother(0))  # True (Single digit palindrome)
-    print(solution.isPalindromeAnother(1))  # True (Single digit palindrome)
-    print(solution.isPalindromeAnother(12321))  # True (Odd-length palindrome)
-    print(solution.isPalindromeAnother(1221))  # True (Even-length palindrome)
-    print(solution.isPalindromeAnother(1001))  # True (Palindrome with zeros in between)
-    print(solution.isPalindromeAnother(1000021))  # False (Similar digits but not a palindrome)
-    print(solution.isPalindromeAnother(-101))  # False (Negative numbers are never palindromes)
+    print("All tests passed successfully! 🚀")
