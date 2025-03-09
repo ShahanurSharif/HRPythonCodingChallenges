@@ -35,7 +35,25 @@ Follow up: Could you solve it without converting the integer to a string?
 
 class Solution:
     def isPalindrome(self, x: int) -> bool:
-        pass
+        total_len = len(str(x))
+        if total_len==0 or total_len==1:
+            return True
+
+        index = 0
+        while index<total_len/2:
+            last_index = total_len - index
+            if str(x)[index]!=str(x)[last_index-1]:
+                return False
+            index+=1
+
+        return True
+
+    def isPalindromeAnother(self, x: int) -> bool:
+        x=str(x)
+        n=x[::-1]
+        if x!=n:
+            return False
+        return True
 
 if __name__ == '__main__':
     solution = Solution()
@@ -53,3 +71,18 @@ if __name__ == '__main__':
     print(solution.isPalindrome(1001))  # True (Palindrome with zeros in between)
     print(solution.isPalindrome(1000021))  # False (Similar digits but not a palindrome)
     print(solution.isPalindrome(-101))  # False (Negative numbers are never palindromes)
+
+
+    # Example Test Cases
+    print(solution.isPalindromeAnother(121))  # True
+    print(solution.isPalindromeAnother(-121))  # False
+    print(solution.isPalindromeAnother(10))  # False
+
+    # Additional Edge Cases
+    print(solution.isPalindromeAnother(0))  # True (Single digit palindrome)
+    print(solution.isPalindromeAnother(1))  # True (Single digit palindrome)
+    print(solution.isPalindromeAnother(12321))  # True (Odd-length palindrome)
+    print(solution.isPalindromeAnother(1221))  # True (Even-length palindrome)
+    print(solution.isPalindromeAnother(1001))  # True (Palindrome with zeros in between)
+    print(solution.isPalindromeAnother(1000021))  # False (Similar digits but not a palindrome)
+    print(solution.isPalindromeAnother(-101))  # False (Negative numbers are never palindromes)
