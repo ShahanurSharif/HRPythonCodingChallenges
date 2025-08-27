@@ -6,7 +6,7 @@ def greedy_change_verbose(amount, coins):
 
     sorted_coin = sorted(coins, reverse = True)
 
-    answer = sorted_coin[0]
+    answer.append(sorted_coin[0])
     i=0
     total = sorted_coin[0]
 
@@ -14,12 +14,16 @@ def greedy_change_verbose(amount, coins):
 
     while total <= amount:
         total = sorted_coin[i] + total
+        if total == amount:
+            break
         if total > amount:
-            total = total - sorted_coin[i] 
+            total -= sorted_coin[i]
             i=i+1
         elif total < amount:
-            total = sorted_coin[i] + total
+            total += sorted_coin[i]
             answer.append(sorted_coin[i])
+            if total == amount:
+                break
         else:
             break
 
