@@ -47,25 +47,30 @@
 #
 # animal_fly(bird)
 
-#open close principle
+# open close principle
 from abc import ABC, abstractmethod
+
+
 class PaymentMethod(ABC):
     @abstractmethod
     def pay(self, amount):
         pass
 
+
 class Paypal(PaymentMethod):
     def pay(self, amount):
         print(f"Payment method paypal is {amount}")
+
 
 class Stripe(PaymentMethod):
     def pay(self, amount):
         print(f"Payment method stripe is {amount}")
 
+
 class PaymentProcessor:
     def process_payment(self, payment_method: PaymentMethod, amount):
         payment_method.pay(amount)
 
+
 processor = PaymentProcessor()
 processor.process_payment(Paypal(), 100)
-
